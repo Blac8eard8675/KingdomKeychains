@@ -1,0 +1,34 @@
+header > div
+{
+    font-family: 'Allure', cursive;
+    text-align: center;
+    font-size: 37px;
+}
+
+body > div_1
+{
+    text-align: center;
+    font-size: 25px;
+    margin: auto;
+}
+
+body > div_2
+{
+    font-size: 25px;
+}
+
+footer
+{
+    font-size: 25px;
+    text-align: Left;
+}
+
+footer > div
+{
+    font-size: 17px;
+    text-align: Left;
+}
+
+
+
+
