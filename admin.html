@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kingdom Keychains Admin</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header"><div class="brand">Kingdom Keychains</div><nav><a href="/">Storefront</a></nav></header>
+<main class="admin-wrap">
+<section id="loginPanel" class="admin-panel">
+  <p class="eyebrow">Private area</p><h1>Administrator Login</h1>
+  <p>Only the authorized administrator should use this page.</p>
+  <form id="loginForm">
+    <label>Username<input name="username" autocomplete="username" required></label>
+    <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+    <button class="button">Sign In</button><p id="loginError" class="error"></p>
+  </form>
+</section>
+
+<section id="adminPanel" class="admin-panel" hidden>
+  <div class="admin-title"><div><p class="eyebrow">Private inventory</p><h1>Manage Keychains</h1></div><button id="logout" class="button secondary">Log Out</button></div>
+  <form id="productForm" enctype="multipart/form-data" class="product-form">
+    <p class="form-note">To add a keychain, you only need to choose its picture, color, category, and subcategory. The product name and price are filled in automatically.</p>
+    <label>Picture<input name="image" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required></label>
+    <label>Color<input name="color" placeholder="Blue" required></label>
+    <label>Category<select name="category" id="aCategory" required><option>Crosses</option><option>Chainlinks</option><option>Ropes</option></select></label>
+    <label>Subcategory<select name="subcategory" id="aSubcategory" required></select></label>
+    <button class="button">Add Keychain</button>
+    <p id="productMessage"></p>
+  </form>
+  <h2>Administrator Login</h2>
+  <p>Change the username and password used to access this private area.</p>
+  <form id="credentialsForm" class="product-form">
+    <label>Current Password<input name="currentPassword" type="password" required></label>
+    <label>New Username<input name="newUsername" required></label>
+    <label>New Password<input name="newPassword" type="password" minlength="8" required></label>
+    <button class="button">Change Login</button>
+    <p id="credentialsMessage"></p>
+  </form>
+
+  <h2>Current Keychains</h2><div id="adminProducts"></div>
+</section>
+</main>
+<script src="/admin.js"></script>
+</body>
+</html>

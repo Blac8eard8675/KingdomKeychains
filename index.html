@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kingdom Keychains</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">Kingdom Keychains</div>
+  <nav><a href="#shop">Shop</a><a href="#about">About Us</a><a href="#maker">Meet the Maker</a><a class="admin-link" href="/admin.html">Admin</a></nav>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">Handcrafted with purpose</p>
+  <h1>Kingdom Keychains</h1>
+  <p>Faith-inspired keychains made with care.</p>
+  <a class="button" href="#shop">Shop Keychains</a>
+</section>
+
+<main>
+<section id="shop" class="shop-section">
+  <div class="section-heading">
+    <p class="eyebrow">Our collection</p>
+    <h2>Shop Keychains</h2>
+    <p>Browse by category, price, color, or subcategory.</p>
+  </div>
+
+  <div class="filters">
+    <label>Category
+      <select id="category"><option value="">All Categories</option><option>Crosses</option><option>Chainlinks</option><option>Ropes</option></select>
+    </label>
+    <label>Subcategory
+      <select id="subcategory"><option value="">All Subcategories</option></select>
+    </label>
+    <label>Price
+      <select id="price"><option value="">All Prices</option><option value="5">$5</option><option value="10">$10</option><option value="15">$15</option></select>
+    </label>
+    <label>Color
+      <select id="color"><option value="">All Colors</option></select>
+    </label>
+  </div>
+
+  <div id="productGrid" class="product-grid"></div>
+  <p id="empty" class="empty" hidden>No keychains match those filters.</p>
+</section>
+
+<section id="about" class="gold-section about-section">
+  <div class="about-logo-wrap">
+    <img class="about-logo" src="/images/kingdom-crown.jpg" alt="Kingdom Keychains crown logo">
+  </div>
+  <p class="eyebrow">Our Story</p>
+  <h2>About Me</h2>
+
+  <div class="about-me-text">
+    <p><strong>Hello and welcome to Kingdom Keychains, my name is Victoria Schwab and I am the founder of Kingdom Keychains.</strong></p>
+
+    <p><strong>My Keychains are handmade with lanyard string in a homemade spiral design.</strong></p>
+
+    <p><strong>I have Crosses that represent how God is our Anchor, next are Ropes that represent how Jesus Christ is our connection to God, and last but not least are the Chain links and they represent the Disciples and how not only are they our connection to Jesus Christ, our Lord and Savior, but also to our God, our Father in heaven.</strong></p>
+
+    <p><strong>The Crosses are priced at $10, the Ropes are $5 and the Chain links are $5 as well.</strong></p>
+
+    <p><strong>If you would like to speak with me, please feel free to message me at Victoria Schwab on Facebook Messenger or even on here at Kingdom Keychains.</strong></p>
+
+    <p><strong>I hope you enjoy what you see and once again welcome to Kingdom Keychains.</strong></p>
+
+    <p><strong>Thank You for your support.</strong></p>
+  </div>
+</section>
+
+<section id="maker" class="gold-section maker-section">
+  <p class="eyebrow">The hands and heart behind Kingdom Keychains</p>
+  <h2>Meet the Maker</h2>
+  <div class="maker-card">
+    <div class="maker-photo">
+      <img src="/images/tori-owner.jpg" alt="Victoria Schwab, owner of Kingdom Keychains">
+    </div>
+    <div class="maker-details">
+      <h3>Victoria Schwab</h3>
+      <div class="maker-title">Master Craftsman</div>
+      <div class="maker-title">Owner</div>
+      <p>Founder and maker of Kingdom Keychains.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="year"></span> Kingdom Keychains</footer>
+<script src="/app.js"></script>
+</body>
+</html>
