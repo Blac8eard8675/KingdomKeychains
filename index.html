@@ -1,260 +1,496 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kingdom Keychains</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-```
-<!-- HEADER -->
 <header class="site-header">
-    <h1>Kingdom Keychains</h1>
-    <p>Handcrafted with purpose, faith, and creativity.</p>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#keychains">Keychains</a>
-        <a href="#about">About Us</a>
-        <a href="#owner">Meet the Owner</a>
-    </nav>
+    <h1>Kingdom Keychains</h1>
+
+    <p class="tagline">
+        Handmade with Faith, Love & Purpose
+    </p>
+
+    <!-- CATEGORY DROPDOWN -->
+    <div class="category-menu">
+
+        <label for="categorySelect">
+            Browse Our Collections
+        </label>
+
+        <select id="categorySelect">
+
+            <option value="all">
+                All Products
+            </option>
+
+            <option value="Crosses">
+                Crosses
+            </option>
+
+            <option value="Chainlinks">
+                Chainlinks
+            </option>
+
+            <option value="Ropes">
+                Ropes
+            </option>
+
+        </select>
+
+    </div>
+
 </header>
 
 
-<!-- HOME -->
 <main>
 
-    <section id="home" class="hero">
-        <h2>Welcome to Kingdom Keychains</h2>
+    <!-- ================================= -->
+    <!-- FRONT PAGE ALBUMS -->
+    <!-- ================================= -->
+
+    <section id="albumsSection">
+
+        <h2>Our Collections</h2>
+
+        <p class="section-description">
+            Choose a collection below to explore our handmade keychains.
+        </p>
+
+
+        <div class="album-grid">
+
+
+            <!-- CROSS ALBUM -->
+
+            <div
+                class="album-card"
+                onclick="openCategory('Crosses')"
+            >
+
+                <img
+                    src="images/crosses-album.jpg"
+                    alt="Crosses Collection"
+                >
+
+                <div class="album-title">
+
+                    <h3>Crosses</h3>
+
+                    <p>
+                        Explore our Cross collection.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHAINLINK ALBUM -->
+
+            <div
+                class="album-card"
+                onclick="openCategory('Chainlinks')"
+            >
+
+                <img
+                    src="images/chainlinks-album.jpg"
+                    alt="Chainlinks Collection"
+                >
+
+                <div class="album-title">
+
+                    <h3>Chainlinks</h3>
+
+                    <p>
+                        Explore our Chainlink collection.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ROPE ALBUM -->
+
+            <div
+                class="album-card"
+                onclick="openCategory('Ropes')"
+            >
+
+                <img
+                    src="images/ropes-album.jpg"
+                    alt="Ropes Collection"
+                >
+
+                <div class="album-title">
+
+                    <h3>Ropes</h3>
+
+                    <p>
+                        Explore our Rope collection.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- PRODUCTS -->
+    <!-- ================================= -->
+
+    <section
+        id="productsSection"
+        class="hidden"
+    >
+
+        <button
+            class="back-button"
+            onclick="showAlbums()"
+        >
+            ← Back to Collections
+        </button>
+
+
+        <h2 id="categoryTitle">
+            Products
+        </h2>
+
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+
+            <!-- SUBCATEGORY -->
+
+            <div class="filter-box">
+
+                <label for="subcategoryFilter">
+                    Subcategory
+                </label>
+
+                <select id="subcategoryFilter">
+
+                    <option value="all">
+                        All Subcategories
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- COLOR -->
+
+            <div class="filter-box">
+
+                <label for="colorFilter">
+                    Color
+                </label>
+
+                <select id="colorFilter">
+
+                    <option value="all">
+                        All Colors
+                    </option>
+
+                    <option value="Black">
+                        Black
+                    </option>
+
+                    <option value="Blue">
+                        Blue
+                    </option>
+
+                    <option value="Gold">
+                        Gold
+                    </option>
+
+                    <option value="Green">
+                        Green
+                    </option>
+
+                    <option value="Orange">
+                        Orange
+                    </option>
+
+                    <option value="Pink">
+                        Pink
+                    </option>
+
+                    <option value="Purple">
+                        Purple
+                    </option>
+
+                    <option value="Red">
+                        Red
+                    </option>
+
+                    <option value="Silver">
+                        Silver
+                    </option>
+
+                    <option value="White">
+                        White
+                    </option>
+
+                    <option value="Yellow">
+                        Yellow
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div class="filter-box">
+
+                <label for="priceFilter">
+                    Price
+                </label>
+
+                <select id="priceFilter">
+
+                    <option value="all">
+                        All Prices
+                    </option>
+
+                    <option value="under5">
+                        Under $5
+                    </option>
+
+                    <option value="5to10">
+                        $5 - $10
+                    </option>
+
+                    <option value="10to15">
+                        $10 - $15
+                    </option>
+
+                    <option value="15plus">
+                        $15+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="filter-box">
+
+                <label for="searchBox">
+                    Search
+                </label>
+
+                <input
+                    type="text"
+                    id="searchBox"
+                    placeholder="Search keychains..."
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- PRODUCT GRID -->
+        <!-- ================================= -->
+
+        <div
+            id="productGrid"
+            class="product-grid"
+        >
+
+
+            <!-- ================================================= -->
+            <!--
+                PRODUCT EXAMPLE
+
+                TO ADD A PRODUCT:
+
+                1. Upload the picture to the images folder.
+                2. Copy this entire product block.
+                3. Change the information.
+            -->
+            <!-- ================================================= -->
+
+
+            <div
+                class="product-card"
+                data-category="Crosses"
+                data-subcategory="Emmanuel"
+                data-color="Blue"
+                data-price="8"
+            >
+
+                <img
+                    src="images/example-cross.jpg"
+                    alt="Blue Emmanuel Cross"
+                >
+
+                <h3>
+                    Blue Emmanuel Cross
+                </h3>
+
+                <p class="product-subcategory">
+                    Emmanuel
+                </p>
+
+                <p class="product-color">
+                    Blue
+                </p>
+
+                <p class="product-price">
+                    $8.00
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!--
+                ADD YOUR PRODUCTS BELOW THIS LINE
+            -->
+            <!-- ================================================= -->
+
+
+        </div>
+
+
+        <!-- NO RESULTS MESSAGE -->
+
+        <div
+            id="noResults"
+            class="no-results hidden"
+        >
+
+            <h3>
+                No Keychains Found
+            </h3>
+
+            <p>
+                Try changing your filters or search.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- ABOUT US -->
+    <!-- ================================= -->
+
+    <section class="about-section">
+
+        <h2>
+            About Kingdom Keychains
+        </h2>
 
         <p>
-            Handmade keychains created with love, creativity, and a
-            passion for making something special.
-        </p>
-
-        <a class="button" href="#keychains">View Our Keychains</a>
-    </section>
-
-
-    <!-- KEYCHAINS -->
-    <section id="keychains" class="section">
-
-        <h2>Our Keychains</h2>
-
-        <p class="section-intro">
-            Take a look at our handmade creations!
+            Kingdom Keychains creates handmade keychains
+            with faith, creativity, love, and purpose.
         </p>
 
 
-        <div class="products">
+        <!-- OWNER -->
 
+        <div class="owner-section">
 
-            <!-- ==============================
-                 PRODUCT 1
-                 ============================== -->
-
-            <article class="product-card">
-
-                <img
-                    src="images/keychain1.jpg"
-                    alt="Kingdom Keychain">
-
-                <div class="product-info">
-
-                    <h3>Kingdom Keychain</h3>
-
-                    <p class="price">$10.00</p>
-
-                    <p>
-                        A handmade keychain created with care
-                        and attention to detail.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- ==============================
-                 PRODUCT 2
-                 ============================== -->
-
-            <article class="product-card">
-
-                <img
-                    src="images/keychain2.jpg"
-                    alt="Handmade Keychain">
-
-                <div class="product-info">
-
-                    <h3>Handmade Keychain</h3>
-
-                    <p class="price">$10.00</p>
-
-                    <p>
-                        A unique handmade creation perfect
-                        for your keys, bag, or backpack.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <!-- ==============================
-                 ADD MORE PRODUCTS HERE
-                 ==============================
-
-                 Copy this entire product-card
-                 and change the information.
-
-            <article class="product-card">
-
-                <img
-                    src="images/YOUR-PICTURE.jpg"
-                    alt="Product Name">
-
-                <div class="product-info">
-
-                    <h3>Product Name</h3>
-
-                    <p class="price">$00.00</p>
-
-                    <p>
-                        Product description goes here.
-                    </p>
-
-                </div>
-
-            </article>
-
-            ================================== -->
-
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT US -->
-    <section id="about" class="section about-section">
-
-        <h2>About Kingdom Keychains</h2>
-
-        <div class="about-box">
-
-            <p>
-                Kingdom Keychains is a small handmade business
-                built around creativity, craftsmanship, and
-                creating unique pieces that people can enjoy.
-            </p>
-
-            <p>
-                Every piece is made with care and attention
-                to detail. Our goal is to create something
-                special that you can carry with you wherever
-                you go.
-            </p>
-
-            <p>
-                Thank you for supporting Kingdom Keychains
-                and handmade craftsmanship!
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- OWNER -->
-    <section id="owner" class="section owner-section">
-
-        <h2>Meet the Owner</h2>
-
-        <div class="owner-container">
-
-            <!-- OWNER PICTURE -->
 
             <div class="owner-photo">
 
                 <img
                     src="images/tori.jpg"
-                    alt="Victoria Schwab">
+                    alt="Victoria Schwab"
+                >
 
             </div>
 
-
-            <!-- ABOUT TORI -->
 
             <div class="owner-about">
 
-                <h3>About Me</h3>
+                <h2>
+                    About Me
+                </h2>
 
                 <p>
-                    Hi! I'm Victoria Schwab, the owner and
-                    master craftsman behind Kingdom Keychains.
-                </p>
-
-                <p>
-                    I love creating handmade pieces and putting
-                    time, creativity, and care into everything
-                    I make.
-                </p>
-
-                <p>
-                    Thank you for visiting Kingdom Keychains
-                    and supporting my small business!
+                    Welcome to Kingdom Keychains!
+                    I'm Victoria, and I love creating
+                    handmade pieces that are meaningful,
+                    unique, and made with love.
                 </p>
 
             </div>
+
 
         </div>
 
 
         <div class="owner-title">
 
-            <h3>Master Craftsman</h3>
+            <h3>
+                Master Craftsman
+            </h3>
 
-            <h4>Owner</h4>
+            <h4>
+                Owner
+            </h4>
 
-            <p>Victoria Schwab</p>
+            <p>
+                Victoria Schwab
+            </p>
 
         </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section class="section contact-section">
-
-        <h2>Thank You!</h2>
-
-        <p>
-            Thank you for visiting Kingdom Keychains.
-            We appreciate your support of handmade
-            craftsmanship and small business!
-        </p>
 
     </section>
 
 </main>
 
 
+
+<!-- ================================= -->
 <!-- FOOTER -->
+<!-- ================================= -->
 
 <footer>
 
     <p>
-        &copy; 2026 Kingdom Keychains.
-        All Rights Reserved.
+        © 2026 Kingdom Keychains
     </p>
 
 </footer>
-```
+
+
+
+<script src="app.js"></script>
 
 </body>
 </html>
