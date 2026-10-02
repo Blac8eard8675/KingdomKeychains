@@ -11,8 +11,10 @@ const PORT = process.env.PORT || 3000;
 const ADMIN_USER = process.env.ADMIN_USER || "admin";
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "CHANGE_THIS_PASSWORD";
 
-const dataDir = path.join(__dirname, "data");
-const uploadDir = path.join(__dirname, "public", "uploads");
+const persistentDir = process.env.PERSISTENT_DIR || __dirname;
+const dataDir = path.join(persistentDir, "data");
+const uploadDir = path.join(persistentDir, "uploads");
+
 fs.mkdirSync(dataDir, { recursive: true });
 fs.mkdirSync(uploadDir, { recursive: true });
 
@@ -51,7 +53,7 @@ app.use(session({
   cookie: { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production" }
 }));
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use("/uploads", express.static(uploadDir));
 const upload = multer({
   storage: multer.diskStorage({
     destination: uploadDir,
