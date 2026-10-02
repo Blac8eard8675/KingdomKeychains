@@ -1,0 +1,463 @@
+/* =========================================
+KINGDOM KEYCHAINS
+MAIN WEBSITE STYLES
+========================================= */
+
+/* BASIC PAGE */
+
+* {
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+margin: 0;
+padding: 0;
+
+background-color: #21032b;
+
+color: #d4d400;
+
+font-family: "Times New Roman", Times, serif;
+
+line-height: 1.6;
+
+}
+
+/* HEADER */
+
+.site-header {
+text-align: center;
+
+padding: 35px 20px 25px;
+
+background-color: #21032b;
+
+border-bottom: 3px solid #d4d400;
+
+}
+
+.site-header h1 {
+margin: 0;
+
+font-size: 3rem;
+
+color: #d4d400;
+
+}
+
+.site-header p {
+margin: 5px 0 20px;
+
+font-size: 1.2rem;
+
+}
+
+/* NAVIGATION */
+
+nav {
+display: flex;
+
+justify-content: center;
+
+flex-wrap: wrap;
+
+gap: 10px;
+
+}
+
+nav a {
+display: inline-block;
+
+padding: 10px 18px;
+
+background-color: white;
+
+color: #21032b;
+
+text-decoration: none;
+
+border-radius: 8px;
+
+font-weight: bold;
+
+transition: 0.2s ease;
+
+}
+
+nav a {
+background-color: #d4d400;
+
+color: #21032b;
+
+transform: translateY(-2px);
+
+}
+
+/* HERO */
+
+.hero {
+max-width: 1100px;
+
+margin: 30px auto;
+
+padding: 70px 30px;
+
+text-align: center;
+
+background-color: white;
+
+color: #21032b;
+
+border-radius: 20px;
+
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+
+}
+
+.hero h2 {
+margin-top: 0;
+
+font-size: 2.5rem;
+
+}
+
+.hero p {
+max-width: 700px;
+
+margin: 0 auto 25px;
+
+font-size: 1.2rem;
+
+}
+
+/* BUTTON */
+
+.button {
+display: inline-block;
+
+padding: 12px 25px;
+
+background-color: #21032b;
+
+color: #d4d400;
+
+text-decoration: none;
+
+border-radius: 8px;
+
+font-weight: bold;
+
+border: 2px solid #d4d400;
+
+transition: 0.2s ease;
+
+}
+
+.button {
+background-color: #d4d400;
+
+color: #21032b;
+
+}
+
+/* GENERAL SECTIONS */
+
+.section {
+max-width: 1100px;
+
+margin: 35px auto;
+
+padding: 45px 30px;
+
+background-color: white;
+
+color: #21032b;
+
+border-radius: 20px;
+
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
+
+}
+
+.section h2 {
+margin-top: 0;
+
+text-align: center;
+
+color: #21032b;
+
+font-size: 2.3rem;
+
+}
+
+.section-intro {
+text-align: center;
+
+margin-bottom: 30px;
+
+}
+
+/* PRODUCTS */
+
+.products {
+display: grid;
+
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+gap: 25px;
+
+}
+
+/* PRODUCT CARD */
+
+.product-card {
+overflow: hidden;
+
+background-color: #f7f7f7;
+
+border: 2px solid #21032b;
+
+border-radius: 15px;
+
+text-align: center;
+
+transition: 0.2s ease;
+
+}
+
+.product-card {
+transform: translateY(-5px);
+
+box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+
+}
+
+/* PRODUCT IMAGE */
+
+.product-card img {
+display: block;
+
+width: 100%;
+
+height: 250px;
+
+object-fit: cover;
+
+}
+
+/* PRODUCT INFORMATION */
+
+.product-info {
+padding: 20px;
+}
+
+.product-info h3 {
+margin-top: 0;
+
+font-size: 1.5rem;
+
+color: #21032b;
+
+}
+
+.price {
+font-size: 1.3rem;
+
+font-weight: bold;
+
+color: #5d7000;
+
+}
+
+/* ABOUT */
+
+.about-box {
+max-width: 850px;
+
+margin: auto;
+
+text-align: center;
+
+font-size: 1.1rem;
+
+}
+
+/* OWNER SECTION */
+
+.owner-container {
+display: flex;
+
+align-items: stretch;
+
+gap: 30px;
+
+max-width: 900px;
+
+margin: 30px auto 20px;
+
+}
+
+/* OWNER PHOTO */
+
+.owner-photo {
+flex: 1;
+
+display: flex;
+
+}
+
+.owner-photo img {
+width: 100%;
+
+height: 100%;
+
+min-height: 350px;
+
+object-fit: cover;
+
+border-radius: 15px;
+
+border: 3px solid #21032b;
+
+}
+
+/* OWNER ABOUT */
+
+.owner-about {
+flex: 1;
+
+padding: 25px;
+
+background-color: #f7f7f7;
+
+border: 2px solid #21032b;
+
+border-radius: 15px;
+
+}
+
+.owner-about h3 {
+margin-top: 0;
+
+font-size: 1.8rem;
+
+text-align: center;
+
+}
+
+/* OWNER TITLE */
+
+.owner-title {
+text-align: center;
+
+margin-top: 25px;
+
+}
+
+.owner-title h3 {
+margin: 5px 0;
+
+font-size: 1.5rem;
+
+}
+
+.owner-title h4 {
+margin: 5px 0;
+
+font-size: 1.3rem;
+
+font-weight: normal;
+
+}
+
+.owner-title p {
+margin: 5px 0;
+
+font-size: 1.4rem;
+
+font-weight: bold;
+
+}
+
+/* CONTACT */
+
+.contact-section {
+text-align: center;
+}
+
+/* FOOTER */
+
+footer {
+margin-top: 40px;
+
+padding: 25px 15px;
+
+text-align: center;
+
+border-top: 3px solid #d4d400;
+
+}
+
+footer p {
+margin: 0;
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+.site-header h1 {
+    font-size: 2.2rem;
+}
+
+nav {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    max-width: 300px;
+
+    margin: auto;
+}
+
+nav a {
+    text-align: center;
+}
+
+.hero {
+    margin: 20px 10px;
+
+    padding: 45px 20px;
+}
+
+.hero h2 {
+    font-size: 2rem;
+}
+
+.section {
+    margin: 20px 10px;
+
+    padding: 30px 20px;
+}
+
+.section h2 {
+    font-size: 2rem;
+}
+
+.owner-container {
+    flex-direction: column;
+}
+
+.owner-photo img {
+    min-height: 300px;
+
+    height: auto;
+}
+
+}
