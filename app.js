@@ -368,13 +368,15 @@ function applyFilters() {
 
             /* SUBCATEGORY */
 
-            const subcategoryMatches =
+            /* SUBCATEGORY */
 
-                selectedSubcategory === "all" ||
+const normalize = value =>
+    (value || "").trim().toLowerCase();
 
-                subcategory ===
-                    selectedSubcategory;
-
+const subcategoryMatches =
+    selectedSubcategory === "all" ||
+    normalize(subcategory) ===
+        normalize(selectedSubcategory);
 
             /* COLOR */
 
