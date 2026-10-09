@@ -80,6 +80,40 @@ const colorFilter =
         "colorFilter"
     );
 
+function populateColorFilter() {
+    const allColors = new Set();
+
+    getProducts().forEach(function(card) {
+        const colorText = card.dataset.color || "";
+
+        colorText.split(",").forEach(function(color) {
+            const cleanedColor = color.trim();
+
+            if (cleanedColor) {
+                allColors.add(cleanedColor);
+            }
+        });
+    });
+
+    colorFilter.innerHTML = "";
+
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "All Colors";
+    colorFilter.appendChild(allOption);
+
+    [...allColors]
+        .sort((a, b) => a.localeCompare(b))
+        .forEach(function(color) {
+            const option = document.createElement("option");
+            option.value = color;
+            option.textContent = color;
+            colorFilter.appendChild(option);
+        });
+}
+
+populateColorFilter();
+
 const priceFilter =
     document.getElementById(
         "priceFilter"
