@@ -416,12 +416,18 @@ const subcategoryMatches =
 
             
 const productColors = (color || "")
-    .split(",")
-    .map(c => c.trim().toLowerCase());
+    .split(/[,;]+/)
+    .map(c => c.trim().toLowerCase())
+    .filter(Boolean);
+
+const selectedColors = (selectedColor || "")
+    .split(/[,;]+/)
+    .map(c => c.trim().toLowerCase())
+    .filter(Boolean);
 
 const colorMatches =
     selectedColor === "all" ||
-    productColors.includes(selectedColor.trim().toLowerCase());
+    selectedColors.some(c => productColors.includes(c));
 
 
             /* PRICE */
