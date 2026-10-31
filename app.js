@@ -5,7 +5,7 @@
 
 
 /* ================================= */
-/* YOUR THREE CATEGORIES */
+/* YOUR Four CATEGORIES */
 /* ================================= */
 
 const categories = {
