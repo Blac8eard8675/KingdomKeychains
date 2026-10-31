@@ -48,7 +48,7 @@ const categories = {
 
         "God's Knot",
 
-        "Spiral",
+        "Spiral"
 
     ],
 
