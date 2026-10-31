@@ -10,19 +10,13 @@
 
 const categories = {
 
-    Crosses: [
+   God's Knot Dead: [
 
-        "Emmanuel",
+        "DNA Twist",
 
-        "Eternity Cross",
+        "God's Knot",
 
-        "Healer",
-
-        "Holy Spirit Cross",
-
-        "Shalom",
-
-        "Spiral Cross"
+        "Spiral",
 
     ],
 
@@ -43,6 +37,22 @@ const categories = {
 
     ],
 
+  Crosses: [
+
+        "Emmanuel",
+
+        "Eternity Cross",
+
+        "Healer",
+
+        "Holy Spirit Cross",
+
+        "Shalom",
+
+        "Spiral Cross"
+
+    ],
+    
 
     Ropes: [
 
