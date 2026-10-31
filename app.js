@@ -10,18 +10,7 @@
 
 const categories = {
 
-   God's Knot Dead Bracelets: [
-
-        "DNA Twist",
-
-        "God's Knot",
-
-        "Spiral",
-
-    ],
-
-
-    Chainlinks: [
+  Chainlinks: [
 
         "Elohim",
 
@@ -52,7 +41,16 @@ const categories = {
         "Spiral Cross"
 
     ],
-    
+
+     God's Knot Dead Bracelets: [
+
+        "DNA Twist",
+
+        "God's Knot",
+
+        "Spiral",
+
+    ],
 
     Ropes: [
 
