@@ -42,7 +42,7 @@ const categories = {
 
     ],
 
-     God's Knot Dead Bracelets: [
+     "God's Knot Dead Bracelets": [
 
         "DNA Twist",
 
