@@ -10,63 +10,38 @@
 
 const categories = {
 
-  Chainlinks: [
+    Bracelets: [
+        "God's Knot Dead"
+    ],
 
+    Chainlinks: [
         "Elohim",
-
         "Holy Spirit Chainlinks",
-
         "Jesus Fish",
-
         "Large Chainlinks",
-
         "Medium Chainlinks",
-
         "Mini Chainlinks"
-
     ],
 
-  Crosses: [
-
+    Crosses: [
         "Emmanuel",
-
         "Eternity Cross",
-
         "Healer",
-
         "Holy Spirit Cross",
-
         "Shalom",
-
         "Spiral Cross"
-
-    ],
-
-     "God's Knot Dead Bracelets": [
-
-        "DNA Twist",
-
-        "God's Knot",
-
-        "Spiral"
-
     ],
 
     Ropes: [
-
         "Brave Rope",
-
         "DNA Rope",
-
         "Eternity",
-
         "Holy Spirit Rope",
-
         "Spiral Rope"
-
     ]
 
 };
+
 
 
 /* ================================= */
