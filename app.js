@@ -42,6 +42,62 @@ const categories = {
 
 };
 
+/* ================================= */
+/* AUTOMATIC ALBUM ALPHABETICAL SORT */
+/* ================================= */
+
+function sortAlbumGrid(grid) {
+
+    const albums = Array.from(
+        grid.querySelectorAll(".album-card")
+    );
+
+    albums.sort(function(a, b) {
+
+        const nameA = a.querySelector("h3")
+            .textContent.trim();
+
+        const nameB = b.querySelector("h3")
+            .textContent.trim();
+
+        return nameA.localeCompare(
+            nameB,
+            undefined,
+            { sensitivity: "base" }
+        );
+
+    });
+
+    albums.forEach(function(album) {
+        grid.appendChild(album);
+    });
+
+}
+
+
+function sortAllAlbumGrids() {
+
+    document.querySelectorAll(".album-grid")
+        .forEach(function(grid) {
+            sortAlbumGrid(grid);
+        });
+
+}
+
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        sortAllAlbumGrids
+    );
+
+} else {
+
+    sortAllAlbumGrids();
+
+}
+
 
 
 /* ================================= */
