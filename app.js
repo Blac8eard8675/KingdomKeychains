@@ -488,7 +488,10 @@ const subcategoryMatches =
     normalize(subcategory) ===
         normalize(selectedSubcategory);
 
-
+const styleMatches =
+    !activeStyle ||
+    normalize(card.dataset.style) ===
+        normalize(activeStyle);
 
             /* COLOR */
 
@@ -573,19 +576,14 @@ const colorMatches =
 
             /* SHOW PRODUCT */
 
-            if (
-
-                categoryMatches &&
-
-                subcategoryMatches &&
-
-                colorMatches &&
-
-                priceMatches &&
-
-                searchMatches
-
-            ) {
+      if (
+    categoryMatches &&
+    subcategoryMatches &&
+    styleMatches &&
+    colorMatches &&
+    priceMatches &&
+    searchMatches
+)   {
 
                 card.style.display =
                     "";
