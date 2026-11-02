@@ -183,6 +183,8 @@ const noResults =
         "noResults"
     );
 
+let activeStyle = "";
+
 
 const braceletAlbumsSection =
     document.getElementById("braceletAlbumsSection");
