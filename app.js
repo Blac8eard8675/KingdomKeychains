@@ -287,62 +287,11 @@ function showAlbums() {
 /* LOAD SUBCATEGORIES */
 /* ================================= */
 
-function loadSubcategories(
-    category
-) {
+function loadSubcategories(category) {
 
-    subcategoryFilter.innerHTML = `
+    subcategoryFilter.innerHTML = "";
 
-        <option value="all">
-            All Subcategories
-        </option>
-
-    `;
-
-
-    if (
-        category === "all"
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        !categories[category]
-    ) {
-
-        return;
-
-    }
-
-
-    categories[category].forEach(
-
-        function(subcategory) {
-
-            const option =
-                document.createElement(
-                    "option"
-                );
-
-
-            option.value =
-                subcategory;
-
-
-            option.textContent =
-                subcategory;
-
-
-            subcategoryFilter.appendChild(
-                option
-            );
-
-        }
-
-    );
+    subcategoryFilter.disabled = true;
 
 }
 
