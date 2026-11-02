@@ -284,11 +284,26 @@ subcategoryFilter.disabled = true;
 function loadSubcategories(category) {
 
     subcategoryFilter.innerHTML = "";
+    subcategoryFilter.disabled = false;
 
-    subcategoryFilter.disabled = true;
+    if (!categories[category]) {
+        return;
+    }
+
+    categories[category].forEach(function(subcategory) {
+
+        const option = document.createElement("option");
+
+        option.value = subcategory;
+        option.textContent = subcategory;
+
+        subcategoryFilter.appendChild(option);
+
+    });
+
+    subcategoryFilter.value = categories[category][0];
 
 }
-
 
 /* ================================= */
 /* CATEGORY DROPDOWN */
@@ -387,17 +402,17 @@ function applyFilters() {
                 category === selectedCategory;
 
 
-            /* SUBCATEGORY */
-
-            /* SUBCATEGORY */
+        /* SUBCATEGORY */
 
 const normalize = value =>
     (value || "").trim().toLowerCase();
 
 const subcategoryMatches =
-    selectedSubcategory === "all" ||
+    !selectedSubcategory ||
     normalize(subcategory) ===
         normalize(selectedSubcategory);
+
+
 
             /* COLOR */
 
