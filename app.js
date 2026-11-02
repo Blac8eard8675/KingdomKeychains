@@ -184,6 +184,12 @@ const noResults =
     );
 
 
+const braceletAlbumsSection =
+    document.getElementById("braceletAlbumsSection");
+
+const braceletAlbumGrid =
+    document.getElementById("braceletAlbumGrid");
+
 /* ================================= */
 /* GET ALL PRODUCTS */
 /* ================================= */
