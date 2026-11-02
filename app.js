@@ -207,44 +207,43 @@ function getProducts() {
 /* OPEN CATEGORY */
 /* ================================= */
 
+
 function openCategory(category) {
 
-    albumsSection.classList.add(
-        "hidden"
-    );
+    if (category === "Bracelets") {
 
-    productsSection.classList.remove(
-        "hidden"
-    );
+        albumsSection.classList.add("hidden");
+        productsSection.classList.add("hidden");
+        braceletAlbumsSection.classList.remove("hidden");
 
+        categorySelect.value = category;
+        categoryTitle.textContent = category;
 
-    categorySelect.value =
-        category;
+        showBraceletAlbums("root");
 
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
-    categoryTitle.textContent =
-        category;
+        return;
+    }
 
+    braceletAlbumsSection.classList.add("hidden");
+    albumsSection.classList.add("hidden");
+    productsSection.classList.remove("hidden");
 
-    loadSubcategories(
-        category
-    );
+    categorySelect.value = category;
+    categoryTitle.textContent = category;
 
-
+    loadSubcategories(category);
     applyFilters();
 
-
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
-
 }
-
-
 /* ================================= */
 /* RETURN TO ALBUMS */
 /* ================================= */
