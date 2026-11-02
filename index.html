@@ -25,31 +25,29 @@
         <label for="categorySelect">
             Browse Our Collections
         </label>
+<select id="categorySelect">
 
-        <select id="categorySelect">
+    <option value="all">
+        All Products
+    </option>
 
-            <option value="all">
-                All Products
-            </option>
-            
-            
-            <option value="Chainlinks">
-                Chainlinks
-            </option>
+    <option value="Bracelets">
+        Bracelets
+    </option>
 
-            <option value="Crosses">
-                Crosses
-            </option>
+    <option value="Chainlinks">
+        Chainlinks
+    </option>
 
-            <option value="God's Knot Dead Bracelets">
-                God's Knot Dead Bracelets
-            </option>
-        
-            <option value="Ropes">
-                Ropes
-            </option>
+    <option value="Crosses">
+        Crosses
+    </option>
 
-        </select>
+    <option value="Ropes">
+        Ropes
+    </option>
+
+</select>
 
     </div>
 
@@ -198,6 +196,28 @@
         <h2 id="categoryTitle">
             Products
         </h2>
+
+        <!-- ================================= -->
+<!-- BRACELET NESTED ALBUMS -->
+<!-- ================================= -->
+
+<div id="braceletAlbumsSection" class="hidden">
+
+    <button
+        id="braceletBackButton"
+        class="back-button"
+        onclick="goBackToBraceletAlbums()"
+    >
+        ← Back
+    </button>
+
+    <div
+        id="braceletAlbumGrid"
+        class="album-grid"
+    >
+    </div>
+
+</div>
 
 
         <!-- FILTERS -->
