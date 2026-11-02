@@ -320,6 +320,78 @@ function showChainlinksAlbums(level) {
     sortAlbumGrid(chainlinksAlbumGrid);
 }
 
+function showChainlinkStyles(subcategory) {
+
+    chainlinksAlbumGrid.innerHTML = "";
+
+    let styles = [];
+
+    if (subcategory === "Elohim") {
+        styles = [
+            "Hexagon Stitch",
+            "Spiral Stitch"
+        ];
+    }
+
+    else if (subcategory === "Jesus Fish") {
+        styles = [
+            "Minnows",
+            "Tilapia",
+            "Whale"
+        ];
+    }
+
+    styles.forEach(function(style) {
+
+        const album = document.createElement("div");
+        album.className = "album-card";
+
+        album.innerHTML = `
+            <div class="album-title">
+                <h3>${style}</h3>
+                <p>Explore ${style}.</p>
+            </div>
+        `;
+
+        album.onclick = function() {
+            openChainlinkStyleProducts(
+                subcategory,
+                style
+            );
+        };
+
+        chainlinksAlbumGrid.appendChild(album);
+
+    });
+
+    sortAlbumGrid(chainlinksAlbumGrid);
+
+}
+
+function openChainlinkStyleProducts(subcategory, style) {
+
+    activeStyle = style;
+
+    braceletAlbumsSection.classList.add("hidden");
+    chainlinksAlbumsSection.classList.add("hidden");
+    albumsSection.classList.add("hidden");
+
+    productsSection.classList.remove("hidden");
+
+    categorySelect.value = "Chainlinks";
+    categoryTitle.textContent = subcategory + " - " + style;
+
+    loadSubcategories("Chainlinks");
+    subcategoryFilter.value = subcategory;
+
+    applyFilters();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
 /* ================================= */
 /* RETURN TO ALBUMS */
 /* ================================= */
