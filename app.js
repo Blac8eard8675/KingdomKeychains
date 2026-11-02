@@ -263,14 +263,8 @@ function showAlbums() {
         "all";
 
 
-    subcategoryFilter.innerHTML = `
-
-        <option value="all">
-            All Subcategories
-        </option>
-
-    `;
-
+  subcategoryFilter.innerHTML = "";
+subcategoryFilter.disabled = true;
 
     window.scrollTo({
 
