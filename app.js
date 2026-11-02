@@ -190,6 +190,13 @@ const braceletAlbumsSection =
 const braceletAlbumGrid =
     document.getElementById("braceletAlbumGrid");
 
+const chainlinksAlbumsSection =
+    document.getElementById("chainlinksAlbumsSection");
+
+const chainlinksAlbumGrid =
+    document.getElementById("chainlinksAlbumGrid");
+
+
 /* ================================= */
 /* GET ALL PRODUCTS */
 /* ================================= */
