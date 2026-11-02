@@ -210,6 +210,7 @@ function getProducts() {
 }
 
 
+
 /* ================================= */
 /* OPEN CATEGORY */
 /* ================================= */
@@ -221,6 +222,7 @@ function openCategory(category) {
 
         albumsSection.classList.add("hidden");
         productsSection.classList.add("hidden");
+        chainlinksAlbumsSection.classList.add("hidden");
         braceletAlbumsSection.classList.remove("hidden");
 
         categorySelect.value = category;
@@ -236,7 +238,28 @@ function openCategory(category) {
         return;
     }
 
+    if (category === "Chainlinks") {
+
+        albumsSection.classList.add("hidden");
+        productsSection.classList.add("hidden");
+        braceletAlbumsSection.classList.add("hidden");
+        chainlinksAlbumsSection.classList.remove("hidden");
+
+        categorySelect.value = category;
+        categoryTitle.textContent = category;
+
+        showChainlinksAlbums("root");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        return;
+    }
+
     braceletAlbumsSection.classList.add("hidden");
+    chainlinksAlbumsSection.classList.add("hidden");
     albumsSection.classList.add("hidden");
     productsSection.classList.remove("hidden");
 
@@ -251,6 +274,50 @@ function openCategory(category) {
         behavior: "smooth"
     });
 }
+
+
+function showChainlinksAlbums(level) {
+
+    chainlinksAlbumGrid.innerHTML = "";
+
+    const chainlinkAlbums = [
+        "Elohim",
+        "Holy Spirit Chainlinks",
+        "Jesus Fish",
+        "Large Chainlinks",
+        "Medium Chainlinks",
+        "Mini Chainlinks"
+    ];
+
+    chainlinkAlbums.forEach(function(name) {
+
+        const album = document.createElement("div");
+        album.className = "album-card";
+
+        album.innerHTML = `
+            <div class="album-title">
+                <h3>${name}</h3>
+                <p>Explore ${name}.</p>
+            </div>
+        `;
+
+        album.onclick = function() {
+
+            if (name === "Elohim" || name === "Jesus Fish") {
+                showChainlinkStyles(name);
+            } else {
+                openChainlinkProducts(name);
+            }
+
+        };
+
+        chainlinksAlbumGrid.appendChild(album);
+
+    });
+
+    sortAlbumGrid(chainlinksAlbumGrid);
+}
+
 /* ================================= */
 /* RETURN TO ALBUMS */
 /* ================================= */
