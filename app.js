@@ -18,7 +18,6 @@ const categories = {
         "Elohim",
         "Holy Spirit Chainlinks",
         "Jesus Fish",
-        "Large Chainlinks",
         "Medium Chainlinks",
         "Mini Chainlinks"
     ],
