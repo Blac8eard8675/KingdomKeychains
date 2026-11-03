@@ -389,6 +389,30 @@ function openChainlinkStyleProducts(subcategory, style) {
         behavior: "smooth"
     });
 
+
+  function openChainlinkProducts(subcategory) {
+
+    activeStyle = "";
+
+    braceletAlbumsSection.classList.add("hidden");
+    chainlinksAlbumsSection.classList.add("hidden");
+    albumsSection.classList.add("hidden");
+
+    productsSection.classList.remove("hidden");
+
+    categorySelect.value = "Chainlinks";
+    categoryTitle.textContent = subcategory;
+
+    loadSubcategories("Chainlinks");
+    subcategoryFilter.value = subcategory;
+
+    applyFilters();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
 }
 /* ================================= */
 /* RETURN TO ALBUMS */
