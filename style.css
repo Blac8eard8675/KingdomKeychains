@@ -29,26 +29,21 @@ body {
 /* HEADER */
 /* ================================= */
 
+
 .site-header {
-
     padding: 35px 20px;
-
+    text-align: center;
 }
 
 .site-header h1 {
-
-    margin: 0;
-
+    margin: 0 0 15px 0;
     font-size: 48px;
-
 }
 
 .tagline {
-
     font-size: 20px;
-
+    margin: 10px 0;
 }
-
 
 /* ================================= */
 /* CATEGORY DROPDOWN */
