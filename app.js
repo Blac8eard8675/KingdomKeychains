@@ -389,7 +389,7 @@ function openChainlinkStyleProducts(subcategory, style) {
         behavior: "smooth"
     });
 
-
+}
   function openChainlinkProducts(subcategory) {
 
     activeStyle = "";
