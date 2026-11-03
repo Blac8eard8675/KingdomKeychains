@@ -259,6 +259,8 @@ function openCategory(category) {
         return;
     }
 
+    activeStyle = "";
+    
     braceletAlbumsSection.classList.add("hidden");
     chainlinksAlbumsSection.classList.add("hidden");
     albumsSection.classList.add("hidden");
