@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +23,7 @@ html
 
         <div class="header-ornament">♛</div>
 
-        <p class="header-eyebrow">Handcrafted With Faith & Purpose</p>
+        <p class="header-eyebrow">Handcrafted With Faith &amp; Purpose</p>
 
         <h1 class="site-title">KINGDOM KEYCHAINS</h1>
 
@@ -48,15 +47,10 @@ html
     <nav class="main-navigation" aria-label="Main navigation">
 
         <a href="#home">Home</a>
-
         <a href="#collections">Collections</a>
-
-        <a href="#products">All Products</a>
-
+        <a href="#products" id="allProductsLink">All Products</a>
         <a href="#about">About Us</a>
-
         <a href="#meet-the-maker">Meet the Maker</a>
-
         <a href="#contact">Contact</a>
 
     </nav>
@@ -65,7 +59,7 @@ html
     <main>
 
         <!-- ================================= -->
-        <!-- WELCOME SECTION -->
+        <!-- WELCOME -->
         <!-- ================================= -->
 
         <section class="welcome-section">
@@ -118,7 +112,6 @@ html
                     data-category="Bracelets">
 
                     <span class="collection-ornament">♛</span>
-
                     <span class="collection-name">Bracelets</span>
 
                     <span class="collection-description">
@@ -138,7 +131,6 @@ html
                     data-category="Chainlinks">
 
                     <span class="collection-ornament">✝</span>
-
                     <span class="collection-name">Chainlinks</span>
 
                     <span class="collection-description">
@@ -158,7 +150,6 @@ html
                     data-category="Crosses">
 
                     <span class="collection-ornament">✝</span>
-
                     <span class="collection-name">Crosses</span>
 
                     <span class="collection-description">
@@ -178,7 +169,6 @@ html
                     data-category="Ropes">
 
                     <span class="collection-ornament">♛</span>
-
                     <span class="collection-name">Ropes</span>
 
                     <span class="collection-description">
@@ -197,10 +187,12 @@ html
 
 
         <!-- ================================= -->
-        <!-- COLLECTION ALBUMS -->
+        <!-- STANDARD COLLECTION ALBUMS -->
         <!-- ================================= -->
 
-        <section class="albums-section hidden" id="albumsSection">
+        <section
+            class="albums-section hidden"
+            id="albumsSection">
 
             <div class="section-heading">
 
@@ -224,9 +216,7 @@ html
             </button>
 
             <div class="album-grid" id="albumGrid">
-
-                <!-- Album cards will be displayed here. -->
-
+                <!-- Album cards are created by app.js. -->
             </div>
 
         </section>
@@ -262,16 +252,7 @@ html
             </button>
 
             <div class="album-grid" id="braceletAlbumGrid">
-
-                <!--
-                    Bracelet albums will be displayed here.
-
-                    God's Knot Dead:
-                    DNA Twist
-                    God's Knot
-                    Spiral
-                -->
-
+                <!-- Bracelet albums and styles are created by app.js. -->
             </div>
 
         </section>
@@ -307,30 +288,19 @@ html
             </button>
 
             <div class="album-grid" id="chainlinkAlbumGrid">
-
-                <!--
-                    Elohim:
-                    Hexagon
-                    Spiral
-
-                    Other chainlink subcategories:
-                    Holy Spirit Chainlinks
-                    Jesus Fish
-                    Large Chainlinks
-                    Medium Chainlinks
-                    Mini Chainlinks
-                -->
-
+                <!-- Chainlink albums and styles are created by app.js. -->
             </div>
 
         </section>
 
 
         <!-- ================================= -->
-        <!-- PRODUCTS -->
+        <!-- ALL PRODUCTS -->
         <!-- ================================= -->
 
-        <section class="products-section hidden" id="products">
+        <section
+            class="products-section hidden"
+            id="products">
 
             <div class="section-heading">
 
@@ -435,6 +405,7 @@ html
 
                 </div>
 
+
                 <button
                     type="button"
                     id="clearFilters"
@@ -451,10 +422,21 @@ html
 
             <div class="product-grid" id="productGrid">
 
-                <!--
-                    ADD NEW PRODUCTS HERE.
+                <!-- ================================= -->
+                <!-- ADD NEW PRODUCTS HERE -->
+                <!-- ================================= -->
 
-                    Keep this format when adding products:
+                <!--
+                    KEEP THIS PRODUCT FORMAT.
+
+                    Required information:
+                    data-category
+                    data-subcategory
+                    data-style
+                    data-color
+                    data-price
+
+                    Example:
 
                     <div
                         class="product-card"
@@ -480,15 +462,21 @@ html
 
                     </div>
 
-                    Product cards will remain in this HTML format.
+                    Product cards will ALWAYS remain in this
+                    familiar HTML format.
                 -->
 
             </div>
 
 
-            <p class="no-products-message hidden" id="noProductsMessage">
+            <p
+                class="no-products-message hidden"
+                id="noProductsMessage">
+
                 No creations match your selected filters.
+
             </p>
+
 
             <button
                 type="button"
@@ -516,6 +504,7 @@ html
 
             </div>
 
+
             <div class="about-introduction">
 
                 <p>
@@ -525,10 +514,15 @@ html
 
             </div>
 
-            <div class="about-ornament">✦ ━━━━━ ✝ ━━━━━ ✦</div>
+
+            <div class="about-ornament">
+                ✦ ━━━━━ ✝ ━━━━━ ✦
+            </div>
 
 
+            <!-- ================================= -->
             <!-- OWNER / MEET THE MAKER -->
+            <!-- ================================= -->
 
             <div class="owner-section" id="meet-the-maker">
 
@@ -624,7 +618,10 @@ html
 
             </div>
 
-            <div class="about-ornament">✦ ━━━━━ ✝ ━━━━━ ✦</div>
+
+            <div class="about-ornament">
+                ✦ ━━━━━ ✝ ━━━━━ ✦
+            </div>
 
         </section>
 
@@ -635,7 +632,9 @@ html
 
         <section class="contact-section" id="contact">
 
-            <p class="section-eyebrow">We Would Love to Hear From You</p>
+            <p class="section-eyebrow">
+                We Would Love to Hear From You
+            </p>
 
             <h2>Contact Kingdom Keychains</h2>
 
@@ -685,4 +684,4 @@ html
 
 </body>
 </html>
-      
+
