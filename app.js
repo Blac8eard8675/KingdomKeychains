@@ -73,39 +73,27 @@ const nestedAlbums = {
 ========================================= */
 
 const collectionsSection = document.querySelector(".collections-section");
-
 const albumsSection = document.getElementById("albumsSection");
-
 const braceletAlbumsSection = document.getElementById("braceletAlbumsSection");
-
 const chainlinkAlbumsSection = document.getElementById("chainlinkAlbumsSection");
-
 const productsSection = document.getElementById("products");
 
 const collectionGrid = document.getElementById("collectionGrid");
-
 const albumGrid = document.getElementById("albumGrid");
-
 const braceletAlbumGrid = document.getElementById("braceletAlbumGrid");
-
 const chainlinkAlbumGrid = document.getElementById("chainlinkAlbumGrid");
-
 const productGrid = document.getElementById("productGrid");
 
 const productsTitle = document.getElementById("productsTitle");
-
 const productsDescription = document.getElementById("productsDescription");
 
 const albumsTitle = document.getElementById("albumsTitle");
-
 const albumsDescription = document.getElementById("albumsDescription");
 
 const braceletAlbumsTitle = document.getElementById("braceletAlbumsTitle");
-
 const braceletAlbumsDescription = document.getElementById("braceletAlbumsDescription");
 
 const chainlinkAlbumsTitle = document.getElementById("chainlinkAlbumsTitle");
-
 const chainlinkAlbumsDescription = document.getElementById("chainlinkAlbumsDescription");
 
 const noProductsMessage = document.getElementById("noProductsMessage");
@@ -116,17 +104,11 @@ const noProductsMessage = document.getElementById("noProductsMessage");
 ========================================= */
 
 const categorySelect = document.getElementById("categorySelect");
-
 const subcategorySelect = document.getElementById("subcategorySelect");
-
 const styleSelect = document.getElementById("styleSelect");
-
 const colorSelect = document.getElementById("colorSelect");
-
 const priceSelect = document.getElementById("priceSelect");
-
 const searchInput = document.getElementById("searchInput");
-
 const clearFiltersButton = document.getElementById("clearFilters");
 
 
@@ -135,13 +117,10 @@ const clearFiltersButton = document.getElementById("clearFilters");
 ========================================= */
 
 let currentCategory = "";
-
 let currentSubcategory = "";
-
 let currentStyle = "";
 
 let previousAlbumView = null;
-
 let currentAlbumLevel = "root";
 
 
@@ -157,38 +136,66 @@ function sortAlphabetically(items) {
 
 
 function hideAllSections() {
-    if (collectionsSection) {
-        collectionsSection.classList.add("hidden");
-    }
+    collectionsSection?.classList.add("hidden");
+    albumsSection?.classList.add("hidden");
+    braceletAlbumsSection?.classList.add("hidden");
+    chainlinkAlbumsSection?.classList.add("hidden");
+    productsSection?.classList.add("hidden");
+}
 
-    if (albumsSection) {
-        albumsSection.classList.add("hidden");
-    }
 
-    if (braceletAlbumsSection) {
-        braceletAlbumsSection.classList.add("hidden");
-    }
-
-    if (chainlinkAlbumsSection) {
-        chainlinkAlbumsSection.classList.add("hidden");
-    }
-
-    if (productsSection) {
-        productsSection.classList.add("hidden");
-    }
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
 function showCollections() {
     hideAllSections();
 
-    if (collectionsSection) {
-        collectionsSection.classList.remove("hidden");
+    collectionsSection?.classList.remove("hidden");
+
+    scrollToTop();
+}
+
+
+/* =========================================
+   ALPHABETIZE PRODUCT CARDS
+========================================= */
+
+function sortProductCardsAlphabetically() {
+    if (!productGrid) {
+        return;
     }
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    const cards = Array.from(
+        productGrid.querySelectorAll(".product-card")
+    );
+
+    cards.sort((a, b) => {
+        const nameA = (
+            a.querySelector("h3")?.textContent ||
+            a.dataset.color ||
+            ""
+        ).trim();
+
+        const nameB = (
+            b.querySelector("h3")?.textContent ||
+            b.dataset.color ||
+            ""
+        ).trim();
+
+        return nameA.localeCompare(
+            nameB,
+            undefined,
+            { sensitivity: "base" }
+        );
+    });
+
+    cards.forEach(card => {
+        productGrid.appendChild(card);
     });
 }
 
@@ -209,7 +216,6 @@ function createAlbumCard(title, onClick) {
     heading.textContent = title;
 
     button.appendChild(heading);
-
     button.addEventListener("click", onClick);
 
     return button;
@@ -228,6 +234,7 @@ function openCategory(category) {
     currentCategory = category;
     currentSubcategory = "";
     currentStyle = "";
+
     previousAlbumView = null;
     currentAlbumLevel = "root";
 
@@ -260,7 +267,8 @@ function showStandardAlbums(category) {
     albumsSection.classList.remove("hidden");
 
     albumsTitle.textContent = category;
-    albumsDescription.textContent = "Choose an album to explore.";
+    albumsDescription.textContent =
+        "Choose an album to explore.";
 
     albumGrid.innerHTML = "";
 
@@ -277,10 +285,7 @@ function showStandardAlbums(category) {
         albumGrid.appendChild(card);
     });
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    scrollToTop();
 }
 
 
@@ -296,13 +301,13 @@ function showBraceletAlbums(level, subcategory = "") {
     }
 
     braceletAlbumsSection.classList.remove("hidden");
-
     braceletAlbumGrid.innerHTML = "";
 
     currentAlbumLevel = level;
 
     if (level === "root") {
         braceletAlbumsTitle.textContent = "Bracelets";
+
         braceletAlbumsDescription.textContent =
             "Choose a bracelet collection.";
 
@@ -319,6 +324,7 @@ function showBraceletAlbums(level, subcategory = "") {
         currentSubcategory = subcategory;
 
         braceletAlbumsTitle.textContent = subcategory;
+
         braceletAlbumsDescription.textContent =
             "Choose a bracelet style.";
 
@@ -339,10 +345,7 @@ function showBraceletAlbums(level, subcategory = "") {
         });
     }
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    scrollToTop();
 }
 
 
@@ -358,13 +361,13 @@ function showChainlinkAlbums(level, subcategory = "") {
     }
 
     chainlinkAlbumsSection.classList.remove("hidden");
-
     chainlinkAlbumGrid.innerHTML = "";
 
     currentAlbumLevel = level;
 
     if (level === "root") {
         chainlinkAlbumsTitle.textContent = "Chainlinks";
+
         chainlinkAlbumsDescription.textContent =
             "Choose a Chainlink collection.";
 
@@ -391,6 +394,7 @@ function showChainlinkAlbums(level, subcategory = "") {
         currentSubcategory = subcategory;
 
         chainlinkAlbumsTitle.textContent = subcategory;
+
         chainlinkAlbumsDescription.textContent =
             "Choose a Chainlink style.";
 
@@ -411,10 +415,7 @@ function showChainlinkAlbums(level, subcategory = "") {
         });
     }
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    scrollToTop();
 }
 
 
@@ -480,25 +481,30 @@ function loadStyles(category, subcategory) {
 
     styleSelect.innerHTML = "";
 
-    const productCards = Array.from(
-        document.querySelectorAll(".product-card")
-    );
+    const allOption = document.createElement("option");
+
+    allOption.value = "all";
+    allOption.textContent = "All Styles";
+
+    styleSelect.appendChild(allOption);
 
     const styles = new Set();
 
-    productCards.forEach(card => {
-        const cardCategory = card.dataset.category || "";
-        const cardSubcategory = card.dataset.subcategory || "";
-        const cardStyle = card.dataset.style || "";
+    if (category && subcategory) {
+        document.querySelectorAll(".product-card").forEach(card => {
+            const cardCategory = card.dataset.category || "";
+            const cardSubcategory = card.dataset.subcategory || "";
+            const cardStyle = card.dataset.style || "";
 
-        if (
-            cardCategory === category &&
-            cardSubcategory === subcategory &&
-            cardStyle
-        ) {
-            styles.add(cardStyle);
-        }
-    });
+            if (
+                cardCategory === category &&
+                cardSubcategory === subcategory &&
+                cardStyle
+            ) {
+                styles.add(cardStyle);
+            }
+        });
+    }
 
     sortAlphabetically([...styles]).forEach(style => {
         const option = document.createElement("option");
@@ -509,6 +515,7 @@ function loadStyles(category, subcategory) {
         styleSelect.appendChild(option);
     });
 
+    styleSelect.value = "all";
     styleSelect.disabled = styles.size === 0;
 }
 
@@ -525,7 +532,7 @@ function loadColors() {
     const colors = new Set();
 
     document.querySelectorAll(".product-card").forEach(card => {
-        const color = card.dataset.color;
+        const color = (card.dataset.color || "").trim();
 
         if (color) {
             colors.add(color);
@@ -533,6 +540,13 @@ function loadColors() {
     });
 
     colorSelect.innerHTML = "";
+
+    const allOption = document.createElement("option");
+
+    allOption.value = "all";
+    allOption.textContent = "All Colors";
+
+    colorSelect.appendChild(allOption);
 
     sortAlphabetically([...colors]).forEach(color => {
         const option = document.createElement("option");
@@ -542,6 +556,8 @@ function loadColors() {
 
         colorSelect.appendChild(option);
     });
+
+    colorSelect.value = "all";
 }
 
 
@@ -578,20 +594,13 @@ function openProducts(category, subcategory = "", style = "") {
         subcategorySelect.value = subcategory;
     }
 
-    loadColors();
+    loadStyles(category, subcategory);
 
     if (styleSelect) {
-        loadStyles(category, subcategory);
-
-        if (style) {
-            const matchingStyle = Array.from(styleSelect.options)
-                .find(option => option.value === style);
-
-            if (matchingStyle) {
-                styleSelect.value = style;
-            }
-        }
+        styleSelect.value = style || "all";
     }
+
+    loadColors();
 
     if (searchInput) {
         searchInput.value = "";
@@ -607,10 +616,7 @@ function openProducts(category, subcategory = "", style = "") {
 
     applyFilters();
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    scrollToTop();
 }
 
 
@@ -625,7 +631,7 @@ function applyFilters() {
 
     const selectedCategory = categorySelect?.value || "all";
     const selectedSubcategory = subcategorySelect?.value || "";
-    const selectedStyle = styleSelect?.value || "";
+    const selectedStyle = styleSelect?.value || "all";
     const selectedColor = colorSelect?.value || "all";
     const selectedPrice = priceSelect?.value || "all";
 
@@ -661,9 +667,11 @@ function applyFilters() {
 
         const matchesSubcategory =
             !selectedSubcategory ||
+            selectedSubcategory === "all" ||
             subcategory === selectedSubcategory;
 
         const matchesStyle =
+            selectedStyle === "all" ||
             !selectedStyle ||
             style === selectedStyle;
 
@@ -712,15 +720,8 @@ function clearFilters() {
         categorySelect.value = "all";
     }
 
-    if (subcategorySelect) {
-        subcategorySelect.innerHTML = "";
-        subcategorySelect.disabled = true;
-    }
-
-    if (styleSelect) {
-        styleSelect.innerHTML = "";
-        styleSelect.disabled = true;
-    }
+    loadSubcategories("all");
+    loadStyles("", "");
 
     if (colorSelect) {
         colorSelect.value = "all";
@@ -733,6 +734,10 @@ function clearFilters() {
     if (searchInput) {
         searchInput.value = "";
     }
+
+    currentCategory = "";
+    currentSubcategory = "";
+    currentStyle = "";
 
     applyFilters();
 }
@@ -758,6 +763,7 @@ function goBackToPreviousAlbum() {
             previousAlbumView.level,
             previousAlbumView.subcategory
         );
+
         return;
     }
 
@@ -796,10 +802,7 @@ function showAllProducts() {
 
     clearFilters();
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    scrollToTop();
 }
 
 
@@ -815,9 +818,7 @@ if (collectionGrid) {
             return;
         }
 
-        const category = card.dataset.category;
-
-        openCategory(category);
+        openCategory(card.dataset.category);
     });
 }
 
@@ -852,12 +853,10 @@ document.getElementById("allProductsLink")
 categorySelect?.addEventListener("change", () => {
     loadSubcategories(categorySelect.value);
 
-    if (subcategorySelect?.value) {
-        loadStyles(
-            categorySelect.value,
-            subcategorySelect.value
-        );
-    }
+    const category = categorySelect.value;
+    const subcategory = subcategorySelect?.value || "";
+
+    loadStyles(category, subcategory);
 
     applyFilters();
 });
@@ -874,11 +873,8 @@ subcategorySelect?.addEventListener("change", () => {
 
 
 styleSelect?.addEventListener("change", applyFilters);
-
 colorSelect?.addEventListener("change", applyFilters);
-
 priceSelect?.addEventListener("change", applyFilters);
-
 searchInput?.addEventListener("input", applyFilters);
 
 clearFiltersButton?.addEventListener("click", clearFilters);
@@ -889,15 +885,12 @@ clearFiltersButton?.addEventListener("click", clearFilters);
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
+    sortProductCardsAlphabetically();
+
     loadColors();
-
-    if (subcategorySelect) {
-        subcategorySelect.disabled = true;
-    }
-
-    if (styleSelect) {
-        styleSelect.disabled = true;
-    }
+    loadSubcategories("all");
+    loadStyles("", "");
 
     showCollections();
 });
+
