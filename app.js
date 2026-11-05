@@ -221,6 +221,65 @@ function createAlbumCard(title, onClick) {
     return button;
 }
 
+/* =========================================
+   BUILD PRODUCT CARDS FROM products.js
+========================================= */
+
+function renderProducts() {
+    if (!productGrid) return;
+
+    if (typeof products === "undefined" || !Array.isArray(products)) {
+        console.error("Products could not be loaded. Check products.js.");
+        return;
+    }
+
+    const categoryPrices = {
+        Chainlinks: "5",
+        Crosses: "10",
+        Ropes: "5"
+    };
+
+    productGrid.innerHTML = "";
+
+    products.forEach(product => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+
+        card.dataset.category = product.category;
+        card.dataset.subcategory = product.subcategory;
+        card.dataset.style = product.style || "";
+        card.dataset.color = product.color;
+
+        if (categoryPrices[product.category]) {
+            card.dataset.price = categoryPrices[product.category];
+        }
+
+        const image = document.createElement("img");
+        image.className = "product-image";
+        image.src = "images/" + product.image;
+        image.alt = product.color + " " + product.category;
+        image.loading = "lazy";
+
+        const color = document.createElement("h3");
+        color.textContent = product.color;
+
+        const category = document.createElement("p");
+        category.textContent = product.category;
+
+        const subcategory = document.createElement("p");
+        subcategory.textContent = product.subcategory;
+
+        card.appendChild(image);
+        card.appendChild(color);
+        card.appendChild(category);
+        card.appendChild(subcategory);
+
+        productGrid.appendChild(card);
+    });
+
+    sortProductCardsAlphabetically();
+}
+
 
 /* =========================================
    OPEN A COLLECTION
@@ -883,8 +942,9 @@ clearFiltersButton?.addEventListener("click", clearFilters);
 /* =========================================
    INITIALIZE PAGE
 ========================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
+    renderProducts();
+
     sortProductCardsAlphabetically();
 
     loadColors();
