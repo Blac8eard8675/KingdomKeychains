@@ -116,7 +116,7 @@ const products = [
     color: "Sparkle Yellow, Neon Orange",
     image: "Sparkle Yellow, Neon Orange.jpg"
   }
-
+  {
    subcategory: "Elohim",
     style: "Hexagon Stitch",
     color: "Baby Pink, Plum, Yellow",
