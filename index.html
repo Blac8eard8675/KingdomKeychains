@@ -1,688 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Kingdom Keychains creates handmade faith-inspired keychains with creativity, love, and purpose.">
+  <title>Kingdom Keychains | The Only Chains Jesus Loves</title>
 
-    <title>Kingdom Keychains | The Only Chains Jesus Loves</title>
+  <meta name="description" content="Kingdom Keychains - Handmade faith-inspired keychains and bracelets. The Only Chains Jesus Loves.">
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- ================================= -->
-    <!-- HEADER -->
-    <!-- ================================= -->
+  <!-- GOLDEN BANNER / MAIN HEADER -->
+  <header class="main-header" id="home">
 
-    <header class="site-header" id="home">
+    <div class="banner">
+      <img
+        src="images/golden-banner.jpg"
+        alt="Kingdom Keychains Golden Banner"
+        class="banner-image"
+      >
+    </div>
 
-        <div class="header-ornament">♛</div>
+    <div class="banner-title">
+      <h1>KINGDOM KEYCHAINS</h1>
+      <p class="tagline">The Only Chains Jesus Loves</p>
+    </div>
 
-        <p class="header-eyebrow">Handcrafted With Faith &amp; Purpose</p>
-
-        <h1 class="site-title">KINGDOM KEYCHAINS</h1>
-
-        <div class="header-divider">
-            ✦ ━━━━━━━━━━━━━ ✦
-        </div>
-
-        <p class="site-tagline">
-            The Only Chains Jesus Loves
-        </p>
-
-        <div class="header-ornament-bottom">✝</div>
-
-    </header>
-
-
-    <!-- ================================= -->
-    <!-- NAVIGATION -->
-    <!-- ================================= -->
-
-    <nav class="main-navigation" aria-label="Main navigation">
-
-        <a href="#home">Home</a>
-        <a href="#collections">Collections</a>
-        <a href="#products" id="allProductsLink">All Products</a>
-        <a href="#about">About Us</a>
-        <a href="#meet-the-maker">Meet the Maker</a>
-        <a href="#contact">Contact</a>
-
+    <!-- MAIN NAVIGATION -->
+    <nav class="main-navigation">
+      <a href="#home">Home</a>
+      <a href="#collections">Collections</a>
+      <a href="#products">All Products</a>
+      <a href="#about">About Us</a>
+      <a href="#maker">Meet the Maker</a>
+      <a href="#contact">Contact</a>
     </nav>
 
+  </header>
 
-    <main>
 
-        <!-- ================================= -->
-        <!-- WELCOME -->
-        <!-- ================================= -->
+  <!-- COLLECTIONS -->
+  <main>
 
-        <section class="welcome-section">
+    <section id="collections" class="section collections-section">
 
-            <div class="section-ornament">✦ ✝ ✦</div>
+      <div class="section-heading">
+        <h2>OUR COLLECTIONS</h2>
+        <p>Faithfully Handmade. Beautifully Designed.</p>
+      </div>
 
-            <h2>Welcome to Kingdom Keychains</h2>
+      <div class="collection-grid" id="collectionGrid">
 
-            <p>
-                Faith, creativity, love, and purpose are woven
-                into every handmade creation.
-            </p>
+        <button class="collection-card" data-category="Bracelets">
+          <span>BRACELETS</span>
+        </button>
 
-            <p>
-                More than a keychain, each creation carries
-                a reminder of God's love and the hope we have
-                through Jesus Christ.
-            </p>
+        <button class="collection-card" data-category="Chainlinks">
+          <span>CHAINLINKS</span>
+        </button>
 
-            <div class="section-ornament">✦ ✦ ✦</div>
+        <button class="collection-card" data-category="Crosses">
+          <span>CROSSES</span>
+        </button>
 
-        </section>
+        <button class="collection-card" data-category="Ropes">
+          <span>ROPES</span>
+        </button>
 
+      </div>
 
-        <!-- ================================= -->
-        <!-- COLLECTIONS -->
-        <!-- ================================= -->
+    </section>
 
-        <section class="collections-section" id="collections">
 
-            <div class="section-heading">
+    <!-- ALBUMS / SUBCATEGORIES -->
+    <section id="albumsSection" class="section albums-section hidden">
 
-                <p class="section-eyebrow">Discover Our Creations</p>
+      <div class="section-heading">
+        <h2 id="albumTitle">COLLECTION</h2>
+        <p id="albumDescription"></p>
+      </div>
 
-                <h2>Our Royal Collections</h2>
+      <button type="button" id="albumBackButton" class="back-button">
+        &#8592; Back to Collections
+      </button>
 
-                <p>
-                    Explore our handmade collections, each
-                    created with faith and purpose.
-                </p>
+      <div class="album-grid" id="albumGrid">
+        <!-- Albums will be created by app.js -->
+      </div>
 
-            </div>
+    </section>
 
 
-            <div class="collection-grid" id="collectionGrid">
+    <!-- PRODUCTS -->
+    <section id="products" class="section products-section">
 
-                <button
-                    type="button"
-                    class="collection-card"
-                    data-category="Bracelets">
+      <div class="section-heading">
+        <h2 id="productsTitle">ALL PRODUCTS</h2>
+        <p id="productsDescription">
+          Discover something special in every collection.
+        </p>
+      </div>
 
-                    <span class="collection-ornament">♛</span>
-                    <span class="collection-name">Bracelets</span>
+      <button type="button" id="productsBackButton" class="back-button hidden">
+        &#8592; Back to Albums
+      </button>
 
-                    <span class="collection-description">
-                        Handmade expressions of faith
-                    </span>
+      <!-- PRODUCT SEARCH AND FILTERS -->
+      <div class="product-controls">
 
-                    <span class="collection-enter">
-                        Explore Collection
-                    </span>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search products..."
+          aria-label="Search products"
+        >
 
-                </button>
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="all">All Categories</option>
+          <option value="Bracelets">Bracelets</option>
+          <option value="Chainlinks">Chainlinks</option>
+          <option value="Crosses">Crosses</option>
+          <option value="Ropes">Ropes</option>
+        </select>
 
+        <select id="subcategoryFilter" aria-label="Filter by subcategory">
+          <option value="">All Subcategories</option>
+        </select>
 
-                <button
-                    type="button"
-                    class="collection-card"
-                    data-category="Chainlinks">
+        <select id="styleFilter" aria-label="Filter by style">
+          <option value="all">All Styles</option>
+        </select>
 
-                    <span class="collection-ornament">✝</span>
-                    <span class="collection-name">Chainlinks</span>
+        <select id="colorFilter" aria-label="Filter by color">
+          <option value="all">All Colors</option>
+        </select>
 
-                    <span class="collection-description">
-                        Connected through Christ
-                    </span>
+        <select id="priceFilter" aria-label="Filter by price">
+          <option value="all">All Prices</option>
+          <option value="5">$5</option>
+          <option value="10">$10</option>
+          <option value="15">$15</option>
+        </select>
 
-                    <span class="collection-enter">
-                        Explore Collection
-                    </span>
+        <button type="button" id="clearFilters" class="clear-button">
+          Clear Filters
+        </button>
 
-                </button>
+      </div>
 
 
-                <button
-                    type="button"
-                    class="collection-card"
-                    data-category="Crosses">
+      <!-- PRODUCT COUNT -->
+      <p id="productCount" class="product-count"></p>
 
-                    <span class="collection-ornament">✝</span>
-                    <span class="collection-name">Crosses</span>
 
-                    <span class="collection-description">
-                        God is our Anchor
-                    </span>
+      <!-- PRODUCT DISPLAY -->
+      <div class="product-grid" id="productGrid">
+        <!-- Products will be loaded from products.js by app.js -->
+      </div>
 
-                    <span class="collection-enter">
-                        Explore Collection
-                    </span>
+      <p id="noProductsMessage" class="no-products hidden">
+        No products match your selection.
+      </p>
 
-                </button>
+    </section>
 
 
-                <button
-                    type="button"
-                    class="collection-card"
-                    data-category="Ropes">
+    <!-- ABOUT US -->
+    <section id="about" class="section about-section">
 
-                    <span class="collection-ornament">♛</span>
-                    <span class="collection-name">Ropes</span>
+      <div class="section-heading">
+        <h2>ABOUT KINGDOM KEYCHAINS</h2>
+        <p>More Than Keychains. A Message of Faith.</p>
+      </div>
 
-                    <span class="collection-description">
-                        Connected to God through Jesus
-                    </span>
+      <div class="about-content">
 
-                    <span class="collection-enter">
-                        Explore Collection
-                    </span>
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================================= -->
-        <!-- STANDARD COLLECTION ALBUMS -->
-        <!-- ================================= -->
-
-        <section
-            class="albums-section hidden"
-            id="albumsSection">
-
-            <div class="section-heading">
-
-                <p class="section-eyebrow">Explore the Collection</p>
-
-                <h2 id="albumsTitle">Our Collections</h2>
-
-                <p id="albumsDescription">
-                    Select an album to explore its creations.
-                </p>
-
-            </div>
-
-            <button
-                type="button"
-                class="back-button"
-                id="backToCollections">
-
-                Back to Collections
-
-            </button>
-
-            <div class="album-grid" id="albumGrid">
-                <!-- Album cards are created by app.js. -->
-            </div>
-
-        </section>
-
-
-        <!-- ================================= -->
-        <!-- BRACELET NESTED ALBUMS -->
-        <!-- ================================= -->
-
-        <section
-            class="nested-albums-section hidden"
-            id="braceletAlbumsSection">
-
-            <div class="section-heading">
-
-                <p class="section-eyebrow">Bracelet Collection</p>
-
-                <h2 id="braceletAlbumsTitle">Bracelets</h2>
-
-                <p id="braceletAlbumsDescription">
-                    Explore the different bracelet styles.
-                </p>
-
-            </div>
-
-            <button
-                type="button"
-                class="back-button"
-                id="braceletBackButton">
-
-                Back
-
-            </button>
-
-            <div class="album-grid" id="braceletAlbumGrid">
-                <!-- Bracelet albums and styles are created by app.js. -->
-            </div>
-
-        </section>
-
-
-        <!-- ================================= -->
-        <!-- CHAINLINK NESTED ALBUMS -->
-        <!-- ================================= -->
-
-        <section
-            class="nested-albums-section hidden"
-            id="chainlinkAlbumsSection">
-
-            <div class="section-heading">
-
-                <p class="section-eyebrow">Chainlink Collection</p>
-
-                <h2 id="chainlinkAlbumsTitle">Chainlinks</h2>
-
-                <p id="chainlinkAlbumsDescription">
-                    Explore the different chainlink styles.
-                </p>
-
-            </div>
-
-            <button
-                type="button"
-                class="back-button"
-                id="chainlinkBackButton">
-
-                Back
-
-            </button>
-
-            <div class="album-grid" id="chainlinkAlbumGrid">
-                <!-- Chainlink albums and styles are created by app.js. -->
-            </div>
-
-        </section>
-
-
-        <!-- ================================= -->
-        <!-- ALL PRODUCTS -->
-        <!-- ================================= -->
-
-        <section
-            class="products-section hidden"
-            id="products">
-
-            <div class="section-heading">
-
-                <p class="section-eyebrow">Handmade With Purpose</p>
-
-                <h2 id="productsTitle">Our Creations</h2>
-
-                <p id="productsDescription">
-                    Every creation is handmade with faith and love.
-                </p>
-
-            </div>
-
-
-            <!-- PRODUCT FILTERS -->
-
-            <div class="product-filters" id="productFilters">
-
-                <div class="filter-group">
-
-                    <label for="categorySelect">
-                        Collection
-                    </label>
-
-                    <select id="categorySelect">
-                        <option value="all">All Collections</option>
-                        <option value="Bracelets">Bracelets</option>
-                        <option value="Chainlinks">Chainlinks</option>
-                        <option value="Crosses">Crosses</option>
-                        <option value="Ropes">Ropes</option>
-                    </select>
-
-                </div>
-
-
-                <div class="filter-group">
-
-                    <label for="subcategorySelect">
-                        Subcategory
-                    </label>
-
-                    <select id="subcategorySelect">
-                        <option value="all">All Subcategories</option>
-                    </select>
-
-                </div>
-
-
-                <div class="filter-group">
-
-                    <label for="styleSelect">
-                        Style
-                    </label>
-
-                    <select id="styleSelect">
-                        <option value="all">All Styles</option>
-                    </select>
-
-                </div>
-
-
-                <div class="filter-group">
-
-                    <label for="colorSelect">
-                        Color
-                    </label>
-
-                    <select id="colorSelect">
-                        <option value="all">All Colors</option>
-                    </select>
-
-                </div>
-
-
-                <div class="filter-group">
-
-                    <label for="priceSelect">
-                        Price
-                    </label>
-
-                    <select id="priceSelect">
-                        <option value="all">All Prices</option>
-                        <option value="5">$5</option>
-                        <option value="10">$10</option>
-                        <option value="15">$15</option>
-                    </select>
-
-                </div>
-
-
-                <div class="filter-group">
-
-                    <label for="searchInput">
-                        Search
-                    </label>
-
-                    <input
-                        type="search"
-                        id="searchInput"
-                        placeholder="Search colors or products..."
-                    >
-
-                </div>
-
-
-                <button
-                    type="button"
-                    id="clearFilters"
-                    class="clear-filters-button">
-
-                    Clear Filters
-
-                </button>
-
-            </div>
-
-
-            <!-- PRODUCT DISPLAY -->
-
-            <div class="product-grid" id="productGrid">
-
-                <!-- ================================= -->
-                <!-- ADD NEW PRODUCTS HERE -->
-                <!-- ================================= -->
-
-                <!--
-                    KEEP THIS PRODUCT FORMAT.
-
-                    Required information:
-                    data-category
-                    data-subcategory
-                    data-style
-                    data-color
-                    data-price
-
-                    Example:
-
-                    <div
-                        class="product-card"
-                        data-category="Crosses"
-                        data-subcategory="Emmanuel"
-                        data-style=""
-                        data-color="Black, Gold"
-                        data-price="10"
-                    >
-
-                        <img
-                            src="images/Black, Gold.jpg"
-                            alt="Emmanuel Cross"
-                        >
-
-                        <h3>Black, Gold</h3>
-
-                        <p class="product-subcategory">
-                            Emmanuel
-                        </p>
-
-                        <p class="product-price">$10</p>
-
-                    </div>
-
-                    Product cards will ALWAYS remain in this
-                    familiar HTML format.
-                -->
-
-            </div>
-
-
-            <p
-                class="no-products-message hidden"
-                id="noProductsMessage">
-
-                No creations match your selected filters.
-
-            </p>
-
-
-            <button
-                type="button"
-                class="back-button"
-                id="backToAlbums">
-
-                Back to Albums
-
-            </button>
-
-        </section>
-
-
-        <!-- ================================= -->
-        <!-- ABOUT KINGDOM KEYCHAINS -->
-        <!-- ================================= -->
-
-        <section class="about-section" id="about">
-
-            <div class="section-heading">
-
-                <p class="section-eyebrow">Our Purpose</p>
-
-                <h2>About Kingdom Keychains</h2>
-
-            </div>
-
-
-            <div class="about-introduction">
-
-                <p>
-                    Kingdom Keychains creates handmade keychains
-                    with faith, creativity, love, and purpose.
-                </p>
-
-            </div>
-
-
-            <div class="about-ornament">
-                ✦ ━━━━━ ✝ ━━━━━ ✦
-            </div>
-
-
-            <!-- ================================= -->
-            <!-- OWNER / MEET THE MAKER -->
-            <!-- ================================= -->
-
-            <div class="owner-section" id="meet-the-maker">
-
-                <div class="owner-profile">
-
-                    <div class="owner-photo">
-
-                        <img
-                            src="images/Tori Owner pic.jpg"
-                            alt="Victoria Schwab, owner and master craftsman of Kingdom Keychains"
-                        >
-
-                    </div>
-
-
-                    <div class="owner-title">
-
-                        <h3>Victoria Schwab</h3>
-
-                        <h4>Master Craftsman / Owner</h4>
-
-                        <p>
-                            For Orders Email:
-                            <a href="mailto:kingdomkeychains1987@gmail.com">
-                                kingdomkeychains1987@gmail.com
-                            </a>
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="owner-about">
-
-                    <h2>About Me</h2>
-
-                    <p>
-                        Welcome to Kingdom Keychains! My name is Victoria Schwab, and I give God all the honor, glory, and praise for bringing me to where I am today. He has kept me, restored me, and taught me that no matter what I have faced, He must always come first in my life.
-                    </p>
-
-                    <p>
-                        Through my faith journey and the support of Pastor Kevin and Lady Donna, I have learned that my past does not define me. Through Restricted No More, God has been teaching me to heal, trust Him, and walk in the purpose He has placed on my life. I am learning to choose faith over fear and to trust that God can turn my brokenness into a testimony of His goodness, mercy, and grace.
-                    </p>
-
-                    <h3>The Heart Behind Kingdom Keychains</h3>
-
-                    <p>
-                        Kingdom Keychains is more than a business to me. Every handmade keychain represents a piece of my faith and reminds me of the God who has carried me through life's storms.
-                    </p>
-
-                    <p>
-                        Crosses: Represent God as our Anchor, reminding us to remain grounded in Him through every storm.
-                    </p>
-
-                    <p>
-                        Ropes: Represent Jesus Christ as our connection to God, reminding us that through Him, we can draw near to our Heavenly Father.
-                    </p>
-
-                    <p>
-                        Chain Links: Represent the disciples and their connection to Jesus Christ and God, reminding us of the importance of faith, unity, and sharing Christ's love with others.
-                    </p>
-
-                    <p>
-                        My journey has not always been easy, but God continues to remind me that redemption is real, restoration is possible, and my past does not determine my future.
-                    </p>
-
-                    <p>
-                        I am not my abuse. I am not my fear. I am not my mistakes. I am a child of God. I am redeemed. I am being restored. I am still standing. And I am moving forward in faith.
-                    </p>
-
-                    <p>
-                        Kingdom Keychains is a reflection of who God is making me today, not who I used to be. My prayer is that every keychain serves as a reminder that no matter what you have been through, there is always hope in Jesus Christ. God can bring beauty out of brokenness and lead us into a future filled with purpose.
-                    </p>
-
-                    <p>
-                        Thank you for visiting Kingdom Keychains and supporting my small business. Every bit of support means so much to me!
-                    </p>
-
-                    <p class="testimony-emphasis">
-                        <strong>THIS IS NOT WHO I WAS.</strong>
-                    </p>
-
-                    <p class="testimony-emphasis">
-                        <strong>THIS IS WHO GOD IS MAKING ME.</strong>
-                    </p>
-
-                    <p>
-                        All honor, glory, and praise belong to God. May God bless you!
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="about-ornament">
-                ✦ ━━━━━ ✝ ━━━━━ ✦
-            </div>
-
-        </section>
-
-
-        <!-- ================================= -->
-        <!-- CONTACT -->
-        <!-- ================================= -->
-
-        <section class="contact-section" id="contact">
-
-            <p class="section-eyebrow">
-                We Would Love to Hear From You
-            </p>
-
-            <h2>Contact Kingdom Keychains</h2>
-
-            <p>
-                For orders and questions, please contact us by email.
-            </p>
-
-            <a href="mailto:kingdomkeychains1987@gmail.com">
-                kingdomkeychains1987@gmail.com
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================================= -->
-    <!-- FOOTER -->
-    <!-- ================================= -->
-
-    <footer class="site-footer">
-
-        <div class="footer-ornament">♛ ✝ ♛</div>
-
-        <h2>KINGDOM KEYCHAINS</h2>
-
-        <p class="footer-tagline">
-            The Only Chains Jesus Loves
+        <p>
+          Kingdom Keychains was created with a heart for God and a desire
+          to share His love through handmade creations.
         </p>
 
         <p>
-            All honor, glory, and praise belong to God.
+          Every design carries meaning and reminds us of our connection
+          to God, Jesus Christ, and one another.
         </p>
 
         <p>
-            © 2026 Kingdom Keychains
+          Our pieces are handmade with care, creativity, and faith.
+          We believe even the smallest things can carry a beautiful message.
         </p>
 
-    </footer>
+        <p class="about-motto">
+          The Only Chains Jesus Loves.
+        </p>
+
+      </div>
+
+    </section>
 
 
-    <!-- ================================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ================================= -->
+    <!-- MEET THE MAKER -->
+    <section id="maker" class="section maker-section">
 
-    <script src="products.js"></script>
-    <script src="app.js"></script>
+      <div class="section-heading">
+        <h2>MEET THE MAKER</h2>
+        <p>Master Craftsman • Owner</p>
+      </div>
+
+      <div class="maker-content">
+
+        <div class="maker-photo">
+          <img
+            src="images/Tori Owner pic.jpg"
+            alt="Victoria Schwab, owner of Kingdom Keychains"
+          >
+        </div>
+
+        <div class="maker-bio">
+
+          <h3>Victoria Schwab</h3>
+
+          <p>
+            Founder, Owner &amp; Master Craftsman of Kingdom Keychains.
+          </p>
+
+          <p>
+            My faith and relationship with God are at the heart of
+            Kingdom Keychains. This business is about more than making
+            beautiful things. It is about sharing the love of Jesus
+            and the message of redemption, restoration, and hope.
+          </p>
+
+          <p>
+            All glory belongs to God.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section">
+
+      <div class="section-heading">
+        <h2>CONTACT US</h2>
+        <p>We Would Love to Hear From You</p>
+      </div>
+
+      <div class="contact-content">
+
+        <p>
+          Have a question about Kingdom Keychains?
+          Reach out and connect with us.
+        </p>
+
+        <a href="mailto:kingdomkeychains1987@gmail.com" class="contact-link">
+          kingdomkeychains1987@gmail.com
+        </a>
+
+        <p>
+          You can also message Victoria Schwab through Facebook Messenger.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+
+    <h2>KINGDOM KEYCHAINS</h2>
+
+    <p>The Only Chains Jesus Loves</p>
+
+    <p class="footer-copyright">
+      &copy; <span id="currentYear"></span> Kingdom Keychains.
+      All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
 
 </body>
 </html>
 
+  
