@@ -766,3 +766,121 @@ main {
     }
 }
 
+
+/* =========================================
+   KINGDOM KEYCHAINS — ROYAL REDESIGN
+   STEP 1: HEADER & NAVIGATION
+========================================= */
+
+.site-header {
+    position: relative;
+    overflow: hidden;
+    padding: 55px 20px 38px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 160, 55, .25), transparent 45%),
+        radial-gradient(ellipse at 15% 70%, rgba(150, 25, 180, .5), transparent 50%),
+        radial-gradient(ellipse at 85% 70%, rgba(150, 25, 180, .5), transparent 50%),
+        linear-gradient(180deg, #3b0750, #190020 75%, #320744);
+    border-top: 4px double #f9df83;
+    border-bottom: 4px double #f9df83;
+    box-shadow: 0 0 25px rgba(255, 190, 65, .35);
+}
+
+.site-header::before,
+.site-header::after {
+    content: "✦ ❧ ♛ ❧ ✦";
+    display: block;
+    color: #f9df83;
+    font-size: 23px;
+    letter-spacing: 12px;
+    text-shadow: 0 0 12px #ffca48;
+}
+
+.site-header::before {
+    margin-bottom: 18px;
+}
+
+.site-header::after {
+    margin-top: 22px;
+}
+
+.header-ornament,
+.header-ornament-bottom {
+    color: #ffe99b;
+    font-size: 32px;
+    text-shadow:
+        0 0 5px #fff3bd,
+        0 0 15px #ffc533,
+        0 0 28px #d99a25;
+}
+
+.header-eyebrow {
+    color: #ffe9a3;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-shadow: 0 0 10px #e6a72c;
+}
+
+.site-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 7vw, 82px);
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(
+        180deg,
+        #fffbd0 0%,
+        #f8df83 22%,
+        #d9a52f 48%,
+        #fff1a8 65%,
+        #b77a19 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: .5px #f9d56b;
+    filter: drop-shadow(0 3px 2px #26001f)
+            drop-shadow(0 0 12px rgba(255, 190, 55, .7));
+}
+
+.header-divider {
+    height: 3px;
+    box-shadow: 0 0 12px #ffcf53;
+}
+
+.site-tagline {
+    color: #fff0a6;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: clamp(19px, 3vw, 30px);
+    text-shadow: 0 0 12px #ffc64a;
+}
+
+.main-navigation {
+    position: relative;
+    background: linear-gradient(
+        180deg,
+        #350642,
+        #16001f,
+        #350642
+    );
+    border-top: 2px solid #f7d76f;
+    border-bottom: 3px double #f7d76f;
+    box-shadow: 0 0 18px rgba(255, 195, 65, .35);
+}
+
+.main-navigation a {
+    color: #ffe99b;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 7px rgba(255, 200, 70, .45);
+}
+
+.main-navigation a:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #8b5a12, #e8bd4c, #75420b);
+    border-color: #fff0a6;
+    box-shadow: 0 0 15px #f4c34c;
+}
+
+
