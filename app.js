@@ -905,7 +905,3 @@ document.addEventListener("DOMContentLoaded", () => {
     showCollections();
 
 });
-
-
-
-
