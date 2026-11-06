@@ -105,15 +105,34 @@ button {
 
 .site-title {
     margin: 12px 0;
-    color: var(--bright-gold);
-    font-size: clamp(38px, 7vw, 76px);
+    font-family: "Cinzel Decorative", "Trajan Pro", Georgia, serif;
+    font-size: clamp(38px, 7vw, 86px);
+    font-weight: 900;
+    letter-spacing: 4px;
     line-height: 1.15;
-    font-weight: bold;
-    letter-spacing: 5px;
-    text-shadow:
-        0 2px 2px #6e4b16,
-        0 0 12px rgba(255, 218, 120, 0.75),
-        0 0 28px rgba(214, 180, 92, 0.4);
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        180deg,
+        #fffde2 0%,
+        #ffe99a 12%,
+        #f4cf62 28%,
+        #b87919 48%,
+        #fff1a8 62%,
+        #d49a2e 78%,
+        #70400b 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1px #f9dc83;
+
+    filter:
+        drop-shadow(0 2px 1px #fff0ae)
+        drop-shadow(0 5px 3px #210018)
+        drop-shadow(0 0 12px #e7a72c)
+        drop-shadow(0 0 24px rgba(255, 190, 55, .8));
 }
 
 .header-divider {
