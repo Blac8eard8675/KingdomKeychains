@@ -1,12 +1,14 @@
-/* =========================================
+
+/* =========================================================
    KINGDOM KEYCHAINS
-   COLLECTIONS, ALBUMS & PRODUCT FILTERS
-========================================= */
+   HEAVENLY ROYAL LUXURY
+   COLLECTIONS, ALBUMS, PRODUCTS & FILTERS
+   ========================================================= */
 
 
-/* =========================================
+/* =========================================================
    CATEGORY STRUCTURE
-========================================= */
+   ========================================================= */
 
 const categories = {
     Bracelets: [
@@ -40,9 +42,9 @@ const categories = {
 };
 
 
-/* =========================================
-   NESTED ALBUM STRUCTURE
-========================================= */
+/* =========================================================
+   NESTED ALBUMS
+   ========================================================= */
 
 const nestedAlbums = {
     Bracelets: {
@@ -68,69 +70,106 @@ const nestedAlbums = {
 };
 
 
-/* =========================================
+/* =========================================================
    PAGE ELEMENTS
-========================================= */
+   These IDs match the current index.html.
+   ========================================================= */
 
-const collectionsSection = document.querySelector(".collections-section");
-const albumsSection = document.getElementById("albumsSection");
-const braceletAlbumsSection = document.getElementById("braceletAlbumsSection");
-const chainlinkAlbumsSection = document.getElementById("chainlinkAlbumsSection");
-const productsSection = document.getElementById("products");
+const collectionsSection =
+    document.querySelector(".collections-section");
 
-const collectionGrid = document.getElementById("collectionGrid");
-const albumGrid = document.getElementById("albumGrid");
-const braceletAlbumGrid = document.getElementById("braceletAlbumGrid");
-const chainlinkAlbumGrid = document.getElementById("chainlinkAlbumGrid");
-const productGrid = document.getElementById("productGrid");
+const albumsSection =
+    document.getElementById("albumsSection");
 
-const productsTitle = document.getElementById("productsTitle");
-const productsDescription = document.getElementById("productsDescription");
+const productsSection =
+    document.getElementById("products");
 
-const albumsTitle = document.getElementById("albumsTitle");
-const albumsDescription = document.getElementById("albumsDescription");
+const collectionGrid =
+    document.getElementById("collectionGrid");
 
-const braceletAlbumsTitle = document.getElementById("braceletAlbumsTitle");
-const braceletAlbumsDescription = document.getElementById("braceletAlbumsDescription");
+const albumGrid =
+    document.getElementById("albumGrid");
 
-const chainlinkAlbumsTitle = document.getElementById("chainlinkAlbumsTitle");
-const chainlinkAlbumsDescription = document.getElementById("chainlinkAlbumsDescription");
+const productGrid =
+    document.getElementById("productGrid");
 
-const noProductsMessage = document.getElementById("noProductsMessage");
+const albumTitle =
+    document.getElementById("albumTitle");
+
+const albumDescription =
+    document.getElementById("albumDescription");
+
+const productsTitle =
+    document.getElementById("productsTitle");
+
+const productsDescription =
+    document.getElementById("productsDescription");
+
+const productCount =
+    document.getElementById("productCount");
+
+const noProductsMessage =
+    document.getElementById("noProductsMessage");
+
+const albumBackButton =
+    document.getElementById("albumBackButton");
+
+const productsBackButton =
+    document.getElementById("productsBackButton");
+
+const currentYear =
+    document.getElementById("currentYear");
 
 
-/* =========================================
+/* =========================================================
    FILTER ELEMENTS
-========================================= */
+   ========================================================= */
 
-const categorySelect = document.getElementById("categorySelect");
-const subcategorySelect = document.getElementById("subcategorySelect");
-const styleSelect = document.getElementById("styleSelect");
-const colorSelect = document.getElementById("colorSelect");
-const priceSelect = document.getElementById("priceSelect");
-const searchInput = document.getElementById("searchInput");
-const clearFiltersButton = document.getElementById("clearFilters");
+const categoryFilter =
+    document.getElementById("categoryFilter");
+
+const subcategoryFilter =
+    document.getElementById("subcategoryFilter");
+
+const styleFilter =
+    document.getElementById("styleFilter");
+
+const colorFilter =
+    document.getElementById("colorFilter");
+
+const priceFilter =
+    document.getElementById("priceFilter");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const clearFiltersButton =
+    document.getElementById("clearFilters");
 
 
-/* =========================================
+/* =========================================================
    NAVIGATION STATE
-========================================= */
+   ========================================================= */
 
 let currentCategory = "";
 let currentSubcategory = "";
 let currentStyle = "";
 
-let previousAlbumView = null;
 let currentAlbumLevel = "root";
+let previousAlbumView = null;
 
 
-/* =========================================
+/* =========================================================
    GENERAL HELPERS
-========================================= */
+   ========================================================= */
 
 function sortAlphabetically(items) {
     return [...items].sort((a, b) =>
-        a.localeCompare(b, undefined, { sensitivity: "base" })
+        a.localeCompare(
+            b,
+            undefined,
+            { sensitivity: "base" }
+        )
     );
 }
 
@@ -138,8 +177,6 @@ function sortAlphabetically(items) {
 function hideAllSections() {
     collectionsSection?.classList.add("hidden");
     albumsSection?.classList.add("hidden");
-    braceletAlbumsSection?.classList.add("hidden");
-    chainlinkAlbumsSection?.classList.add("hidden");
     productsSection?.classList.add("hidden");
 }
 
@@ -152,57 +189,60 @@ function scrollToTop() {
 }
 
 
-function showCollections() {
-    hideAllSections();
-
-    collectionsSection?.classList.remove("hidden");
-
-    scrollToTop();
+function normalize(value) {
+    return String(value || "").trim().toLowerCase();
 }
 
 
-/* =========================================
-   ALPHABETIZE PRODUCT CARDS
-========================================= */
+/* =========================================================
+   PRODUCT PRICING
+   ========================================================= */
 
-function sortProductCardsAlphabetically() {
-    if (!productGrid) {
-        return;
+function getProductPrice(product) {
+    if (product.category === "Bracelets") {
+        return "5";
     }
 
-    const cards = Array.from(
-        productGrid.querySelectorAll(".product-card")
-    );
+    if (product.category === "Chainlinks") {
+        return "5";
+    }
 
-    cards.sort((a, b) => {
-        const nameA = (
-            a.querySelector("h3")?.textContent ||
-            a.dataset.color ||
-            ""
-        ).trim();
+    if (product.category === "Ropes") {
+        return "5";
+    }
 
-        const nameB = (
-            b.querySelector("h3")?.textContent ||
-            b.dataset.color ||
-            ""
-        ).trim();
+    if (product.category === "Crosses") {
+        const subcategory = normalize(product.subcategory);
 
-        return nameA.localeCompare(
-            nameB,
-            undefined,
-            { sensitivity: "base" }
-        );
-    });
+        if (
+            subcategory === "eternity cross" ||
+            subcategory === "shalom"
+        ) {
+            return "15";
+        }
 
-    cards.forEach(card => {
-        productGrid.appendChild(card);
-    });
+        return "10";
+    }
+
+    return "";
 }
 
 
-/* =========================================
-   CREATE ALBUM BUTTONS
-========================================= */
+/* =========================================================
+   PRODUCT COUNT
+   ========================================================= */
+
+function updateProductCount(count) {
+    if (!productCount) return;
+
+    productCount.textContent =
+        `${count} ${count === 1 ? "product" : "products"} found`;
+}
+
+
+/* =========================================================
+   CREATE ALBUM CARDS
+   ========================================================= */
 
 function createAlbumCard(title, onClick) {
     const button = document.createElement("button");
@@ -221,53 +261,60 @@ function createAlbumCard(title, onClick) {
     return button;
 }
 
-/* =========================================
-   BUILD PRODUCT CARDS FROM products.js
-========================================= */
+
+/* =========================================================
+   BUILD PRODUCT CARDS
+   USES THE EXISTING products.js CATALOG
+   ========================================================= */
 
 function renderProducts() {
     if (!productGrid) return;
 
-    if (typeof products === "undefined" || !Array.isArray(products)) {
-        console.error("Products could not be loaded. Check products.js.");
+    if (
+        typeof products === "undefined" ||
+        !Array.isArray(products)
+    ) {
+        console.error(
+            "Products could not be loaded. Check products.js."
+        );
+
+        updateProductCount(0);
         return;
     }
-
-    const categoryPrices = {
-        Chainlinks: "5",
-        Crosses: "10",
-        Ropes: "5"
-    };
 
     productGrid.innerHTML = "";
 
     products.forEach(product => {
         const card = document.createElement("article");
+
         card.className = "product-card";
 
-        card.dataset.category = product.category;
-        card.dataset.subcategory = product.subcategory;
+        card.dataset.category = product.category || "";
+        card.dataset.subcategory = product.subcategory || "";
         card.dataset.style = product.style || "";
-        card.dataset.color = product.color;
-
-        if (categoryPrices[product.category]) {
-            card.dataset.price = categoryPrices[product.category];
-        }
+        card.dataset.color = product.color || "";
+        card.dataset.price = getProductPrice(product);
 
         const image = document.createElement("img");
+
         image.className = "product-image";
         image.src = "images/" + product.image;
-        image.alt = product.color + " " + product.category;
+        image.alt =
+            `${product.color || ""} ${product.category || ""}`;
+
         image.loading = "lazy";
 
         const color = document.createElement("h3");
-        color.textContent = product.color;
+
+        color.textContent = product.color || "";
 
         const category = document.createElement("p");
-        category.textContent = product.category;
+
+        category.textContent = product.category || "";
 
         const subcategory = document.createElement("p");
-        subcategory.textContent = product.subcategory;
+
+        subcategory.textContent = product.subcategory || "";
 
         card.appendChild(image);
         card.appendChild(color);
@@ -278,199 +325,131 @@ function renderProducts() {
     });
 
     sortProductCardsAlphabetically();
+    updateProductCount(products.length);
 }
 
 
-/* =========================================
+/* =========================================================
+   SORT PRODUCT CARDS BY COLOR
+   ========================================================= */
+
+function sortProductCardsAlphabetically() {
+    if (!productGrid) return;
+
+    const cards = Array.from(
+        productGrid.querySelectorAll(".product-card")
+    );
+
+    cards.sort((a, b) => {
+        const colorA = a.dataset.color || "";
+        const colorB = b.dataset.color || "";
+
+        return colorA.localeCompare(
+            colorB,
+            undefined,
+            { sensitivity: "base" }
+        );
+    });
+
+    cards.forEach(card => {
+        productGrid.appendChild(card);
+    });
+}
+
+
+/* =========================================================
+   SHOW COLLECTIONS
+   ========================================================= */
+
+function showCollections() {
+    hideAllSections();
+
+    collectionsSection?.classList.remove("hidden");
+
+    scrollToTop();
+}
+
+
+/* =========================================================
    OPEN A COLLECTION
-========================================= */
+   ========================================================= */
 
 function openCategory(category) {
-    if (!categories[category]) {
-        return;
-    }
+    if (!categories[category]) return;
 
     currentCategory = category;
     currentSubcategory = "";
     currentStyle = "";
 
     previousAlbumView = null;
-    currentAlbumLevel = "root";
 
-    if (category === "Bracelets") {
-        showBraceletAlbums("root");
-        return;
-    }
-
-    if (category === "Chainlinks") {
-        showChainlinkAlbums("root");
-        return;
-    }
-
-    showStandardAlbums(category);
+    showAlbumView(category, "root");
 }
 
 
-/* =========================================
-   STANDARD ALBUMS
-   CROSSES & ROPES
-========================================= */
+/* =========================================================
+   DISPLAY ALBUMS
+   ========================================================= */
 
-function showStandardAlbums(category) {
+function showAlbumView(category, level, subcategory = "") {
     hideAllSections();
 
-    if (!albumsSection || !albumGrid) {
-        return;
-    }
+    if (!albumsSection || !albumGrid) return;
 
     albumsSection.classList.remove("hidden");
 
-    albumsTitle.textContent = category;
-    albumsDescription.textContent =
-        "Choose an album to explore.";
-
     albumGrid.innerHTML = "";
 
-    sortAlphabetically(categories[category]).forEach(subcategory => {
-        const card = createAlbumCard(subcategory, () => {
-            previousAlbumView = {
-                type: "standard",
-                category: category
-            };
-
-            openProducts(category, subcategory, "");
-        });
-
-        albumGrid.appendChild(card);
-    });
-
-    scrollToTop();
-}
-
-
-/* =========================================
-   BRACELET ALBUMS
-========================================= */
-
-function showBraceletAlbums(level, subcategory = "") {
-    hideAllSections();
-
-    if (!braceletAlbumsSection || !braceletAlbumGrid) {
-        return;
-    }
-
-    braceletAlbumsSection.classList.remove("hidden");
-    braceletAlbumGrid.innerHTML = "";
-
+    currentCategory = category;
     currentAlbumLevel = level;
+    currentSubcategory = subcategory;
+    currentStyle = "";
 
     if (level === "root") {
-        braceletAlbumsTitle.textContent = "Bracelets";
+        albumTitle.textContent = category;
 
-        braceletAlbumsDescription.textContent =
-            "Choose a bracelet collection.";
+        albumDescription.textContent =
+            "Choose an album to explore.";
 
-        sortAlphabetically(categories.Bracelets).forEach(name => {
-            const card = createAlbumCard(name, () => {
-                showBraceletAlbums("styles", name);
-            });
+        albumBackButton.textContent =
+            "← Back to Collections";
 
-            braceletAlbumGrid.appendChild(card);
-        });
-    }
-
-    if (level === "styles") {
-        currentSubcategory = subcategory;
-
-        braceletAlbumsTitle.textContent = subcategory;
-
-        braceletAlbumsDescription.textContent =
-            "Choose a bracelet style.";
-
-        const styles = nestedAlbums.Bracelets[subcategory] || [];
-
-        sortAlphabetically(styles).forEach(style => {
-            const card = createAlbumCard(style, () => {
-                previousAlbumView = {
-                    type: "bracelet",
-                    level: "styles",
-                    subcategory: subcategory
-                };
-
-                openProducts("Bracelets", subcategory, style);
-            });
-
-            braceletAlbumGrid.appendChild(card);
-        });
-    }
-
-    scrollToTop();
-}
-
-
-/* =========================================
-   CHAINLINK ALBUMS
-========================================= */
-
-function showChainlinkAlbums(level, subcategory = "") {
-    hideAllSections();
-
-    if (!chainlinkAlbumsSection || !chainlinkAlbumGrid) {
-        return;
-    }
-
-    chainlinkAlbumsSection.classList.remove("hidden");
-    chainlinkAlbumGrid.innerHTML = "";
-
-    currentAlbumLevel = level;
-
-    if (level === "root") {
-        chainlinkAlbumsTitle.textContent = "Chainlinks";
-
-        chainlinkAlbumsDescription.textContent =
-            "Choose a Chainlink collection.";
-
-        sortAlphabetically(categories.Chainlinks).forEach(name => {
+        sortAlphabetically(categories[category]).forEach(name => {
             const card = createAlbumCard(name, () => {
 
-                if (nestedAlbums.Chainlinks[name]) {
-                    showChainlinkAlbums("styles", name);
+                if (
+                    nestedAlbums[category] &&
+                    nestedAlbums[category][name]
+                ) {
+                    showAlbumView(category, "styles", name);
                 } else {
-                    previousAlbumView = {
-                        type: "chainlink",
-                        level: "root"
-                    };
-
-                    openProducts("Chainlinks", name, "");
+                    openProducts(category, name, "");
                 }
+
             });
 
-            chainlinkAlbumGrid.appendChild(card);
+            albumGrid.appendChild(card);
         });
     }
 
     if (level === "styles") {
-        currentSubcategory = subcategory;
+        albumTitle.textContent = subcategory;
 
-        chainlinkAlbumsTitle.textContent = subcategory;
+        albumDescription.textContent =
+            "Choose a style to explore.";
 
-        chainlinkAlbumsDescription.textContent =
-            "Choose a Chainlink style.";
+        albumBackButton.textContent =
+            "← Back to Albums";
 
-        const styles = nestedAlbums.Chainlinks[subcategory] || [];
+        const styles =
+            nestedAlbums[category]?.[subcategory] || [];
 
         sortAlphabetically(styles).forEach(style => {
             const card = createAlbumCard(style, () => {
-                previousAlbumView = {
-                    type: "chainlink",
-                    level: "styles",
-                    subcategory: subcategory
-                };
-
-                openProducts("Chainlinks", subcategory, style);
+                openProducts(category, subcategory, style);
             });
 
-            chainlinkAlbumGrid.appendChild(card);
+            albumGrid.appendChild(card);
         });
     }
 
@@ -478,89 +457,79 @@ function showChainlinkAlbums(level, subcategory = "") {
 }
 
 
-/* =========================================
-   BACK BUTTONS FOR NESTED ALBUMS
-========================================= */
+/* =========================================================
+   ALBUM BACK BUTTON
+   ========================================================= */
 
-function goBackToBraceletAlbums() {
+function goBackToAlbums() {
     if (currentAlbumLevel === "styles") {
-        showBraceletAlbums("root");
+        showAlbumView(currentCategory, "root");
+    } else {
+        showCollections();
     }
 }
 
 
-function goBackToChainlinkAlbums() {
-    if (currentAlbumLevel === "styles") {
-        showChainlinkAlbums("root");
-    }
-}
-
-
-/* =========================================
+/* =========================================================
    LOAD SUBCATEGORY FILTER
-========================================= */
+   ========================================================= */
 
-function loadSubcategories(category) {
-    if (!subcategorySelect) {
-        return;
+function loadSubcategories(category, selected = "all") {
+    if (!subcategoryFilter) return;
+
+    subcategoryFilter.innerHTML = "";
+
+    const allOption = document.createElement("option");
+
+    allOption.value = "all";
+    allOption.textContent = "All Subcategories";
+
+    subcategoryFilter.appendChild(allOption);
+
+    if (category && category !== "all" && categories[category]) {
+        sortAlphabetically(categories[category]).forEach(name => {
+            const option = document.createElement("option");
+
+            option.value = name;
+            option.textContent = name;
+
+            subcategoryFilter.appendChild(option);
+        });
     }
 
-    subcategorySelect.innerHTML = "";
+    subcategoryFilter.disabled =
+        !category || category === "all";
 
-    if (!category || category === "all" || !categories[category]) {
-        subcategorySelect.disabled = true;
-        return;
-    }
-
-    subcategorySelect.disabled = false;
-
-    sortAlphabetically(categories[category]).forEach(subcategory => {
-        const option = document.createElement("option");
-
-        option.value = subcategory;
-        option.textContent = subcategory;
-
-        subcategorySelect.appendChild(option);
-    });
-
-    if (subcategorySelect.options.length > 0) {
-        subcategorySelect.selectedIndex = 0;
-    }
+    subcategoryFilter.value = selected;
 }
 
 
-/* =========================================
+/* =========================================================
    LOAD STYLE FILTER
-========================================= */
+   ========================================================= */
 
-function loadStyles(category, subcategory) {
-    if (!styleSelect) {
-        return;
-    }
+function loadStyles(category, subcategory, selected = "all") {
+    if (!styleFilter) return;
 
-    styleSelect.innerHTML = "";
+    styleFilter.innerHTML = "";
 
     const allOption = document.createElement("option");
 
     allOption.value = "all";
     allOption.textContent = "All Styles";
 
-    styleSelect.appendChild(allOption);
+    styleFilter.appendChild(allOption);
 
     const styles = new Set();
 
-    if (category && subcategory) {
-        document.querySelectorAll(".product-card").forEach(card => {
-            const cardCategory = card.dataset.category || "";
-            const cardSubcategory = card.dataset.subcategory || "";
-            const cardStyle = card.dataset.style || "";
-
+    if (productGrid) {
+        productGrid.querySelectorAll(".product-card").forEach(card => {
             if (
-                cardCategory === category &&
-                cardSubcategory === subcategory &&
-                cardStyle
+                card.dataset.category === category &&
+                card.dataset.subcategory === subcategory &&
+                card.dataset.style
             ) {
-                styles.add(cardStyle);
+                styles.add(card.dataset.style);
             }
         });
     }
@@ -571,41 +540,38 @@ function loadStyles(category, subcategory) {
         option.value = style;
         option.textContent = style;
 
-        styleSelect.appendChild(option);
+        styleFilter.appendChild(option);
     });
 
-    styleSelect.value = "all";
-    styleSelect.disabled = styles.size === 0;
+    styleFilter.disabled = styles.size === 0;
+
+    styleFilter.value = selected;
 }
 
 
-/* =========================================
+/* =========================================================
    LOAD COLOR FILTER
-========================================= */
+   ========================================================= */
 
-function loadColors() {
-    if (!colorSelect) {
-        return;
-    }
+function loadColors(selected = "all") {
+    if (!colorFilter || !productGrid) return;
 
     const colors = new Set();
 
-    document.querySelectorAll(".product-card").forEach(card => {
+    productGrid.querySelectorAll(".product-card").forEach(card => {
         const color = (card.dataset.color || "").trim();
 
-        if (color) {
-            colors.add(color);
-        }
+        if (color) colors.add(color);
     });
 
-    colorSelect.innerHTML = "";
+    colorFilter.innerHTML = "";
 
     const allOption = document.createElement("option");
 
     allOption.value = "all";
     allOption.textContent = "All Colors";
 
-    colorSelect.appendChild(allOption);
+    colorFilter.appendChild(allOption);
 
     sortAlphabetically([...colors]).forEach(color => {
         const option = document.createElement("option");
@@ -613,27 +579,31 @@ function loadColors() {
         option.value = color;
         option.textContent = color;
 
-        colorSelect.appendChild(option);
+        colorFilter.appendChild(option);
     });
 
-    colorSelect.value = "all";
+    colorFilter.value = selected;
 }
 
 
-/* =========================================
+/* =========================================================
    OPEN PRODUCTS
-========================================= */
+   ========================================================= */
 
 function openProducts(category, subcategory = "", style = "") {
+    previousAlbumView = {
+        category: category,
+        level: currentAlbumLevel,
+        subcategory: currentSubcategory
+    };
+
     currentCategory = category;
     currentSubcategory = subcategory;
     currentStyle = style;
 
     hideAllSections();
 
-    if (!productsSection) {
-        return;
-    }
+    if (!productsSection) return;
 
     productsSection.classList.remove("hidden");
 
@@ -643,35 +613,25 @@ function openProducts(category, subcategory = "", style = "") {
     productsDescription.textContent =
         "Explore this handmade collection.";
 
-    if (categorySelect) {
-        categorySelect.value = category;
+    if (productsBackButton) {
+        productsBackButton.classList.remove("hidden");
     }
 
-    loadSubcategories(category);
-
-    if (subcategorySelect && subcategory) {
-        subcategorySelect.value = subcategory;
+    if (categoryFilter) {
+        categoryFilter.value = category;
     }
 
-    loadStyles(category, subcategory);
+    loadSubcategories(category, subcategory || "all");
 
-    if (styleSelect) {
-        styleSelect.value = style || "all";
-    }
+    loadStyles(category, subcategory, style || "all");
 
     loadColors();
 
-    if (searchInput) {
-        searchInput.value = "";
-    }
+    if (searchInput) searchInput.value = "";
 
-    if (priceSelect) {
-        priceSelect.value = "all";
-    }
+    if (priceFilter) priceFilter.value = "all";
 
-    if (colorSelect) {
-        colorSelect.value = "all";
-    }
+    if (colorFilter) colorFilter.value = "all";
 
     applyFilters();
 
@@ -679,32 +639,36 @@ function openProducts(category, subcategory = "", style = "") {
 }
 
 
-/* =========================================
-   APPLY PRODUCT FILTERS
-========================================= */
+/* =========================================================
+   APPLY ALL PRODUCT FILTERS
+   ========================================================= */
 
 function applyFilters() {
-    if (!productGrid) {
-        return;
-    }
+    if (!productGrid) return;
 
-    const selectedCategory = categorySelect?.value || "all";
-    const selectedSubcategory = subcategorySelect?.value || "";
-    const selectedStyle = styleSelect?.value || "all";
-    const selectedColor = colorSelect?.value || "all";
-    const selectedPrice = priceSelect?.value || "all";
+    const selectedCategory =
+        categoryFilter?.value || "all";
 
-    const searchTerm = (searchInput?.value || "")
-        .trim()
-        .toLowerCase();
+    const selectedSubcategory =
+        subcategoryFilter?.value || "all";
+
+    const selectedStyle =
+        styleFilter?.value || "all";
+
+    const selectedColor =
+        colorFilter?.value || "all";
+
+    const selectedPrice =
+        priceFilter?.value || "all";
+
+    const searchTerm =
+        (searchInput?.value || "").trim().toLowerCase();
 
     let visibleCount = 0;
 
-    const productCards = Array.from(
-        productGrid.querySelectorAll(".product-card")
-    );
+    const cards = productGrid.querySelectorAll(".product-card");
 
-    productCards.forEach(card => {
+    cards.forEach(card => {
         const category = card.dataset.category || "";
         const subcategory = card.dataset.subcategory || "";
         const style = card.dataset.style || "";
@@ -725,13 +689,11 @@ function applyFilters() {
             category === selectedCategory;
 
         const matchesSubcategory =
-            !selectedSubcategory ||
             selectedSubcategory === "all" ||
             subcategory === selectedSubcategory;
 
         const matchesStyle =
             selectedStyle === "all" ||
-            !selectedStyle ||
             style === selectedStyle;
 
         const matchesColor =
@@ -746,7 +708,7 @@ function applyFilters() {
             !searchTerm ||
             searchableText.includes(searchTerm);
 
-        const isVisible =
+        const visible =
             matchesCategory &&
             matchesSubcategory &&
             matchesStyle &&
@@ -754,45 +716,39 @@ function applyFilters() {
             matchesPrice &&
             matchesSearch;
 
-        card.classList.toggle("hidden", !isVisible);
+        card.classList.toggle("hidden", !visible);
 
-        if (isVisible) {
-            visibleCount++;
-        }
+        if (visible) visibleCount++;
     });
+
+    updateProductCount(visibleCount);
 
     if (noProductsMessage) {
         noProductsMessage.classList.toggle(
             "hidden",
-            visibleCount !== 0
+            visibleCount > 0
         );
     }
 }
 
 
-/* =========================================
+/* =========================================================
    CLEAR FILTERS
-========================================= */
+   ========================================================= */
 
 function clearFilters() {
-    if (categorySelect) {
-        categorySelect.value = "all";
+    if (categoryFilter) {
+        categoryFilter.value = "all";
     }
 
     loadSubcategories("all");
     loadStyles("", "");
+    loadColors();
 
-    if (colorSelect) {
-        colorSelect.value = "all";
-    }
-
-    if (priceSelect) {
-        priceSelect.value = "all";
-    }
-
-    if (searchInput) {
-        searchInput.value = "";
-    }
+    if (styleFilter) styleFilter.value = "all";
+    if (colorFilter) colorFilter.value = "all";
+    if (priceFilter) priceFilter.value = "all";
+    if (searchInput) searchInput.value = "";
 
     currentCategory = "";
     currentSubcategory = "";
@@ -802,62 +758,25 @@ function clearFilters() {
 }
 
 
-/* =========================================
-   BACK TO PREVIOUS ALBUM
-========================================= */
-
-function goBackToPreviousAlbum() {
-    if (!previousAlbumView) {
-        showCollections();
-        return;
-    }
-
-    if (previousAlbumView.type === "standard") {
-        showStandardAlbums(previousAlbumView.category);
-        return;
-    }
-
-    if (previousAlbumView.type === "bracelet") {
-        showBraceletAlbums(
-            previousAlbumView.level,
-            previousAlbumView.subcategory
-        );
-
-        return;
-    }
-
-    if (previousAlbumView.type === "chainlink") {
-        if (previousAlbumView.level === "styles") {
-            showChainlinkAlbums(
-                "styles",
-                previousAlbumView.subcategory
-            );
-        } else {
-            showChainlinkAlbums("root");
-        }
-    }
-}
-
-
-/* =========================================
-   ALL PRODUCTS
-========================================= */
+/* =========================================================
+   SHOW ALL PRODUCTS
+   ========================================================= */
 
 function showAllProducts() {
     previousAlbumView = null;
 
     hideAllSections();
 
-    if (!productsSection) {
-        return;
-    }
-
-    productsSection.classList.remove("hidden");
+    productsSection?.classList.remove("hidden");
 
     productsTitle.textContent = "All Products";
 
     productsDescription.textContent =
         "Browse the complete Kingdom Keychains collection.";
+
+    if (productsBackButton) {
+        productsBackButton.classList.add("hidden");
+    }
 
     clearFilters();
 
@@ -865,92 +784,126 @@ function showAllProducts() {
 }
 
 
-/* =========================================
-   COLLECTION BUTTON EVENTS
-========================================= */
+/* =========================================================
+   RETURN TO PREVIOUS ALBUM
+   ========================================================= */
 
-if (collectionGrid) {
-    collectionGrid.addEventListener("click", event => {
-        const card = event.target.closest(".collection-card");
+function goBackToPreviousAlbum() {
+    if (!previousAlbumView) {
+        showCollections();
+        return;
+    }
 
-        if (!card) {
-            return;
-        }
-
-        openCategory(card.dataset.category);
-    });
+    showAlbumView(
+        previousAlbumView.category,
+        previousAlbumView.level,
+        previousAlbumView.subcategory
+    );
 }
 
 
-/* =========================================
-   NAVIGATION EVENTS
-========================================= */
+/* =========================================================
+   COLLECTION BUTTONS
+   ========================================================= */
 
-document.getElementById("backToCollections")
-    ?.addEventListener("click", showCollections);
+collectionGrid?.addEventListener("click", event => {
+    const card = event.target.closest(".collection-card");
 
-document.getElementById("braceletBackButton")
-    ?.addEventListener("click", goBackToBraceletAlbums);
+    if (!card) return;
 
-document.getElementById("chainlinkBackButton")
-    ?.addEventListener("click", goBackToChainlinkAlbums);
+    openCategory(card.dataset.category);
+});
 
-document.getElementById("backToAlbums")
-    ?.addEventListener("click", goBackToPreviousAlbum);
 
-document.getElementById("allProductsLink")
-    ?.addEventListener("click", event => {
-        event.preventDefault();
-        showAllProducts();
+/* =========================================================
+   NAVIGATION BUTTONS
+   ========================================================= */
+
+albumBackButton?.addEventListener(
+    "click",
+    goBackToAlbums
+);
+
+productsBackButton?.addEventListener(
+    "click",
+    goBackToPreviousAlbum
+);
+
+clearFiltersButton?.addEventListener(
+    "click",
+    clearFilters
+);
+
+
+/* =========================================================
+   NAVIGATION LINKS
+   ========================================================= */
+
+document.querySelectorAll(".main-navigation a").forEach(link => {
+    link.addEventListener("click", event => {
+        const destination = link.getAttribute("href");
+
+        if (destination === "#products") {
+            event.preventDefault();
+            showAllProducts();
+        }
+
+        if (destination === "#collections") {
+            event.preventDefault();
+            showCollections();
+        }
     });
+});
 
 
-/* =========================================
+/* =========================================================
    FILTER EVENTS
-========================================= */
+   ========================================================= */
 
-categorySelect?.addEventListener("change", () => {
-    loadSubcategories(categorySelect.value);
-
-    const category = categorySelect.value;
-    const subcategory = subcategorySelect?.value || "";
-
-    loadStyles(category, subcategory);
-
+categoryFilter?.addEventListener("change", () => {
+    loadSubcategories(categoryFilter.value);
+    loadStyles(categoryFilter.value, "");
     applyFilters();
 });
 
 
-subcategorySelect?.addEventListener("change", () => {
+subcategoryFilter?.addEventListener("change", () => {
     loadStyles(
-        categorySelect?.value || "",
-        subcategorySelect.value
+        categoryFilter?.value || "all",
+        subcategoryFilter.value
     );
 
     applyFilters();
 });
 
 
-styleSelect?.addEventListener("change", applyFilters);
-colorSelect?.addEventListener("change", applyFilters);
-priceSelect?.addEventListener("change", applyFilters);
+styleFilter?.addEventListener("change", applyFilters);
+
+colorFilter?.addEventListener("change", applyFilters);
+
+priceFilter?.addEventListener("change", applyFilters);
+
 searchInput?.addEventListener("input", applyFilters);
 
-clearFiltersButton?.addEventListener("click", clearFilters);
 
+/* =========================================================
+   INITIALIZE WEBSITE
+   ========================================================= */
 
-/* =========================================
-   INITIALIZE PAGE
-========================================= */
 document.addEventListener("DOMContentLoaded", () => {
+
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
+
     renderProducts();
 
-    sortProductCardsAlphabetically();
-
-    loadColors();
     loadSubcategories("all");
     loadStyles("", "");
+    loadColors();
 
     showCollections();
+
 });
+
 
