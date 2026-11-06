@@ -903,3 +903,764 @@ main {
 }
 
 
+/* =====================================================
+   KINGDOM KEYCHAINS
+   HEAVENLY ROYAL LUXURY DESIGN
+   Master Reference: Golden Banner
+   ===================================================== */
+
+
+/* ---------- ROOT COLORS ---------- */
+
+:root {
+  --royal-purple: #21032b;
+  --deep-purple: #120018;
+  --dark-plum: #190021;
+  --purple-highlight: #461052;
+
+  --royal-gold: #d4af37;
+  --bright-gold: #ffe6a0;
+  --dark-gold: #8d671b;
+  --gold-shadow: #654609;
+
+  --ivory: #fff5dc;
+  --soft-ivory: #e8d9b8;
+
+  --gold-gradient: linear-gradient(
+    135deg,
+    #805b12 0%,
+    #d4af37 22%,
+    #fff1b8 42%,
+    #c99b27 62%,
+    #f5d878 80%,
+    #805b12 100%
+  );
+
+  --purple-gradient: linear-gradient(
+    145deg,
+    #35103e,
+    #21032b 45%,
+    #100016
+  );
+}
+
+
+/* ---------- GLOBAL RESET ---------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 30px;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--ivory);
+  background:
+    radial-gradient(
+      ellipse at top,
+      rgba(105, 54, 116, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      rgba(91, 51, 15, 0.12),
+      transparent 55%
+    ),
+    var(--deep-purple);
+
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.7;
+}
+
+
+/* ---------- GOLD TEXT EFFECT ---------- */
+
+h1,
+h2,
+h3,
+.banner-title,
+.main-footer h2 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.banner-title h1,
+.section-heading h2,
+.main-footer h2 {
+  color: var(--royal-gold);
+
+  background: var(--gold-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.55);
+
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+
+/* ---------- MAIN HEADER ---------- */
+
+.main-header {
+  width: 100%;
+  background: var(--deep-purple);
+  border-bottom: 3px solid var(--dark-gold);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+
+/* ---------- GOLDEN BANNER ---------- */
+
+.banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #653c0b,
+      #21032b 75%
+    );
+
+  border-bottom: 2px solid var(--royal-gold);
+}
+
+.banner-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+
+/* Accessible heading retained in HTML.
+   The Golden Banner artwork supplies the visible title. */
+
+.banner-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tagline {
+  color: var(--bright-gold);
+}
+
+
+/* ---------- MAIN NAVIGATION ---------- */
+
+.main-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  padding: 18px 12px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #32103c,
+      #190021
+    );
+
+  border-top: 1px solid rgba(212, 175, 55, 0.45);
+  border-bottom: 3px double var(--royal-gold);
+}
+
+.main-navigation a {
+  display: inline-block;
+  padding: 9px 18px;
+
+  color: var(--bright-gold);
+  text-decoration: none;
+  text-transform: uppercase;
+
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.main-navigation a:hover {
+  color: #fff7d6;
+  border: 1px solid var(--royal-gold);
+  background: rgba(212, 175, 55, 0.12);
+
+  box-shadow:
+    0 0 12px rgba(212, 175, 55, 0.3),
+    inset 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+
+/* ---------- GENERAL SECTIONS ---------- */
+
+.section {
+  position: relative;
+  width: min(1200px, 94%);
+  margin: 55px auto;
+  padding: 45px 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(66, 24, 75, 0.75),
+      rgba(25, 0, 33, 0.95)
+    );
+
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  outline: 1px solid rgba(212, 175, 55, 0.12);
+  outline-offset: 5px;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.5),
+    inset 0 0 30px rgba(212, 175, 55, 0.035);
+}
+
+
+/* ---------- SECTION HEADINGS ---------- */
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.section-heading h2 {
+  display: inline-block;
+  padding-bottom: 12px;
+
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.section-heading h2::after {
+  content: "✦  ━━━━━━━━━━━  ✦";
+  display: block;
+  margin-top: 10px;
+
+  color: var(--royal-gold);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+}
+
+.section-heading p {
+  color: var(--soft-ivory);
+  margin-top: 10px;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+}
+
+
+/* ---------- COLLECTION CARDS ---------- */
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.collection-card {
+  position: relative;
+  min-height: 170px;
+  padding: 25px 12px;
+
+  color: var(--bright-gold);
+  background:
+    radial-gradient(
+      ellipse at center,
+      #54245f,
+      #21032b 75%
+    );
+
+  border: 2px solid var(--royal-gold);
+  outline: 1px solid rgba(212, 175, 55, 0.25);
+  outline-offset: 4px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.collection-card::before,
+.collection-card::after {
+  content: "✦";
+  position: absolute;
+  color: var(--royal-gold);
+  font-size: 1.2rem;
+}
+
+.collection-card::before {
+  top: 12px;
+  left: 15px;
+}
+
+.collection-card::after {
+  bottom: 12px;
+  right: 15px;
+}
+
+.collection-card:hover {
+  color: #fff7d6;
+  transform: translateY(-6px);
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #754a18,
+      #32103c 75%
+    );
+
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.35),
+    0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ---------- ALBUMS ---------- */
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+}
+
+.album-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  padding: 22px;
+
+  color: var(--bright-gold);
+  background: var(--purple-gradient);
+
+  border: 1px solid var(--royal-gold);
+
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.album-card:hover {
+  color: #fff5cf;
+  background: #48204f;
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+}
+
+
+/* ---------- BACK BUTTONS ---------- */
+
+.back-button,
+.clear-button {
+  padding: 10px 20px;
+  margin-bottom: 25px;
+
+  color: var(--bright-gold);
+  background: #290b32;
+
+  border: 1px solid var(--royal-gold);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover,
+.clear-button:hover {
+  color: var(--deep-purple);
+  background: var(--gold-gradient);
+}
+
+
+/* ---------- PRODUCT FILTERS ---------- */
+
+.product-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+
+  margin-bottom: 30px;
+  padding: 22px;
+
+  background: rgba(12, 0, 17, 0.65);
+
+  border: 1px solid rgba(212, 175, 55, 0.45);
+}
+
+.product-controls input,
+.product-controls select {
+  min-width: 145px;
+  padding: 12px;
+
+  color: var(--bright-gold);
+  background: #24082d;
+
+  border: 1px solid var(--dark-gold);
+  border-radius: 2px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.95rem;
+}
+
+.product-controls input::placeholder {
+  color: #c6a968;
+}
+
+.product-controls select option {
+  color: var(--bright-gold);
+  background: #24082d;
+}
+
+.product-controls input:focus,
+.product-controls select:focus {
+  outline: 1px solid var(--bright-gold);
+  border-color: var(--bright-gold);
+
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+
+/* ---------- PRODUCT COUNT ---------- */
+
+.product-count {
+  color: var(--bright-gold);
+  text-align: center;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+
+/* ---------- PRODUCT GRID ---------- */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 22px;
+}
+
+
+/* ---------- PRODUCT CARDS ---------- */
+
+.product-card {
+  overflow: hidden;
+  padding: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #35103e,
+      #17001f
+    );
+
+  border: 1px solid var(--dark-gold);
+
+  text-align: center;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  border-color: var(--bright-gold);
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 0 15px rgba(212, 175, 55, 0.25),
+    0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.product-card img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  margin-bottom: 12px;
+}
+
+.product-card p,
+.product-card span {
+  color: var(--bright-gold);
+  font-size: 0.95rem;
+}
+
+
+/* ---------- NO PRODUCTS MESSAGE ---------- */
+
+.no-products {
+  color: var(--bright-gold);
+  text-align: center;
+  padding: 30px;
+  font-size: 1.1rem;
+}
+
+
+/* ---------- ABOUT US ---------- */
+
+.about-content {
+  max-width: 850px;
+  margin: 0 auto;
+
+  color: var(--soft-ivory);
+  text-align: center;
+  font-size: 1.08rem;
+}
+
+.about-content p {
+  margin-bottom: 22px;
+}
+
+.about-motto {
+  color: var(--bright-gold);
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+/* ---------- MEET THE MAKER ---------- */
+
+.maker-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.maker-photo {
+  flex: 0 1 280px;
+  text-align: center;
+}
+
+.maker-photo img {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+
+  border: 3px solid var(--royal-gold);
+  padding: 5px;
+
+  background: #21032b;
+
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.maker-bio {
+  flex: 1 1 350px;
+  color: var(--soft-ivory);
+}
+
+.maker-bio h3 {
+  color: var(--bright-gold);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.maker-bio p {
+  margin-bottom: 18px;
+}
+
+
+/* ---------- CONTACT ---------- */
+
+.contact-content {
+  max-width: 750px;
+  margin: 0 auto;
+
+  color: var(--soft-ivory);
+  text-align: center;
+}
+
+.contact-content p {
+  margin-bottom: 18px;
+}
+
+.contact-link {
+  display: inline-block;
+  margin: 10px 0 20px;
+
+  color: var(--bright-gold);
+  font-weight: bold;
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--royal-gold);
+}
+
+.contact-link:hover {
+  color: white;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.main-footer {
+  padding: 40px 20px;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #21032b,
+      #0c0010
+    );
+
+  border-top: 3px double var(--royal-gold);
+}
+
+.main-footer h2 {
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+}
+
+.main-footer p {
+  color: var(--soft-ivory);
+  margin-top: 10px;
+}
+
+.footer-copyright {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+
+/* ---------- VISIBILITY ---------- */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ---------- RESPONSIVE TABLET ---------- */
+
+@media (max-width: 850px) {
+
+  .collection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section {
+    padding: 35px 20px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+}
+
+
+/* ---------- RESPONSIVE MOBILE ---------- */
+
+@media (max-width: 550px) {
+
+  .banner-image {
+    max-height: 300px;
+  }
+
+  .main-navigation {
+    gap: 4px;
+    padding: 12px 5px;
+  }
+
+  .main-navigation a {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .section {
+    width: 94%;
+    margin: 35px auto;
+    padding: 28px 15px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+  }
+
+  .collection-grid {
+    gap: 15px;
+  }
+
+  .collection-card {
+    min-height: 125px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .product-controls {
+    padding: 15px;
+  }
+
+  .product-controls input,
+  .product-controls select {
+    width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-card img {
+    height: 145px;
+  }
+
+  .maker-content {
+    gap: 25px;
+  }
+
+  .maker-bio {
+    text-align: center;
+  }
+
+  .about-motto {
+    font-size: 1.15rem;
+  }
+
+}
+
+
