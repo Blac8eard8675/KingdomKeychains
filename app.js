@@ -809,14 +809,6 @@ function goBackToPreviousAlbum() {
    COLLECTION BUTTONS
    ========================================================= */
 
-const posterProductsHotspot = document.querySelector(".poster-products-hotspot");
-
-posterProductsHotspot?.addEventListener("click", event => {
-    event.preventDefault();
-    showCollections();
-});
-
-
 collectionGrid?.addEventListener("click", event => {
     const card = event.target.closest(".collection-card");
 
@@ -914,5 +906,9 @@ document.addEventListener("DOMContentLoaded", () => {
     loadColors();
 
     hideAllSections();
+
+    if (document.body.dataset.page === "products") {
+        showCollections();
+    }
 
 });
