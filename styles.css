@@ -329,3 +329,46 @@ main>section{
   margin-left:auto;
   margin-right:auto;
 }
+
+
+/* BRACELETS PAGE: THE IMAGE ITSELF IS THE WHOLE PAGE */
+#albumsSection.bracelets-image-only{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0;
+}
+#albumsSection.bracelets-image-only .section-heading,
+#albumsSection.bracelets-image-only #albumBackButton,
+#albumsSection.bracelets-image-only #albumGrid{
+  display:none !important;
+}
+.bracelets-page-art{
+  position:relative;
+  width:100%;
+  max-width:1536px;
+  margin:0 auto;
+  line-height:0;
+}
+.bracelets-page-art img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.bracelets-word-link{
+  position:absolute;
+  left:6%;
+  top:65%;
+  width:88%;
+  height:29%;
+  padding:0;
+  border:0;
+  border-radius:2%;
+  background:transparent;
+  cursor:pointer;
+}
+.bracelets-word-link:focus-visible{
+  outline:3px solid #ffe6a0;
+  outline-offset:3px;
+  box-shadow:0 0 0 5px #21052f;
+}
