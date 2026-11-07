@@ -33,6 +33,13 @@
     </div>
   </section>
 
+  <div class="category-ribbon" aria-label="Shop by category">
+    <button type="button" data-category="Bracelets">Bracelets</button>
+    <button type="button" data-category="Crosses">Crosses</button>
+    <button type="button" data-category="Chainlinks">Chainlinks</button>
+    <button type="button" data-category="Ropes">Ropes</button>
+  </div>
+
   <main>
 
     <section class="welcome-section">
@@ -125,8 +132,21 @@
   <script src="products.js"></script>
   <script src="app.js"></script>
   <script>
-    document.getElementById("viewProductsButton")?.addEventListener("click", () => {
-      if (typeof showCollections === "function") showCollections();
+    document.querySelectorAll(".main-navigation a").forEach(link => {
+      link.addEventListener("click", event => {
+        const target = link.getAttribute("href");
+        if (target === "#collections" && typeof showCollections === "function") {
+          event.preventDefault(); showCollections();
+        }
+        if (target === "#products" && typeof showAllProducts === "function") {
+          event.preventDefault(); showAllProducts();
+        }
+      });
+    });
+    document.querySelectorAll(".category-ribbon button").forEach(button => {
+      button.addEventListener("click", () => {
+        if (typeof openCategory === "function") openCategory(button.dataset.category);
+      });
     });
   </script>
 </body>
