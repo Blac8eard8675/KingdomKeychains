@@ -902,6 +902,6 @@ document.addEventListener("DOMContentLoaded", () => {
     loadStyles("", "");
     loadColors();
 
-    showCollections();
+    hideAllSections();
 
 });
