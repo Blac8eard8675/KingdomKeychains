@@ -3,298 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Kingdom Keychains — The Only Chains Jesus Loves. Handmade creations with a message of faith.">
   <title>Kingdom Keychains | The Only Chains Jesus Loves</title>
-
-  <meta name="description" content="Kingdom Keychains - Handmade faith-inspired keychains and bracelets. The Only Chains Jesus Loves.">
-
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-  <!-- GOLDEN BANNER / MAIN HEADER -->
-  <header class="main-header" id="home">
-
-    <div class="banner">
-      <img
-        src="images/golden-banner.jpg"
-        alt="Kingdom Keychains Golden Banner"
-        class="banner-image"
-      >
+  <header class="site-header" id="home">
+    <div class="brand-banner">
+      <img src="images/golden-banner.jpg" alt="Kingdom Keychains — The Only Chains Jesus Loves" class="banner-image">
     </div>
-
-    <div class="banner-title">
-      <h1>KINGDOM KEYCHAINS</h1>
-      <p class="tagline">The Only Chains Jesus Loves</p>
-    </div>
-
-    <!-- MAIN NAVIGATION -->
-    <nav class="main-navigation">
-      <a href="#home">Home</a>
-      <a href="#collections">Collections</a>
-      <a href="#products">All Products</a>
-      <a href="#about">About Us</a>
-      <a href="#maker">Meet the Maker</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
   </header>
 
+  <nav class="product-nav" aria-label="Product navigation">
+    <button type="button" id="viewProductsButton" class="view-products-button">VIEW OUR PRODUCTS</button>
+  </nav>
 
-  <!-- COLLECTIONS -->
   <main>
-
-    <section id="collections" class="section collections-section">
-
-      <div class="section-heading">
-        <h2>OUR COLLECTIONS</h2>
-        <p>Faithfully Handmade. Beautifully Designed.</p>
-      </div>
-
-      <div class="collection-grid" id="collectionGrid">
-
-        <button class="collection-card" data-category="Bracelets">
-          <span>BRACELETS</span>
-        </button>
-
-        <button class="collection-card" data-category="Chainlinks">
-          <span>CHAINLINKS</span>
-        </button>
-
-        <button class="collection-card" data-category="Crosses">
-          <span>CROSSES</span>
-        </button>
-
-        <button class="collection-card" data-category="Ropes">
-          <span>ROPES</span>
-        </button>
-
-      </div>
-
+    <section class="welcome-section">
+      <p class="eyebrow">WELCOME</p>
+      <h1>Welcome to Kingdom Keychains</h1>
+      <div class="ornament" aria-hidden="true">✦ ━━━━━━━━━ ✦</div>
+      <p>Welcome to Kingdom Keychains, where faith and creativity come together. Each handmade piece is created with purpose, meaning, and a heart for sharing the love of Jesus.</p>
     </section>
 
+    <section class="love-reminder" aria-label="A reminder of His love">
+      <div class="cross-ornament" aria-hidden="true">✝</div>
+      <div class="ornament">✦ ━━━━━━━━━━━━━━━━━ ✦</div>
+      <h2>More Than a Keychain…<br>A Reminder of His Love.</h2>
+      <div class="ornament">✦ ━━━━━━━━━━━━━━━━━ ✦</div>
+    </section>
 
-    <!-- ALBUMS / SUBCATEGORIES -->
-    <section id="albumsSection" class="section albums-section hidden">
-
+    <section id="collections" class="section collections-section hidden">
       <div class="section-heading">
-        <h2 id="albumTitle">COLLECTION</h2>
+        <p class="eyebrow">EXPLORE THE COLLECTIONS</p>
+        <h2>Our Collections</h2>
+        <p>Choose a collection to begin exploring.</p>
+      </div>
+      <div class="collection-grid" id="collectionGrid">
+        <button class="collection-card" data-category="Bracelets"><span>Bracelets</span></button>
+        <button class="collection-card" data-category="Chainlinks"><span>Chainlinks</span></button>
+        <button class="collection-card" data-category="Crosses"><span>Crosses</span></button>
+        <button class="collection-card" data-category="Ropes"><span>Ropes</span></button>
+      </div>
+    </section>
+
+    <section id="albumsSection" class="section albums-section hidden">
+      <div class="section-heading">
+        <p class="eyebrow">THE COLLECTION</p>
+        <h2 id="albumTitle">Collection</h2>
         <p id="albumDescription"></p>
       </div>
-
-      <button type="button" id="albumBackButton" class="back-button">
-        &#8592; Back to Collections
-      </button>
-
-      <div class="album-grid" id="albumGrid">
-        <!-- Albums will be created by app.js -->
-      </div>
-
+      <button type="button" id="albumBackButton" class="back-button">← Back to Collections</button>
+      <div class="album-grid" id="albumGrid"></div>
     </section>
 
-
-    <!-- PRODUCTS -->
-    <section id="products" class="section products-section">
-
+    <section id="products" class="section products-section hidden">
       <div class="section-heading">
-        <h2 id="productsTitle">ALL PRODUCTS</h2>
-        <p id="productsDescription">
-          Discover something special in every collection.
-        </p>
+        <p class="eyebrow">HANDMADE WITH PURPOSE</p>
+        <h2 id="productsTitle">All Products</h2>
+        <p id="productsDescription">Discover something special in every collection.</p>
       </div>
-
-      <button type="button" id="productsBackButton" class="back-button hidden">
-        &#8592; Back to Albums
-      </button>
-
-      <!-- PRODUCT SEARCH AND FILTERS -->
+      <button type="button" id="productsBackButton" class="back-button hidden">← Back to Albums</button>
       <div class="product-controls">
-
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="Search products..."
-          aria-label="Search products"
-        >
-
+        <input type="search" id="searchInput" placeholder="Search products..." aria-label="Search products">
         <select id="categoryFilter" aria-label="Filter by category">
-          <option value="all">All Categories</option>
-          <option value="Bracelets">Bracelets</option>
-          <option value="Chainlinks">Chainlinks</option>
-          <option value="Crosses">Crosses</option>
-          <option value="Ropes">Ropes</option>
+          <option value="all">All Categories</option><option value="Bracelets">Bracelets</option><option value="Chainlinks">Chainlinks</option><option value="Crosses">Crosses</option><option value="Ropes">Ropes</option>
         </select>
-
-        <select id="subcategoryFilter" aria-label="Filter by subcategory">
-          <option value="">All Subcategories</option>
-        </select>
-
-        <select id="styleFilter" aria-label="Filter by style">
-          <option value="all">All Styles</option>
-        </select>
-
-        <select id="colorFilter" aria-label="Filter by color">
-          <option value="all">All Colors</option>
-        </select>
-
-        <select id="priceFilter" aria-label="Filter by price">
-          <option value="all">All Prices</option>
-          <option value="5">$5</option>
-          <option value="10">$10</option>
-          <option value="15">$15</option>
-        </select>
-
-        <button type="button" id="clearFilters" class="clear-button">
-          Clear Filters
-        </button>
-
+        <select id="subcategoryFilter" aria-label="Filter by subcategory"><option value="all">All Subcategories</option></select>
+        <select id="styleFilter" aria-label="Filter by style"><option value="all">All Styles</option></select>
+        <select id="colorFilter" aria-label="Filter by color"><option value="all">All Colors</option></select>
+        <select id="priceFilter" aria-label="Filter by price"><option value="all">All Prices</option><option value="5">$5</option><option value="10">$10</option><option value="15">$15</option></select>
+        <button type="button" id="clearFilters" class="clear-button">Clear Filters</button>
       </div>
-
-
-      <!-- PRODUCT COUNT -->
       <p id="productCount" class="product-count"></p>
-
-
-      <!-- PRODUCT DISPLAY -->
-      <div class="product-grid" id="productGrid">
-        <!-- Products will be loaded from products.js by app.js -->
-      </div>
-
-      <p id="noProductsMessage" class="no-products hidden">
-        No products match your selection.
-      </p>
-
+      <div class="product-grid" id="productGrid"></div>
+      <p id="noProductsMessage" class="no-products hidden">No products match your selection.</p>
     </section>
 
-
-    <!-- ABOUT US -->
     <section id="about" class="section about-section">
-
       <div class="section-heading">
-        <h2>ABOUT KINGDOM KEYCHAINS</h2>
-        <p>More Than Keychains. A Message of Faith.</p>
+        <p class="eyebrow">OUR HEART & PURPOSE</p>
+        <h2>Our Purpose</h2>
       </div>
-
       <div class="about-content">
-
-        <p>
-          Kingdom Keychains was created with a heart for God and a desire
-          to share His love through handmade creations.
-        </p>
-
-        <p>
-          Every design carries meaning and reminds us of our connection
-          to God, Jesus Christ, and one another.
-        </p>
-
-        <p>
-          Our pieces are handmade with care, creativity, and faith.
-          We believe even the smallest things can carry a beautiful message.
-        </p>
-
-        <p class="about-motto">
-          The Only Chains Jesus Loves.
-        </p>
-
+        <h3>About Kingdom Keychains</h3>
+        <p>Kingdom Keychains was created with a heart for God and a desire to share His love through handmade creations.</p>
+        <p>Every design carries meaning and reminds us of our connection to God, Jesus Christ, and one another.</p>
+        <p>Our pieces are handmade with care, creativity, and faith. We believe even the smallest things can carry a beautiful message.</p>
+        <p class="about-motto">The Only Chains Jesus Loves.</p>
       </div>
-
     </section>
 
-
-    <!-- MEET THE MAKER -->
     <section id="maker" class="section maker-section">
-
       <div class="section-heading">
-        <h2>MEET THE MAKER</h2>
-        <p>Master Craftsman • Owner</p>
+        <p class="eyebrow">THE HANDS & HEART BEHIND THE CRAFT</p>
+        <h2>Meet the Maker</h2>
       </div>
-
       <div class="maker-content">
-
-        <div class="maker-photo">
-          <img
-            src="images/Tori Owner pic.jpg"
-            alt="Victoria Schwab, owner of Kingdom Keychains"
-          >
-        </div>
-
+        <div class="maker-photo"><img src="images/Tori Owner pic.jpg" alt="Victoria Schwab, owner of Kingdom Keychains"></div>
         <div class="maker-bio">
-
+          <p class="maker-role">Master Craftsman<br>Owner</p>
           <h3>Victoria Schwab</h3>
-
-          <p>
-            Founder, Owner &amp; Master Craftsman of Kingdom Keychains.
-          </p>
-
-          <p>
-            My faith and relationship with God are at the heart of
-            Kingdom Keychains. This business is about more than making
-            beautiful things. It is about sharing the love of Jesus
-            and the message of redemption, restoration, and hope.
-          </p>
-
-          <p>
-            All glory belongs to God.
-          </p>
-
+          <p>Founder, Owner &amp; Master Craftsman of Kingdom Keychains.</p>
+          <p>My faith and relationship with God are at the heart of Kingdom Keychains. This business is about more than making beautiful things. It is about sharing the love of Jesus and the message of redemption, restoration, and hope.</p>
+          <p>All glory belongs to God.</p>
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- CONTACT -->
     <section id="contact" class="section contact-section">
-
       <div class="section-heading">
-        <h2>CONTACT US</h2>
+        <p class="eyebrow">STAY CONNECTED</p>
+        <h2>Contact</h2>
         <p>We Would Love to Hear From You</p>
       </div>
-
       <div class="contact-content">
-
-        <p>
-          Have a question about Kingdom Keychains?
-          Reach out and connect with us.
-        </p>
-
-        <a href="mailto:kingdomkeychains1987@gmail.com" class="contact-link">
-          kingdomkeychains1987@gmail.com
-        </a>
-
-        <p>
-          You can also message Victoria Schwab through Facebook Messenger.
-        </p>
-
+        <p>Have a question about Kingdom Keychains? Reach out and connect with us.</p>
+        <a href="mailto:kingdomkeychains1987@gmail.com" class="contact-link">kingdomkeychains1987@gmail.com</a>
+        <p>You can also message Victoria Schwab through Facebook Messenger.</p>
       </div>
-
     </section>
-
   </main>
 
-
-  <!-- FOOTER -->
   <footer class="main-footer">
-
+    <div class="footer-ornament">✦ ━━━━━━━━━ ✦</div>
     <h2>KINGDOM KEYCHAINS</h2>
-
     <p>The Only Chains Jesus Loves</p>
-
-    <p class="footer-copyright">
-      &copy; <span id="currentYear"></span> Kingdom Keychains.
-      All Rights Reserved.
-    </p>
-
+    <p class="footer-copyright">© <span id="currentYear"></span> Kingdom Keychains. All Rights Reserved.</p>
   </footer>
 
-
-  <!-- JAVASCRIPT FILES -->
   <script src="products.js"></script>
   <script src="app.js"></script>
-
+  <script>
+    document.getElementById("viewProductsButton")?.addEventListener("click", () => {
+      if (typeof showCollections === "function") showCollections();
+    });
+  </script>
 </body>
 </html>
-
-  
