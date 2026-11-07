@@ -9,18 +9,32 @@
 </head>
 <body>
   <header class="site-header" id="home">
-    <div class="brand-title">
-      <p class="brand-crown" aria-hidden="true">♛</p>
-      <h1>KINGDOM KEYCHAINS</h1>
-      <p class="brand-tagline">The Only Chains Jesus Loves</p>
+    <div class="brand-lockup">
+      <a class="brand-mark" href="#home" aria-label="Kingdom Keychains home">
+        <span class="brand-crown" aria-hidden="true">♛</span>
+        <span class="brand-name">Kingdom Keychains</span>
+        <span class="brand-tagline">The Only Chains Jesus Loves</span>
+      </a>
+      <nav class="main-navigation" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#collections">Shop</a>
+        <a href="#about">About</a>
+        <a href="#products">Gallery</a>
+        <a class="nav-cross" href="#contact" aria-label="Contact">✝</a>
+      </nav>
     </div>
   </header>
 
-  <nav class="product-nav" aria-label="Product navigation">
-    <button type="button" id="viewProductsButton" class="view-products-button">VIEW OUR PRODUCTS</button>
-  </nav>
+  <section class="sunset-banner" aria-label="Kingdom Keychains sunset artwork">
+    <div class="sunset-art">
+      <div class="sunset-crosses" aria-hidden="true">✝　✝　✝</div>
+      <h1>Kingdom Keychains</h1>
+      <div class="sunset-thorns" aria-hidden="true">♛　❧</div>
+    </div>
+  </section>
 
   <main>
+
     <section class="welcome-section">
       <p class="eyebrow">WELCOME</p>
       <h1>Welcome to Kingdom Keychains</h1>
@@ -35,7 +49,7 @@
       <div class="ornament">✦ ━━━━━━━━━━━━━━━━━ ✦</div>
     </section>
 
-    <section id="collections" class="section collections-section hidden">
+    <section id="collections" class="section collections-section category-banner">
       <div class="section-heading">
         <p class="eyebrow">EXPLORE THE COLLECTIONS</p>
         <h2>Our Collections</h2>
@@ -82,54 +96,28 @@
       <p id="noProductsMessage" class="no-products hidden">No products match your selection.</p>
     </section>
 
-    <section id="about" class="section about-section">
-      <div class="section-heading">
-        <p class="eyebrow">OUR HEART & PURPOSE</p>
-        <h2>Our Purpose</h2>
-      </div>
-      <div class="about-content">
-        <h3>About Kingdom Keychains</h3>
-        <p>Kingdom Keychains was created with a heart for God and a desire to share His love through handmade creations.</p>
-        <p>Every design carries meaning and reminds us of our connection to God, Jesus Christ, and one another.</p>
-        <p>Our pieces are handmade with care, creativity, and faith. We believe even the smallest things can carry a beautiful message.</p>
-        <p class="about-motto">The Only Chains Jesus Loves.</p>
-      </div>
-    </section>
-
-    <section id="maker" class="section maker-section">
-      <div class="section-heading">
-        <p class="eyebrow">THE HANDS & HEART BEHIND THE CRAFT</p>
-        <h2>Meet the Maker</h2>
-      </div>
-      <div class="maker-content">
-        <div class="maker-photo"><img src="images/Tori Owner pic.jpg" alt="Victoria Schwab, owner of Kingdom Keychains"></div>
+    <section class="maker-contact-panel" aria-label="About the maker and contact information">
+      <div id="about" class="maker-profile">
+        <img src="images/Tori Owner pic.jpg" alt="Victoria Schwab">
         <div class="maker-bio">
-          <p class="maker-role">Master Craftsman<br>Owner</p>
-          <h3>Victoria Schwab</h3>
-          <p>Founder, Owner &amp; Master Craftsman of Kingdom Keychains.</p>
-          <p>My faith and relationship with God are at the heart of Kingdom Keychains. This business is about more than making beautiful things. It is about sharing the love of Jesus and the message of redemption, restoration, and hope.</p>
-          <p>All glory belongs to God.</p>
+          <h2>Victoria Schwab</h2>
+          <p class="maker-role">Craftsman and Owner</p>
+          <p>At Kingdom Keychains, I create each piece with faith, love and purpose. My prayer is that these keychains remind you of God's love wherever you go.</p>
+          <p class="thank-you">Thank you for supporting my small business!</p>
         </div>
       </div>
-    </section>
-
-    <section id="contact" class="section contact-section">
-      <div class="section-heading">
-        <p class="eyebrow">STAY CONNECTED</p>
-        <h2>Contact</h2>
-        <p>We Would Love to Hear From You</p>
-      </div>
-      <div class="contact-content">
-        <p>Have a question about Kingdom Keychains? Reach out and connect with us.</p>
-        <a href="mailto:kingdomkeychains1987@gmail.com" class="contact-link">kingdomkeychains1987@gmail.com</a>
-        <p>You can also message Victoria Schwab through Facebook Messenger.</p>
-      </div>
+      <aside id="contact" class="maker-contact">
+        <h2>Stay Connected</h2>
+        <a href="https://www.kingdomkeychains.com" target="_blank" rel="noopener"><span class="contact-symbol">◎</span><span>kingdomkeychains.com</span></a>
+        <a href="mailto:kingdomkeychains1987@gmail.com"><span class="contact-symbol">✉</span><span>kingdomkeychains1987@gmail.com</span></a>
+        <a href="https://www.facebook.com/search/top?q=kingdom%20keychains" target="_blank" rel="noopener"><span class="contact-symbol">f</span><span>Kingdom Keychains on Facebook</span></a>
+      </aside>
     </section>
   </main>
 
   <footer class="main-footer">
-    <div class="footer-ornament">✦ ━━━━━━━━━ ✦</div>
-    <h2>KINGDOM KEYCHAINS</h2>
+    <div class="footer-crown" aria-hidden="true">♛</div>
+    <h2>Kingdom Keychains</h2>
     <p>The Only Chains Jesus Loves</p>
     <p class="footer-copyright">© <span id="currentYear"></span> Kingdom Keychains. All Rights Reserved.</p>
   </footer>
