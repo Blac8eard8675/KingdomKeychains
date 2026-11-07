@@ -230,3 +230,13 @@ main>section{
     aspect-ratio:2 / 3;
   }
 }
+
+
+/* Make the printed VIEW OUR PRODUCTS area reliably clickable on every screen size.
+   The transparent link covers the poster so small-screen scaling cannot misalign it. */
+.poster-products-hotspot{
+  inset:0;
+  width:100%;
+  height:100%;
+  border-radius:0;
+}
