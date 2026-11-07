@@ -23,17 +23,21 @@
       </nav>
     </header>
 
-    <section id="collections" class="section collections-section">
-      <div class="section-heading">
-        <p class="eyebrow">EXPLORE THE COLLECTIONS</p>
-        <h2>Our Collections</h2>
-        <p>Choose a collection to begin exploring.</p>
-      </div>
-      <div class="collection-grid" id="collectionGrid">
-        <button class="collection-card" data-category="Bracelets"><span>Bracelets</span></button>
-        <button class="collection-card" data-category="Chainlinks"><span>Chainlinks</span></button>
-        <button class="collection-card" data-category="Crosses"><span>Crosses</span></button>
-        <button class="collection-card" data-category="Ropes"><span>Ropes</span></button>
+    <section id="collections" class="section collections-section collection-art-section" aria-label="Browse Our Collection">
+      <div class="collection-art">
+        <img
+          src="images/Browse Our Collection.png"
+          alt="The Only Chains Jesus Loves — Browse Our Collection: Bracelets, Chainlinks, Crosses, and Rope."
+          width="1312"
+          height="1088"
+          fetchpriority="high"
+        >
+        <div class="collection-hotspots" id="collectionGrid" aria-label="Choose a collection">
+          <button class="collection-card collection-hotspot hotspot-bracelets" type="button" data-category="Bracelets" aria-label="Browse Bracelets"></button>
+          <button class="collection-card collection-hotspot hotspot-chainlinks" type="button" data-category="Chainlinks" aria-label="Browse Chainlinks"></button>
+          <button class="collection-card collection-hotspot hotspot-crosses" type="button" data-category="Crosses" aria-label="Browse Crosses"></button>
+          <button class="collection-card collection-hotspot hotspot-ropes" type="button" data-category="Ropes" aria-label="Browse Rope keychains"></button>
+        </div>
       </div>
     </section>
 
