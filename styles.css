@@ -308,3 +308,24 @@ main>section{
   width:100%;
   height:auto;
 }
+
+
+/* BRACELETS PAGE — THE ORIGINAL PNG IS THE PAGE ARTWORK */
+#albumsSection.bracelets-album-page{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0 0 58px;
+}
+#albumsSection.bracelets-album-page .category-art-banner{
+  width:100%;
+  max-width:1536px;
+  margin:0 auto 2rem;
+}
+#albumsSection.bracelets-album-page .section-heading,
+#albumsSection.bracelets-album-page #albumBackButton,
+#albumsSection.bracelets-album-page .album-grid{
+  width:min(1180px,92%);
+  margin-left:auto;
+  margin-right:auto;
+}
