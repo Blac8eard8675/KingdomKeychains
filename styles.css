@@ -160,3 +160,32 @@ body>*{position:relative;z-index:1}
 .product-card{background:linear-gradient(145deg,rgba(58,23,71,.72),rgba(24,3,34,.74))!important}
 .home-information{background:linear-gradient(145deg,rgba(50,17,65,.76),rgba(20,3,30,.78))!important}
 .main-footer{background:linear-gradient(180deg,rgba(33,5,47,.76),rgba(16,0,24,.86))!important}
+
+
+/* ACTUAL ORGANIC CLOUD TEXTURE — VISIBLE BEHIND ALL MAIN SITE SECTIONS */
+main{
+  position:relative;
+  isolation:isolate;
+}
+main:before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:0;
+  pointer-events:none;
+  background-image:url("clouds.svg");
+  background-size:100% 900px;
+  background-position:center top;
+  background-repeat:repeat-y;
+  opacity:.72;
+  mix-blend-mode:screen;
+}
+main>section{
+  position:relative;
+  z-index:1;
+}
+.master-hero .hero-sky{
+  background:
+    radial-gradient(ellipse at 50% 68%,rgba(255,205,126,.62),transparent 48%),
+    linear-gradient(180deg,rgba(37,14,57,.55),rgba(115,66,126,.32) 48%,rgba(221,143,103,.42) 78%,rgba(35,13,48,.68))!important;
+}
