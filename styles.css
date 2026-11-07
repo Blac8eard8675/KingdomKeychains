@@ -183,3 +183,50 @@ main>section{
     linear-gradient(180deg,rgba(37,14,57,.30),rgba(115,66,126,.12) 48%,rgba(221,143,103,.22) 78%,rgba(35,13,48,.38))!important;
   mix-blend-mode:screen;opacity:.92;
 }
+
+
+/* ORIGINAL KINGDOM KEYCHAINS POSTER — displayed as supplied */
+.master-hero.poster-hero{
+  width:min(100%,1024px);
+  min-height:0;
+  height:auto;
+  margin:0 auto;
+  padding:0;
+  display:block;
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:2 / 3;
+  border:0;
+  border-bottom:1px solid #d6ad55;
+  background:#21052f;
+  box-shadow:0 10px 36px #0009;
+}
+.poster-art{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:none;
+}
+.poster-products-hotspot{
+  position:absolute;
+  z-index:5;
+  left:24.5%;
+  top:28%;
+  width:51%;
+  height:3.5%;
+  display:block;
+  border-radius:999px;
+  background:transparent;
+  cursor:pointer;
+}
+.poster-products-hotspot:focus-visible{
+  outline:3px solid #fff0b3;
+  outline-offset:3px;
+  box-shadow:0 0 0 6px #21052f;
+}
+@media(max-width:620px){
+  .master-hero.poster-hero{
+    width:100%;
+    aspect-ratio:2 / 3;
+  }
+}
