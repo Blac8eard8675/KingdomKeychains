@@ -401,6 +401,9 @@ function showAlbumView(category, level, subcategory = "") {
 
     albumsSection.classList.remove("hidden");
 
+    const braceletsBanner = document.getElementById("braceletsCollectionBanner");
+    braceletsBanner?.classList.toggle("hidden", !(category === "Bracelets" && level === "root"));
+
     albumGrid.innerHTML = "";
 
     currentCategory = category;
