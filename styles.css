@@ -2,7 +2,7 @@
 :root{--purple:#21052f;--deep:#100018;--gold:#d6ad55;--bright:#f7dc91;--darkgold:#8f6424;--cream:#fff4d8;--soft:#e9d9b6;--serif:Georgia,"Times New Roman",serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--cream);font-family:var(--serif);background:radial-gradient(ellipse at 50% 0%,rgba(115,65,119,.55),transparent 48%),radial-gradient(ellipse at 15% 50%,rgba(79,38,91,.38),transparent 45%),linear-gradient(145deg,#170322,#290936 50%,#14021e);background-attachment:fixed}
+body{margin:0;color:var(--cream);font-family:var(--serif);background:#21052f url("images/royal-cloud-background.jpg") center center / cover fixed no-repeat}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 50% 15%,rgba(255,203,106,.10),transparent 35%),radial-gradient(ellipse at 50% 85%,rgba(174,113,183,.12),transparent 40%)}
 button,input,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:var(--bright);text-decoration:none}a:hover{color:#fff0bd}img{display:block;max-width:100%}.hidden{display:none!important}section{scroll-margin-top:30px}
 .site-header{width:100%;background:#17051f;box-shadow:0 8px 30px #0009}
