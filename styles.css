@@ -55,3 +55,59 @@ button,input,select{font:inherit}button,a{-webkit-tap-highlight-color:transparen
 .main-footer h2{margin:8px 0;color:var(--bright);letter-spacing:4px;text-shadow:0 0 14px #d6ad5566}.main-footer p{color:var(--soft)}.footer-copyright{font-size:.85rem;margin-top:24px}
 @media(max-width:850px){.collection-grid,.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.maker-content{grid-template-columns:1fr;max-width:600px}.maker-photo{max-width:420px;margin:auto}}
 @media(max-width:520px){.welcome-section{padding:44px 18px 28px}.section{padding:42px 15px}.collection-grid,.product-grid{gap:12px}.collection-card{min-height:115px;font-size:1.05rem}.product-controls{grid-template-columns:1fr;padding:14px}.love-reminder{padding-bottom:42px}.view-products-button{letter-spacing:2px}}
+
+
+/* REQUESTED HOME PAGE COMPOSITION */
+.site-header{
+  background:rgba(24,4,35,.84);
+  border-bottom:1px solid var(--gold);
+  padding:16px clamp(18px,4vw,58px);
+}
+.brand-lockup{display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:1500px;margin:auto}
+.brand-mark{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:13px;align-items:center;min-width:0;color:var(--bright)}
+.brand-crown{grid-row:1/3;font-size:clamp(2.8rem,5vw,4.2rem);line-height:1;text-shadow:0 0 16px #f7dc91}
+.brand-name{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.65rem,3.2vw,2.8rem);font-style:italic;letter-spacing:.4px;text-shadow:0 2px 3px #000,0 0 16px #d6ad5588}
+.brand-tagline{font-size:clamp(.78rem,1.5vw,1.08rem);font-style:italic;letter-spacing:1px;color:#f7dc91}
+.main-navigation{display:flex;align-items:center;justify-content:flex-end;gap:clamp(13px,2.5vw,36px);flex-wrap:wrap}
+.main-navigation a{color:var(--bright);font-size:clamp(.9rem,1.5vw,1.12rem);letter-spacing:1px;text-transform:uppercase}
+.main-navigation a:hover{color:#fff;text-shadow:0 0 12px #f7dc91}
+.main-navigation .nav-cross{font-size:2rem}
+.sunset-banner{width:100%;min-height:clamp(190px,25vw,330px);display:grid;place-items:center;overflow:hidden;border-bottom:2px solid var(--gold);background:linear-gradient(90deg,rgba(20,3,28,.12),rgba(20,3,28,.04),rgba(20,3,28,.18)),radial-gradient(ellipse at 50% 100%,#ffe18b 0%,#d87949 22%,#7a3c79 53%,#241033 100%)}
+.sunset-art{position:relative;width:100%;min-height:inherit;display:flex;align-items:center;justify-content:space-around;gap:20px;padding:28px clamp(16px,5vw,70px);background:linear-gradient(180deg,transparent 40%,rgba(23,4,34,.28))}
+.sunset-art h1{margin:0;color:#ffe8a0;text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,5.4vw,5rem);font-style:italic;letter-spacing:1px;text-shadow:0 3px 4px #32121c,0 0 25px #ffd56a}
+.sunset-crosses{color:#2a1420;font-size:clamp(2.5rem,7vw,6.2rem);text-shadow:0 2px 3px #ffc66a;white-space:nowrap}
+.sunset-thorns{color:#3b1a2c;font-size:clamp(2.6rem,6vw,5.5rem);text-shadow:0 2px 3px #ffc66a;white-space:nowrap}
+.category-ribbon{width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:2px solid var(--gold);background:linear-gradient(180deg,#f4d17b,#a87932 55%,#4b2c24);box-shadow:0 5px 18px #0008}
+.category-ribbon button{padding:16px 8px;color:#29152a;background:transparent;border:0;border-right:1px solid #fff1c477;font-family:Georgia,"Times New Roman",serif;font-size:clamp(.85rem,1.8vw,1.3rem);font-weight:bold;letter-spacing:clamp(0px,.3vw,2px);text-transform:uppercase;cursor:pointer;text-shadow:0 1px #fff2c5}
+.category-ribbon button:last-child{border-right:0}
+.category-ribbon button:hover{background:#ffe9a566;color:#17051f}
+.maker-contact-panel{width:min(1220px,94%);margin:clamp(30px,5vw,64px) auto;padding:clamp(20px,3vw,38px);display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:clamp(25px,4vw,55px);align-items:center;border:1px solid #d6ad55;background:rgba(25,4,36,.78);box-shadow:0 10px 35px #0008,inset 0 0 30px #d6ad5512}
+.maker-profile{display:grid;grid-template-columns:minmax(150px,.8fr) minmax(220px,1.2fr);gap:25px;align-items:center}
+.maker-profile>img{width:100%;max-height:340px;object-fit:cover;object-position:center top;padding:7px;border:1px solid var(--gold);background:#6b4a25;box-shadow:0 5px 20px #0009}
+.maker-bio h2,.maker-contact h2{margin:0 0 8px;color:var(--bright);font-size:clamp(1.6rem,3vw,2.4rem);font-style:italic}
+.maker-role{margin:0 0 15px;color:#e8bd65;font-weight:bold;letter-spacing:1.5px}
+.maker-bio p{color:var(--cream);line-height:1.8}
+.maker-bio .thank-you{margin-top:18px;color:var(--bright);font-weight:bold;font-style:italic}
+.maker-contact{padding-left:clamp(15px,3vw,38px);border-left:1px solid #d6ad5588}
+.maker-contact h2{margin-bottom:22px}
+.maker-contact a{display:flex;align-items:center;gap:13px;margin:16px 0;color:var(--cream);overflow-wrap:anywhere}
+.maker-contact a:hover{color:var(--bright)}
+.contact-symbol{flex:0 0 38px;width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:50%;color:var(--bright);font-size:1.3rem;font-weight:bold}
+.main-footer{padding:28px 20px 24px;background:rgba(18,2,27,.86);border-top:2px solid var(--gold)}
+.footer-crown{color:var(--bright);font-size:2.8rem;line-height:1;text-shadow:0 0 16px #f7dc91}
+.main-footer h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.6rem,3vw,2.5rem);font-style:italic;letter-spacing:1px;text-transform:none}
+.main-footer>p:not(.footer-copyright){color:var(--bright);font-style:italic;letter-spacing:1px}
+@media(max-width:760px){
+ .brand-lockup{flex-direction:column;gap:15px}
+ .brand-mark{align-self:flex-start}
+ .main-navigation{width:100%;justify-content:space-between;gap:10px}
+ .sunset-art{flex-direction:column;gap:5px}
+ .sunset-crosses,.sunset-thorns{font-size:2.5rem}
+ .maker-contact-panel{grid-template-columns:1fr}
+ .maker-contact{padding:24px 0 0;border-left:0;border-top:1px solid #d6ad5588}
+}
+@media(max-width:480px){
+ .maker-profile{grid-template-columns:1fr}
+ .maker-profile>img{max-width:260px;margin:auto}
+ .category-ribbon button{padding:13px 3px;font-size:.72rem;letter-spacing:0}
+}
