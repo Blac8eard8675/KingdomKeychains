@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kingdom Keychains — handmade reminders of the love of Jesus.">
+  <meta name="theme-color" content="#21052f">
+  <title>Our Products | Kingdom Keychains</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="products">
+  <main>
+    <header class="site-header">
+      <a class="brand-lockup" href="index.html" aria-label="Kingdom Keychains home">
+        <span class="brand-crown" aria-hidden="true">♛</span>
+        <span class="brand-copy">
+          <span class="brand-name">KINGDOM KEYCHAINS</span>
+          <span class="brand-tagline">The Only Chains Jesus Loves</span>
+        </span>
+      </a>
+      <nav class="main-navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+      </nav>
+    </header>
+
+    <section id="collections" class="section collections-section">
+      <div class="section-heading">
+        <p class="eyebrow">EXPLORE THE COLLECTIONS</p>
+        <h2>Our Collections</h2>
+        <p>Choose a collection to begin exploring.</p>
+      </div>
+      <div class="collection-grid" id="collectionGrid">
+        <button class="collection-card" data-category="Bracelets"><span>Bracelets</span></button>
+        <button class="collection-card" data-category="Chainlinks"><span>Chainlinks</span></button>
+        <button class="collection-card" data-category="Crosses"><span>Crosses</span></button>
+        <button class="collection-card" data-category="Ropes"><span>Ropes</span></button>
+      </div>
+    </section>
+
+    <section id="albumsSection" class="section albums-section hidden">
+      <div class="section-heading">
+        <p class="eyebrow">THE COLLECTION</p>
+        <h2 id="albumTitle">Collection</h2>
+        <p id="albumDescription"></p>
+      </div>
+      <button type="button" id="albumBackButton" class="back-button">← Back to Collections</button>
+      <div class="album-grid" id="albumGrid"></div>
+    </section>
+
+    <section id="products" class="section products-section hidden">
+      <div class="section-heading">
+        <p class="eyebrow">HANDMADE WITH PURPOSE</p>
+        <h2 id="productsTitle">All Products</h2>
+        <p id="productsDescription">Discover something special in every collection.</p>
+      </div>
+      <button type="button" id="productsBackButton" class="back-button hidden">← Back to Albums</button>
+      <div class="product-controls">
+        <input type="search" id="searchInput" placeholder="Search products..." aria-label="Search products">
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="all">All Categories</option><option value="Bracelets">Bracelets</option><option value="Chainlinks">Chainlinks</option><option value="Crosses">Crosses</option><option value="Ropes">Ropes</option>
+        </select>
+        <select id="subcategoryFilter" aria-label="Filter by subcategory"><option value="all">All Subcategories</option></select>
+        <select id="styleFilter" aria-label="Filter by style"><option value="all">All Styles</option></select>
+        <select id="colorFilter" aria-label="Filter by color"><option value="all">All Colors</option></select>
+        <select id="priceFilter" aria-label="Filter by price"><option value="all">All Prices</option><option value="5">$5</option><option value="10">$10</option><option value="15">$15</option></select>
+        <button type="button" id="clearFilters" class="clear-button">Clear Filters</button>
+      </div>
+      <p id="productCount" class="product-count"></p>
+      <div class="product-grid" id="productGrid"></div>
+      <p id="noProductsMessage" class="no-products hidden">No products match your selection.</p>
+    </section>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-crown" aria-hidden="true">♛</div>
+    <p class="footer-brand">KINGDOM KEYCHAINS</p>
+    <p>The Only Chains Jesus Loves</p>
+    <p><a href="https://www.facebook.com/search/top?q=kingdom%20keychains" target="_blank" rel="noopener">Contact Kingdom Keychains on Facebook</a></p>
+    <p class="footer-copyright">© <span id="currentYear"></span> Kingdom Keychains. All Rights Reserved.</p>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.querySelectorAll(".main-navigation a").forEach(link => {
+      link.addEventListener("click", event => {
+        const target = link.getAttribute("href");
+        if (target === "#collections" && typeof showCollections === "function") {
+          event.preventDefault(); showCollections();
+        }
+        if (target === "#products" && typeof showAllProducts === "function") {
+          event.preventDefault(); showAllProducts();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
