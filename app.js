@@ -806,6 +806,14 @@ function goBackToPreviousAlbum() {
    COLLECTION BUTTONS
    ========================================================= */
 
+const posterProductsHotspot = document.querySelector(".poster-products-hotspot");
+
+posterProductsHotspot?.addEventListener("click", event => {
+    event.preventDefault();
+    showCollections();
+});
+
+
 collectionGrid?.addEventListener("click", event => {
     const card = event.target.closest(".collection-card");
 
