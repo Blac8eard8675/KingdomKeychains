@@ -115,9 +115,10 @@ const products = [
     style: "Spiral",
     color: "Sparkle Yellow, Neon Orange",
     image: "Sparkle Yellow, Neon Orange.jpg"
-  }
+  },
   {
-   subcategory: "Elohim",
+    category: "Chainlinks",
+    subcategory: "Elohim",
     style: "Hexagon Stitch",
     color: "Baby Pink, Plum, Yellow",
     image: "Baby Pink, Plum, Yellow.jpg"
