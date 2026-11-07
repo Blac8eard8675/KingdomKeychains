@@ -115,3 +115,48 @@ body:before{
 .product-card{background:linear-gradient(145deg,rgba(58,23,71,.84),rgba(24,3,34,.86))}
 .home-information{background:linear-gradient(145deg,rgba(50,17,65,.82),rgba(20,3,30,.84));backdrop-filter:blur(5px)}
 .main-footer{background:linear-gradient(180deg,rgba(33,5,47,.86),rgba(16,0,24,.94))}
+
+/* VISIBLE CLOUD LAYERS — SITE-WIDE */
+html,body{background:#1a0828!important}
+body{position:relative;isolation:isolate;background:transparent!important}
+body:before{
+ content:"";position:fixed;inset:-12%;z-index:0;pointer-events:none;
+ background:
+  radial-gradient(ellipse 34% 9% at 8% 8%,rgba(201,157,214,.48),transparent 75%),
+  radial-gradient(ellipse 42% 12% at 42% 15%,rgba(119,75,151,.66),transparent 74%),
+  radial-gradient(ellipse 35% 10% at 86% 25%,rgba(193,135,183,.43),transparent 76%),
+  radial-gradient(ellipse 48% 13% at 18% 39%,rgba(113,70,147,.62),transparent 75%),
+  radial-gradient(ellipse 40% 12% at 74% 49%,rgba(191,127,166,.46),transparent 76%),
+  radial-gradient(ellipse 48% 14% at 35% 66%,rgba(108,68,145,.7),transparent 75%),
+  radial-gradient(ellipse 38% 11% at 88% 80%,rgba(184,124,169,.48),transparent 76%),
+  radial-gradient(ellipse 50% 14% at 14% 94%,rgba(112,70,148,.65),transparent 75%),
+  radial-gradient(ellipse 30% 8% at 54% 54%,rgba(255,184,105,.2),transparent 78%),
+  linear-gradient(180deg,#210d32 0%,#32123f 50%,#180523 100%);
+ filter:blur(10px);
+}
+body>*{position:relative;z-index:1}
+.master-hero{background:transparent!important}
+.hero-sky{
+ background:
+  radial-gradient(ellipse 42% 17% at 48% 70%,rgba(255,208,132,.82),transparent 76%),
+  radial-gradient(ellipse 46% 14% at 15% 34%,rgba(202,150,190,.58),transparent 76%),
+  radial-gradient(ellipse 52% 16% at 78% 26%,rgba(130,83,159,.78),transparent 76%),
+  radial-gradient(ellipse 45% 14% at 48% 8%,rgba(67,34,99,.92),transparent 78%),
+  radial-gradient(ellipse 55% 16% at 22% 83%,rgba(113,70,141,.7),transparent 76%),
+  radial-gradient(ellipse 48% 15% at 88% 88%,rgba(186,116,136,.55),transparent 76%),
+  linear-gradient(180deg,#251039 0%,#61376f 45%,#d48b69 75%,#281132 100%)!important;
+}
+.hero-sky:before{
+ background:
+  radial-gradient(ellipse at 20% 30%,rgba(255,231,197,.24),transparent 62%),
+  radial-gradient(ellipse at 75% 42%,rgba(39,13,61,.42),transparent 64%),
+  repeating-linear-gradient(172deg,transparent 0 27px,rgba(255,225,181,.11) 31px,transparent 39px)!important;
+ filter:blur(3px);
+}
+.site-header{background:linear-gradient(180deg,rgba(24,3,34,.78),rgba(37,8,50,.7))!important}
+.welcome-section,.love-reminder,.section{background:transparent!important}
+.collection-card,.album-card{background:radial-gradient(ellipse at 50% 0,rgba(96,59,104,.72),rgba(42,10,57,.62) 70%)!important}
+.product-controls{background:rgba(16,0,24,.64)!important}
+.product-card{background:linear-gradient(145deg,rgba(58,23,71,.72),rgba(24,3,34,.74))!important}
+.home-information{background:linear-gradient(145deg,rgba(50,17,65,.76),rgba(20,3,30,.78))!important}
+.main-footer{background:linear-gradient(180deg,rgba(33,5,47,.76),rgba(16,0,24,.86))!important}
