@@ -295,3 +295,16 @@ main>section{
 .hotspot-chainlinks{left:26.8%;top:77.9%;width:23.6%;height:16.3%}
 .hotspot-crosses{left:51.8%;top:77.9%;width:23.6%;height:16.3%}
 .hotspot-ropes{left:76.5%;top:77.9%;width:21.8%;height:16.3%}
+
+
+/* ORIGINAL BRACELETS ARTWORK — shown above the bracelet album choices */
+.category-art-banner{
+  width:min(100%,1536px);
+  margin:0 auto 2rem;
+  line-height:0;
+}
+.category-art-banner img{
+  display:block;
+  width:100%;
+  height:auto;
+}
