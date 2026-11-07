@@ -91,3 +91,27 @@ img{display:block;max-width:100%}.hidden{display:none!important}
 @media(max-width:900px){.collection-grid,.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.home-information{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-thorns{right:4%;bottom:13%}.hero-crosses{left:3%;bottom:12%}}
 @media(max-width:620px){.site-header{flex-direction:column;gap:10px;padding:12px}.main-navigation{justify-content:center;gap:18px}.main-navigation a{font-size:.76rem}.master-hero{min-height:470px}.hero-title-wrap{width:90%;padding-top:85px}.hero-crosses{width:25%;height:45%;left:1%;bottom:9%;opacity:.85}.hero-thorns{width:65px;height:65px;right:2%;bottom:13%;opacity:.85}.hero-crown{top:3%}.hero-overline{font-size:.62rem;letter-spacing:1.5px}.hero-title-wrap h1{font-size:clamp(2.4rem,12vw,4.5rem)}.hero-tagline{font-size:.9rem}.welcome-section{padding:42px 12px 20px}.love-reminder{padding-bottom:42px}.section{padding:42px 10px}.collection-grid,.product-grid{gap:11px}.collection-card{min-height:115px;padding:15px 8px}.collection-card span{font-size:.92rem;letter-spacing:1px}.product-controls{grid-template-columns:1fr;padding:14px}.home-information{grid-template-columns:1fr;width:90%;gap:20px;margin:35px auto 45px}.info-column,.maker-feature{padding:12px 8px}.portrait-frame{width:190px}.portrait-frame img{height:180px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* SITE-WIDE HEAVENLY CLOUD BACKDROP */
+html,body{min-height:100%;background:#1b0828}
+body{position:relative;isolation:isolate;background:transparent}
+body:before{
+  content:"";position:fixed;inset:-8%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 42% 16% at 12% 12%,rgba(179,119,190,.34),transparent 72%),
+    radial-gradient(ellipse 38% 18% at 78% 19%,rgba(126,76,151,.42),transparent 74%),
+    radial-gradient(ellipse 48% 17% at 48% 37%,rgba(173,112,171,.28),transparent 72%),
+    radial-gradient(ellipse 42% 16% at 15% 58%,rgba(119,74,151,.34),transparent 72%),
+    radial-gradient(ellipse 48% 18% at 84% 73%,rgba(164,104,158,.3),transparent 72%),
+    radial-gradient(ellipse 50% 18% at 44% 91%,rgba(112,68,145,.36),transparent 72%),
+    radial-gradient(ellipse 32% 10% at 52% 50%,rgba(255,190,112,.16),transparent 76%),
+    linear-gradient(180deg,#210d32 0%,#32123f 48%,#180523 100%);
+  background-size:100% 100%;filter:blur(18px);
+}
+.site-header{background:linear-gradient(180deg,rgba(24,3,34,.88),rgba(37,8,50,.82))}
+.welcome-section,.love-reminder,.section{background:transparent}
+.collection-card,.album-card{background:radial-gradient(ellipse at 50% 0,rgba(96,59,104,.82),rgba(42,10,57,.78) 70%)}
+.product-controls{background:rgba(16,0,24,.72);backdrop-filter:blur(5px)}
+.product-card{background:linear-gradient(145deg,rgba(58,23,71,.84),rgba(24,3,34,.86))}
+.home-information{background:linear-gradient(145deg,rgba(50,17,65,.82),rgba(20,3,30,.84));backdrop-filter:blur(5px)}
+.main-footer{background:linear-gradient(180deg,rgba(33,5,47,.86),rgba(16,0,24,.94))}
