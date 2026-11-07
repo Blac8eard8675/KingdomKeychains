@@ -366,7 +366,10 @@ function showCollections() {
 
     collectionsSection?.classList.remove("hidden");
 
-    scrollToTop();
+    collectionsSection?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
 
 
