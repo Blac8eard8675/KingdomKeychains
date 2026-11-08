@@ -363,6 +363,7 @@ function sortProductCardsAlphabetically() {
 
 function showCollections() {
     hideAllSections();
+    document.body.classList.remove("chainlinks-sunset-background");
 
     collectionsSection?.classList.remove("hidden");
 
@@ -403,10 +404,12 @@ function showAlbumView(category, level, subcategory = "") {
 
     const braceletsBanner = document.getElementById("braceletsCollectionBanner");
     const chainlinksBanner = document.getElementById("chainlinksCollectionBanner");
-    const chainlinksAlbumArt = document.getElementById("chainlinksAlbumArt");
     braceletsBanner?.classList.toggle("hidden", !(category === "Bracelets" && level === "root"));
     chainlinksBanner?.classList.toggle("hidden", !(category === "Chainlinks" && level === "root"));
-    chainlinksAlbumArt?.classList.toggle("hidden", category !== "Chainlinks" || level === "root");
+    document.body.classList.toggle(
+        "chainlinks-sunset-background",
+        category === "Chainlinks" && level !== "root"
+    );
     albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("chainlinks-album-page", category === "Chainlinks" && level === "root");
@@ -620,7 +623,10 @@ function openProducts(category, subcategory = "", style = "") {
     if (!productsSection) return;
 
     productsSection.classList.remove("hidden");
-    document.getElementById("chainlinksSubcategoryArt")?.classList.toggle("hidden", category !== "Chainlinks");
+    document.body.classList.toggle(
+        "chainlinks-sunset-background",
+        category === "Chainlinks"
+    );
 
     productsTitle.textContent =
         style || subcategory || category;
@@ -779,6 +785,7 @@ function clearFilters() {
 
 function showAllProducts() {
     previousAlbumView = null;
+    document.body.classList.remove("chainlinks-sunset-background");
 
     hideAllSections();
 
@@ -933,6 +940,6 @@ braceletsWordLink?.addEventListener("click", () => {
 const chainlinksWordLink = document.getElementById("chainlinksWordLink");
 chainlinksWordLink?.addEventListener("click", () => {
     albumsSection?.classList.add("chainlinks-entered");
-    document.getElementById("chainlinksAlbumArt")?.classList.remove("hidden");
+    document.body.classList.add("chainlinks-sunset-background");
     albumTitle?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
