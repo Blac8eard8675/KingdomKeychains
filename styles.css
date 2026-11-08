@@ -439,13 +439,13 @@ main>section{
 }
 
 
-/* CHAINLINKS SUNSET PHOTO — FULL PAGE BACKGROUND, NOT A BANNER */
-body.chainlinks-sunset-background:before{
+/* CHAINLINKS SUNSET PHOTO — REAL PAGE BACKGROUND, NEVER A BANNER */
+body.chainlinks-sunset-background{
   background:
     linear-gradient(rgba(22,5,30,.34),rgba(22,5,30,.48)),
-    url("images/kingdom-sunset-photo-crop.png") center center / cover no-repeat;
-  filter:none;
+    url("images/kingdom-sunset-photo-crop.png") center center / cover fixed no-repeat !important;
 }
+body.chainlinks-sunset-background:before,
 body.chainlinks-sunset-background main:before{
-  display:none;
+  display:none !important;
 }
