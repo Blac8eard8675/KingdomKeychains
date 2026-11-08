@@ -50,6 +50,7 @@ const nestedAlbums = {
     Bracelets: {
         "God's Knot Dead": [
             "DNA Twist",
+            "Elohim Stitch",
             "God's Knot",
             "Spiral"
         ]
@@ -57,8 +58,7 @@ const nestedAlbums = {
 
     Chainlinks: {
         "Elohim": [
-            "Hexagon Stitch",
-            "Spiral Stitch"
+            "Hexagon Stitch"
         ],
 
         "Jesus Fish": [
