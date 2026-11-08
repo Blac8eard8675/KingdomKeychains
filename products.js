@@ -180,81 +180,81 @@ const products = [
     image: "Purple, Blue Gray, Cerulean Blue.jpg"
   },
 
-  // CHAINLINKS - ELOHIM - SPIRAL STITCH
+  // BRACELETS - GOD'S KNOT DEAD - ELOHIM STITCH
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Apple Green, Plum, Gold",
     image: "Apple Green, Plum, Gold.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Black, Hot Pink, Fuchsia",
     image: "Black, Hot Pink, Fuchsia.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Glow Red, Glow Purple, Glow Blue",
     image: "Glow Red, Glow Purple, Glow Blue.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Light Blue, Grape, White",
     image: "Light Blue, Grape, White.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Neon Orange, Neon Yellow, Sparkle Dark Blue",
     image: "Neon Orange, Neon Yellow, Sparkle Dark Blue.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Pear Green, Shiny Purple, Peach",
     image: "Pear Green, Shiny Purple, Peach.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Shiny Blue, Pink, Wildberry",
     image: "Shiny Blue, Pink, Wildberry.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Shiny Purple, Pink, Gray",
     image: "Shiny Purple, Pink, Gray.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Shiny Purple, Shiny Blue, Lime Green",
     image: "Shiny Purple, Shiny Blue, Lime Green.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Sparkle Emerald Green, Sparkle Orange, Shiny Yellow",
     image: "Sparkle Emerald Green, Sparkle Orange, Shiny Yellow.jpg"
   },
   {
-    category: "Chainlinks",
-    subcategory: "Elohim",
-    style: "Spiral Stitch",
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "Elohim Stitch",
     color: "Sparkle Sapphire Blue, Sparkle Rose Pink, Sparkle Orange",
     image: "Sparkle Sapphire Blue, Sparkle Rose Pink, Sparkle Orange.jpg"
   },
