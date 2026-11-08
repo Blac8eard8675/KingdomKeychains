@@ -372,3 +372,29 @@ main>section{
   outline-offset:3px;
   box-shadow:0 0 0 5px #21052f;
 }
+
+
+/* CHAINLINKS PAGE — USE THE SUPPLIED CATEGORY ART ABOVE THE EXISTING ALBUMS */
+#albumsSection.chainlinks-album-page{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0 0 58px;
+}
+.chainlinks-page-art{
+  width:min(100%,1536px);
+  margin:0 auto 2rem;
+  line-height:0;
+}
+.chainlinks-page-art img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+#albumsSection.chainlinks-album-page .section-heading,
+#albumsSection.chainlinks-album-page #albumBackButton,
+#albumsSection.chainlinks-album-page #albumGrid{
+  width:min(1180px,92%);
+  margin-left:auto;
+  margin-right:auto;
+}
