@@ -408,6 +408,7 @@ function showAlbumView(category, level, subcategory = "") {
     albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("chainlinks-album-page", category === "Chainlinks" && level === "root");
+    albumsSection?.classList.remove("chainlinks-entered");
 
     albumGrid.innerHTML = "";
 
@@ -924,4 +925,10 @@ document.addEventListener("DOMContentLoaded", () => {
 const braceletsWordLink = document.getElementById("braceletsWordLink");
 braceletsWordLink?.addEventListener("click", () => {
     showAlbumView("Bracelets", "styles", "God's Knot Dead");
+});
+
+const chainlinksWordLink = document.getElementById("chainlinksWordLink");
+chainlinksWordLink?.addEventListener("click", () => {
+    albumsSection?.classList.add("chainlinks-entered");
+    albumTitle?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
