@@ -407,18 +407,13 @@ function showAlbumView(category, level, subcategory = "") {
 
     albumsSection.classList.remove("hidden");
 
-    const braceletsBanner = document.getElementById("braceletsCollectionBanner");
-    const chainlinksBanner = document.getElementById("chainlinksCollectionBanner");
-    braceletsBanner?.classList.toggle("hidden", !(category === "Bracelets" && level === "root"));
-    chainlinksBanner?.classList.toggle("hidden", !(category === "Chainlinks" && level === "root"));
     document.body.classList.toggle(
         "chainlinks-sunset-background",
-        category === "Chainlinks" &&
-            (level !== "root" || !chainlinksBanner)
+        category === "Chainlinks"
     );
     document.body.classList.toggle(
         "bracelets-sunset-background",
-        category === "Bracelets" && level !== "root"
+        category === "Bracelets"
     );
     document.body.classList.toggle(
         "crosses-sunset-background",
@@ -428,14 +423,6 @@ function showAlbumView(category, level, subcategory = "") {
         "ropes-sunset-background",
         category === "Ropes"
     );
-    document.body.classList.toggle(
-        "ropes-sunset-background",
-        category === "Ropes"
-    );
-    albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
-    albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
-    albumsSection?.classList.toggle("chainlinks-album-page", category === "Chainlinks" && level === "root");
-    albumsSection?.classList.remove("chainlinks-entered");
 
     albumGrid.innerHTML = "";
 
@@ -967,14 +954,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-const braceletsWordLink = document.getElementById("braceletsWordLink");
-braceletsWordLink?.addEventListener("click", () => {
-    showAlbumView("Bracelets", "styles", "God's Knot Dead");
-});
-
-const chainlinksWordLink = document.getElementById("chainlinksWordLink");
-chainlinksWordLink?.addEventListener("click", () => {
-    albumsSection?.classList.add("chainlinks-entered");
-    document.body.classList.add("chainlinks-sunset-background");
-    albumTitle?.scrollIntoView({ behavior: "smooth", block: "start" });
-});
