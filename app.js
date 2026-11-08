@@ -363,7 +363,7 @@ function sortProductCardsAlphabetically() {
 
 function showCollections() {
     hideAllSections();
-    document.body.classList.remove("chainlinks-sunset-background");
+    document.body.classList.remove("chainlinks-sunset-background", "bracelets-sunset-background");
 
     collectionsSection?.classList.remove("hidden");
 
@@ -410,6 +410,10 @@ function showAlbumView(category, level, subcategory = "") {
         "chainlinks-sunset-background",
         category === "Chainlinks" &&
             (level !== "root" || !chainlinksBanner)
+    );
+    document.body.classList.toggle(
+        "bracelets-sunset-background",
+        category === "Bracelets" && level !== "root"
     );
     albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
@@ -627,6 +631,10 @@ function openProducts(category, subcategory = "", style = "") {
     document.body.classList.toggle(
         "chainlinks-sunset-background",
         category === "Chainlinks"
+    );
+    document.body.classList.toggle(
+        "bracelets-sunset-background",
+        category === "Bracelets"
     );
 
     productsTitle.textContent =
