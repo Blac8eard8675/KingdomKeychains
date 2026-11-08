@@ -460,3 +460,14 @@ body.bracelets-sunset-background:before,
 body.bracelets-sunset-background main:before{
   display:none !important;
 }
+
+/* CROSSES SUNSET PHOTO — SAME FULL PAGE BACKGROUND, NOT A BANNER */
+body.crosses-sunset-background{
+  background:
+    linear-gradient(rgba(22,5,30,.34),rgba(22,5,30,.48)),
+    url("images/kingdom-sunset-photo-crop.png") center center / cover fixed no-repeat !important;
+}
+body.crosses-sunset-background:before,
+body.crosses-sunset-background main:before{
+  display:none !important;
+}
