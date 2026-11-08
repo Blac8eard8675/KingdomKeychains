@@ -366,7 +366,8 @@ function showCollections() {
     document.body.classList.remove(
         "chainlinks-sunset-background",
         "bracelets-sunset-background",
-        "crosses-sunset-background"
+        "crosses-sunset-background",
+        "ropes-sunset-background"
     );
 
     collectionsSection?.classList.remove("hidden");
@@ -422,6 +423,14 @@ function showAlbumView(category, level, subcategory = "") {
     document.body.classList.toggle(
         "crosses-sunset-background",
         category === "Crosses"
+    );
+    document.body.classList.toggle(
+        "ropes-sunset-background",
+        category === "Ropes"
+    );
+    document.body.classList.toggle(
+        "ropes-sunset-background",
+        category === "Ropes"
     );
     albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
@@ -809,7 +818,8 @@ function showAllProducts() {
     document.body.classList.remove(
         "chainlinks-sunset-background",
         "bracelets-sunset-background",
-        "crosses-sunset-background"
+        "crosses-sunset-background",
+        "ropes-sunset-background"
     );
 
     hideAllSections();
