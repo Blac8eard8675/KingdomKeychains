@@ -402,9 +402,12 @@ function showAlbumView(category, level, subcategory = "") {
     albumsSection.classList.remove("hidden");
 
     const braceletsBanner = document.getElementById("braceletsCollectionBanner");
+    const chainlinksBanner = document.getElementById("chainlinksCollectionBanner");
     braceletsBanner?.classList.toggle("hidden", !(category === "Bracelets" && level === "root"));
+    chainlinksBanner?.classList.toggle("hidden", !(category === "Chainlinks" && level === "root"));
     albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
+    albumsSection?.classList.toggle("chainlinks-album-page", category === "Chainlinks" && level === "root");
 
     albumGrid.innerHTML = "";
 
