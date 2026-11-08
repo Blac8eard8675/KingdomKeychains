@@ -406,7 +406,7 @@ function showAlbumView(category, level, subcategory = "") {
     const chainlinksAlbumArt = document.getElementById("chainlinksAlbumArt");
     braceletsBanner?.classList.toggle("hidden", !(category === "Bracelets" && level === "root"));
     chainlinksBanner?.classList.toggle("hidden", !(category === "Chainlinks" && level === "root"));
-    chainlinksAlbumArt?.classList.toggle("hidden", category !== "Chainlinks");
+    chainlinksAlbumArt?.classList.toggle("hidden", category !== "Chainlinks" || level === "root");
     albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("chainlinks-album-page", category === "Chainlinks" && level === "root");
@@ -933,5 +933,6 @@ braceletsWordLink?.addEventListener("click", () => {
 const chainlinksWordLink = document.getElementById("chainlinksWordLink");
 chainlinksWordLink?.addEventListener("click", () => {
     albumsSection?.classList.add("chainlinks-entered");
+    document.getElementById("chainlinksAlbumArt")?.classList.remove("hidden");
     albumTitle?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
