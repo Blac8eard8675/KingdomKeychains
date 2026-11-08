@@ -482,3 +482,43 @@ body.ropes-sunset-background:before,
 body.ropes-sunset-background main:before{
   display:none !important;
 }
+
+
+/* MY RESURRECTION STORY — CLOSING TESTIMONY PAGE */
+body.testimony-page{
+  min-height:100vh;
+  color:#fff2d2;
+  background:
+    linear-gradient(rgba(24,5,34,.48),rgba(24,5,34,.62)),
+    url("images/kingdom-sunset-photo-crop.png") center center / cover fixed no-repeat !important;
+}
+body.testimony-page:before,
+body.testimony-page main:before{display:none!important}
+body.testimony-page main{width:100%;max-width:none;padding:clamp(22px,5vw,64px) 16px 54px}
+.testimony-shell{width:min(980px,100%);margin:0 auto}
+.testimony-top{text-align:center;margin:0 auto 28px}
+.testimony-kicker{margin:0 0 10px;color:#ffe6a0;font-size:.82rem;letter-spacing:4px;text-transform:uppercase}
+.testimony-title{margin:0;color:#ffe6a0;font-size:clamp(2.2rem,6vw,4.8rem);line-height:1.05;letter-spacing:2px;text-shadow:0 3px 5px #16051d,0 0 22px #e5b95f}
+.testimony-subtitle{margin:13px 0 0;color:#fff0c4;font-size:clamp(1rem,2.4vw,1.35rem);font-style:italic;letter-spacing:1px}
+.testimony-owner{display:flex;align-items:center;justify-content:center;gap:24px;margin:30px auto 28px;padding:20px;border:1px solid rgba(255,224,151,.72);background:linear-gradient(145deg,rgba(44,15,57,.82),rgba(19,4,29,.86));box-shadow:0 12px 32px #0008}
+.testimony-owner img{width:clamp(118px,23vw,205px);aspect-ratio:4/5;object-fit:cover;object-position:center 28%;border:3px solid #e8c16d;box-shadow:0 4px 18px #0009}
+.testimony-owner-copy{text-align:left}
+.testimony-owner-copy h2{margin:0 0 8px;color:#ffe6a0;font-size:clamp(1.45rem,3vw,2.1rem)}
+.testimony-owner-copy p{margin:5px 0;color:#f6dfaa;letter-spacing:1px}
+.testimony-card{padding:clamp(20px,4vw,42px);border:1px solid rgba(255,224,151,.78);background:linear-gradient(145deg,rgba(43,14,56,.88),rgba(17,3,27,.9));box-shadow:0 15px 40px #0009}
+.testimony-business-card{width:min(520px,100%);margin:0 auto 30px;padding:8px;background:rgba(255,239,194,.12);border:1px solid #d9b45f;box-shadow:0 7px 22px #0008}
+.testimony-business-card img{display:block;width:100%;height:auto}
+.testimony-section-title{margin:0 0 22px;text-align:center;color:#ffe6a0;font-size:clamp(1.8rem,4vw,2.8rem);text-shadow:0 2px 4px #000}
+.testimony-section-title:after{content:"✦ ━━━━━ ✦";display:block;margin-top:12px;color:#dcb35e;font-size:1rem;letter-spacing:4px}
+.testimony-copy h3{margin:30px 0 9px;color:#ffe6a0;font-size:1.25rem;letter-spacing:.5px}
+.testimony-copy p{margin:0 0 16px;color:#fff2d8;font-size:clamp(1rem,1.8vw,1.1rem);line-height:1.85}
+.testimony-emphasis{margin:28px 0 12px!important;text-align:center;color:#ffe6a0!important;font-size:clamp(1.2rem,3vw,1.7rem)!important;font-weight:bold;letter-spacing:1px;line-height:1.55!important;text-shadow:0 2px 5px #000}
+.testimony-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:28px auto 0}
+.testimony-actions a{display:inline-block;padding:12px 22px;border:1px solid #f5d98d;color:#2a1420;background:linear-gradient(180deg,#fff0b3,#c99a43);font-weight:bold;letter-spacing:1px;box-shadow:0 5px 16px #0007}
+.testimony-actions a:hover{filter:brightness(1.12);color:#1b0a20}
+@media(max-width:620px){
+  .testimony-owner{flex-direction:column;text-align:center}
+  .testimony-owner-copy{text-align:center}
+  .testimony-owner img{width:155px}
+  .testimony-card{padding:20px 17px}
+}
