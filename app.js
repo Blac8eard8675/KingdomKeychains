@@ -421,7 +421,7 @@ function showAlbumView(category, level, subcategory = "") {
     );
     document.body.classList.toggle(
         "crosses-sunset-background",
-        category === "Crosses" && level !== "root"
+        category === "Crosses"
     );
     albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
