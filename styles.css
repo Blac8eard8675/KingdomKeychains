@@ -439,14 +439,13 @@ main>section{
 }
 
 
-/* SUNSET ART ABOVE THE FIVE CHAINLINKS SUBCATEGORY ALBUMS */
-.chainlinks-subcategory-art{
-  width:min(100%,1536px);
-  margin:0 auto 2rem;
-  line-height:0;
+/* CHAINLINKS SUNSET PHOTO — FULL PAGE BACKGROUND, NOT A BANNER */
+body.chainlinks-sunset-background:before{
+  background:
+    linear-gradient(rgba(22,5,30,.34),rgba(22,5,30,.48)),
+    url("images/kingdom-sunset-photo-crop.png") center center / cover no-repeat;
+  filter:none;
 }
-.chainlinks-subcategory-art img{
-  display:block;
-  width:100%;
-  height:auto;
+body.chainlinks-sunset-background main:before{
+  display:none;
 }
