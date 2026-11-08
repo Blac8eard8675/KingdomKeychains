@@ -471,3 +471,14 @@ body.crosses-sunset-background:before,
 body.crosses-sunset-background main:before{
   display:none !important;
 }
+
+/* ROPES SUNSET PHOTO — SAME FULL PAGE BACKGROUND, NOT A BANNER */
+body.ropes-sunset-background{
+  background:
+    linear-gradient(rgba(22,5,30,.34),rgba(22,5,30,.48)),
+    url("images/kingdom-sunset-photo-crop.png") center center / cover fixed no-repeat !important;
+}
+body.ropes-sunset-background:before,
+body.ropes-sunset-background main:before{
+  display:none !important;
+}
