@@ -437,3 +437,17 @@ main>section{
 #albumsSection.chainlinks-album-page.chainlinks-entered .chainlinks-page-art{
   margin-bottom:2rem;
 }
+
+
+/* SUNSET ARTWORK — DISPLAY AT THE TOP OF EVERY PRODUCT LISTING PAGE */
+.product-page-art{
+  width:min(100%,1536px);
+  margin:0 auto 2rem;
+  line-height:0;
+}
+.product-page-art img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
