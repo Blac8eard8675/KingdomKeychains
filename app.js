@@ -408,7 +408,8 @@ function showAlbumView(category, level, subcategory = "") {
     chainlinksBanner?.classList.toggle("hidden", !(category === "Chainlinks" && level === "root"));
     document.body.classList.toggle(
         "chainlinks-sunset-background",
-        category === "Chainlinks" && level !== "root"
+        category === "Chainlinks" &&
+            (level !== "root" || !chainlinksBanner)
     );
     albumsSection?.classList.toggle("bracelets-album-page", category === "Bracelets" && level === "root");
     albumsSection?.classList.toggle("bracelets-image-only", category === "Bracelets" && level === "root");
