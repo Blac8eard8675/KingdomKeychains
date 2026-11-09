@@ -322,7 +322,10 @@ function renderProducts() {
         card.appendChild(subcategory);
 
         if (
-            product.subcategory === "Jesus Fish" &&
+            (
+                product.subcategory === "Jesus Fish" ||
+                (product.category === "Bracelets" && product.subcategory === "God's Knot Dead")
+            ) &&
             product.style
         ) {
             const style = document.createElement("p");
