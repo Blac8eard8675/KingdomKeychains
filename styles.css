@@ -19,6 +19,13 @@ img{display:block;max-width:100%}.hidden{display:none!important}
 .main-navigation{display:flex;gap:clamp(14px,2.5vw,34px);align-items:center;flex-wrap:wrap}
 .main-navigation a{font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;color:#f6d98f}
 .main-navigation a:hover{color:#fff;text-shadow:0 0 12px #f5d17b}
+.quick-search-toggle{display:inline-grid;place-items:center;width:36px;height:36px;padding:6px;border:1px solid rgba(246,217,143,.65);border-radius:50%;background:rgba(214,173,85,.08);color:#f6d98f;cursor:pointer;transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.quick-search-toggle:hover,.quick-search-toggle:focus-visible{background:rgba(214,173,85,.2);box-shadow:0 0 12px #f5d17b66;transform:scale(1.06);outline:none}
+.quick-search-toggle svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.quick-search-panel{position:absolute;z-index:20;top:calc(100% + 10px);right:clamp(18px,5vw,76px);display:flex;gap:8px;width:min(360px,calc(100vw - 36px));padding:10px;border:1px solid #d6ad55;border-radius:12px;background:linear-gradient(145deg,#321141,#160321);box-shadow:0 10px 28px #000b}
+.quick-search-panel input{flex:1;min-width:0;padding:11px 12px;border:1px solid #b58a43;border-radius:7px;background:#fff;color:#24132b;font:inherit}
+.quick-search-panel button{padding:10px 14px;border:1px solid #f7dc91;border-radius:7px;background:linear-gradient(135deg,#f7dc91,#c18a36);color:#28122e;font-weight:700;cursor:pointer}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .master-hero{position:relative;isolation:isolate;min-height:clamp(440px,57vw,720px);display:grid;place-items:center;overflow:hidden;text-align:center;border-bottom:2px solid #d6ad55;background:linear-gradient(180deg,#39164f 0%,#6c376c 28%,#d47b55 56%,#f0b66b 73%,#32153c 100%)}
 .hero-sky{position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 65%,#fff0a6 0,rgba(255,197,111,.76) 12%,rgba(220,119,89,.55) 30%,transparent 59%),radial-gradient(ellipse at 50% 0,#190626 0,transparent 66%),linear-gradient(180deg,#28103d 0%,#743e78 40%,#e19a68 72%,#271031 100%)}
 .hero-sky:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(165deg,transparent 0 42px,rgba(255,220,157,.09) 44px,transparent 49px);mask-image:linear-gradient(180deg,#000,transparent 76%)}
