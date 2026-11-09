@@ -316,13 +316,6 @@ function renderProducts() {
 
         subcategory.textContent = product.subcategory || "";
 
-        if (product.label) {
-            const label = document.createElement("p");
-            label.className = "product-label";
-            label.textContent = product.label;
-            card.appendChild(label);
-        }
-
         card.appendChild(image);
         card.appendChild(color);
         card.appendChild(category);
