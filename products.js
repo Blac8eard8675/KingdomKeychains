@@ -1636,8 +1636,8 @@ const products = [
     category: "Crosses",
     subcategory: "Healer",
     style: "",
-    color: "Hot Pink, Lemon Yellow, Light Blue",
-    image: "Hot Pink, Lemon Yellow, Light Blue.jpg"
+    color: "Hot Pink, Plum, Lemon Yellow, Light Blue",
+    image: "Hot Pink, Plum, Lemon Yellow, Light Blue.jpg"
   },
   {
     category: "Crosses",
