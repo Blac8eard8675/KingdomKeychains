@@ -1573,8 +1573,8 @@ const products = [
     category: "Crosses",
     subcategory: "Healer",
     style: "",
-    color: "Glow Blue, Glow Red, Glow White",
-    image: "Glow Blue, Glow Red, Glow White.jpg"
+    color: "Glow Blue, Glow White, Glow Red",
+    image: "Glow Blue, Glow White, Glow Red.jpg"
   },
   {
     category: "Crosses",
