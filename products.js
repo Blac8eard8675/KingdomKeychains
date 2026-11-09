@@ -64,7 +64,7 @@ const products = [
     category: "Bracelets",
     subcategory: "God's Knot Dead",
     style: "Spiral",
-    color: "Maroon, Shiny Shiny Sapphire Blue",
+    color: "Maroon, Shiny Sapphire Blue",
     image: "Maroon, Shiny Sapphire Blue.jpg"
   },
   {
