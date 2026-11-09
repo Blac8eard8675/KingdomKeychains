@@ -2403,7 +2403,7 @@ const products = [
     subcategory: "DNA Rope",
     style: "",
     color: "Sparkle Maroon, Shiny Silver",
-    image: "Sparkle Maroon, Shiny Silver.jpg"
+    image: "Rope, Sparkle Maroon, Shiny Silver.jpg"
   },
   {
     category: "Ropes",
