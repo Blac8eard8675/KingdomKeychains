@@ -1744,7 +1744,7 @@ const products = [
     subcategory: "Healer",
     style: "",
     color: "Shiny Red, Sparkle Red, Black",
-    image: "Shiny Red, Sparkle Red, Black.jpg"
+    image: "Sparkle Red, Glow Red, Black.jpg"
   },
   {
     category: "Crosses",
