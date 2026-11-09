@@ -362,10 +362,10 @@ const products = [
   {
     category: "Chainlinks",
     subcategory: "Holy Spirit Chainlinks",
-    label: "HOLY SPIRIT CHAINLINK",
+    label: "LINK",
     style: "",
     color: "Neon Orange, Lime Green, Shiny Sapphire Blue",
-    image: "Neon Orange, Lime Green, Shiny Sapphire Blue.jpg"
+    image: "Link, Neon Orange, Lime Green, Shiny Sapphire Blue.jpg"
   },
   {
     category: "Chainlinks",
@@ -1913,7 +1913,7 @@ const products = [
   {
     category: "Crosses",
     subcategory: "Holy Spirit Cross",
-    label: "HOLY SPIRIT CROSS",
+    label: "CROSS",
     style: "",
     color: "Neon Orange, Lime Green, Shiny Sapphire Blue",
     image: "Neon Orange, Lime Green, Shiny Sapphire Blue.jpg"
@@ -2589,10 +2589,10 @@ const products = [
   {
     category: "Ropes",
     subcategory: "Holy Spirit Rope",
-    label: "HOLY SPIRIT ROPE",
+    label: "ROPE",
     style: "",
     color: "Neon Orange, Lime Green, Shiny Sapphire Blue",
-    image: "Neon Orange, Lime Green, Shiny Sapphire Blue.jpg"
+    image: "Rope, Neon Orange, Lime Green, Shiny Sapphire Blue.jpg"
   },
   {
     category: "Ropes",
