@@ -1959,7 +1959,7 @@ const products = [
     subcategory: "Holy Spirit Cross",
     style: "",
     color: "Wildberry, Pink, Sparkle Dark Blue",
-    image: "Wildberry, Pink, Sparkle Dark Blue.jpg"
+    image: "Cross, Wildberry, Pink, Sparkle Dark Blue.jpg"
   },
 
     
