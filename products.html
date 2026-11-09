@@ -20,7 +20,18 @@
       </a>
       <nav class="main-navigation" aria-label="Main navigation">
         <a href="index.html">Home</a>
+        <button type="button" class="quick-search-toggle" id="quickSearchToggle" aria-label="Open quick product search" aria-expanded="false" aria-controls="quickSearchPanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+            <path d="m16 16 5 5"></path>
+          </svg>
+        </button>
       </nav>
+      <form class="quick-search-panel hidden" id="quickSearchPanel" role="search">
+        <label class="visually-hidden" for="quickSearchInput">Search Kingdom Keychains products</label>
+        <input type="search" id="quickSearchInput" placeholder="Search colors or products..." autocomplete="off">
+        <button type="submit" aria-label="Search products">Search</button>
+      </form>
     </header>
 
     <section id="collections" class="section collections-section collection-art-section" aria-label="Browse Our Collection">
