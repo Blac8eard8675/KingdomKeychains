@@ -682,6 +682,7 @@ const products = [
   {
     category: "Chainlinks",
     subcategory: "Medium Chainlinks",
+    label: "LINK",
     style: "",
     color: "Blue, Shiny Lime Green",
     image: "Blue, Shiny Lime Green.jpg"
@@ -789,7 +790,7 @@ const products = [
     subcategory: "Medium Chainlinks",
     style: "",
     color: "Pine Green, Shiny Orange",
-    image: "Pine Green, Shiny Orange.jpg"
+    image: "Link, Pine Green, Shiny Orange.jpg"
   },
   {
     category: "Chainlinks",
@@ -2027,6 +2028,7 @@ const products = [
   {
     category: "Crosses",
     subcategory: "Spiral Cross",
+    label: "CROSS",
     style: "",
     color: "Dark Purple, Shiny Red, Gold",
     image: "Dark Purple, Shiny Red, Gold.jpg"
@@ -2071,7 +2073,7 @@ const products = [
     subcategory: "Spiral Cross",
     style: "",
     color: "Pine Green, Shiny Orange",
-    image: "Pine Green, Shiny Orange.jpg"
+    image: "Cross, Pine Green, Shiny Orange.jpg"
   },
   {
     category: "Crosses",
@@ -2650,6 +2652,7 @@ const products = [
   {
     category: "Ropes",
     subcategory: "Spiral Rope",
+    label: "ROPE",
     style: "",
     color: "Black, White, Neon Yellow, Red",
     image: "Black, White, Neon Yellow, Red.jpg"
@@ -2750,7 +2753,7 @@ const products = [
     subcategory: "Spiral Rope",
     style: "",
     color: "Pine Green, Shiny Orange",
-    image: "Pine Green, Shiny Orange.jpg"
+    image: "Spiral, Pine Green, Shiny Orange .jpg"
   },
   {
     category: "Ropes",
