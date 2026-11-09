@@ -2138,8 +2138,8 @@ const products = [
     category: "Crosses",
     subcategory: "Spiral Cross",
     style: "",
-    color: "White, Dark Green, Plum",
-    image: "White, Dark Green, Plum.jpg"
+    color: "White, Dark Green, Shiny Gold",
+    image: "White, Dark Green, Shiny Gold.jpg"
   },
   {
     category: "Crosses",
