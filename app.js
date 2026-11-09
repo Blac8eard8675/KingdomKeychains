@@ -931,6 +931,52 @@ searchInput?.addEventListener("input", applyFilters);
 
 
 /* =========================================================
+   HEADER QUICK SEARCH
+   ========================================================= */
+
+const quickSearchToggle =
+    document.getElementById("quickSearchToggle");
+
+const quickSearchPanel =
+    document.getElementById("quickSearchPanel");
+
+const quickSearchInput =
+    document.getElementById("quickSearchInput");
+
+quickSearchToggle?.addEventListener("click", () => {
+    const isOpening = quickSearchPanel?.classList.contains("hidden");
+
+    quickSearchPanel?.classList.toggle("hidden", !isOpening);
+    quickSearchToggle.setAttribute("aria-expanded", String(Boolean(isOpening)));
+
+    if (isOpening) {
+        quickSearchInput?.focus();
+    }
+});
+
+quickSearchPanel?.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const query = (quickSearchInput?.value || "").trim();
+
+    if (!query) {
+        quickSearchInput?.focus();
+        return;
+    }
+
+    showAllProducts();
+
+    if (searchInput) {
+        searchInput.value = query;
+    }
+
+    applyFilters();
+    quickSearchPanel.classList.add("hidden");
+    quickSearchToggle?.setAttribute("aria-expanded", "false");
+});
+
+
+/* =========================================================
    INITIALIZE WEBSITE
    ========================================================= */
 
