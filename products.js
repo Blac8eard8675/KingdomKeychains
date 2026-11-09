@@ -193,7 +193,7 @@ const products = [
     subcategory: "God's Knot Dead",
     style: "Elohim Stitch",
     color: "Black, Hot Pink, Fuchsia",
-    image: "Black, Hot Pink, Fuchsia.jpg"
+    image: "Black, Hot Pink, Fuschia.jpg"
   },
   {
     category: "Bracelets",
@@ -322,21 +322,21 @@ const products = [
     subcategory: "Holy Spirit Chainlinks",
     style: "",
     color: "Forest Green, Turtle Green, Fuchsia",
-    image: "Forest Green, Turtle Green, Fuchsia.jpg"
+    image: "Forest Green, Turtle Green, Fuschia.jpg"
   },
   {
     category: "Chainlinks",
     subcategory: "Holy Spirit Chainlinks",
     style: "",
     color: "Fuchsia, Dark Teal, Light Tan",
-    image: "Fuchsia, Dark Teal, Light Tan.jpg"
+    image: "Fuschia, Dark Teal, Light Tan.jpg"
   },
   {
     category: "Chainlinks",
     subcategory: "Holy Spirit Chainlinks",
     style: "",
     color: "Fuchsia, Leaf Green, Turtle Green",
-    image: "Fuchsia, Leaf Green, Turtle Green.jpg"
+    image: "Fuschia, Leaf Green, Turtle Green.jpg"
   },
   {
     category: "Chainlinks",
@@ -399,7 +399,7 @@ const products = [
     subcategory: "Holy Spirit Chainlinks",
     style: "",
     color: "Salmon, Fuchsia, Pine Green",
-    image: "Salmon, Fuchsia, Pine Green.jpg"
+    image: "Salmon, Fuschia, Pine Green.jpg"
   },
   {
     category: "Chainlinks",
@@ -1458,7 +1458,7 @@ const products = [
     subcategory: "Eternity Cross",
     style: "",
     color: "Frog Green, Bubble Gum Pink, Eggplant, Cornflower Blue",
-    image: "Frog Green, Bubble Gum Pink, Eggplant, Cornflower Blue.jpg"
+    image: "Frog Green, BubbleGum Pink, Eggplant, Cornflower Blue.jpg"
   },
   {
     category: "Crosses",
@@ -1500,7 +1500,7 @@ const products = [
     subcategory: "Eternity Cross",
     style: "",
     color: "Sparkle Purple, Sparkle Dark Blue, Shiny Pink",
-    image: "Sparkle Purple, Sparkle Dark Blue, Shiny Pink.jpg"
+    image: "Sparkle Purple,Sparkle Dark Blue, Shiny Pink.jpg"
   },
   {
     category: "Crosses",
@@ -2245,7 +2245,7 @@ const products = [
     subcategory: "DNA Rope",
     style: "",
     color: "Eggplant, BubbleGum Pink, Granny Smith Green",
-    image: "Eggplant, BubbleGum Pink, Granny Smith Green.jpg"
+    image: "Eggplant, Bubble Gum Pink, Granny Smith Green.jpg"
   },
   {
     category: "Ropes",
