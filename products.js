@@ -1271,8 +1271,8 @@ const products = [
     category: "Crosses",
     subcategory: "Emmanuel",
     style: "",
-    color: "Dark Blue Gray, Red, Light Baby Pink",
-    image: "Dark Blue Gray, Red, Light Baby Pink.jpg"
+    color: "Dark Blue Gray, Red, Light Baby Blue",
+    image: "Dark Blue Gray, Red, Light Baby Blue.jpg"
   },
   {
     category: "Crosses",
