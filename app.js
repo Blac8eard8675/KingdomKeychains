@@ -321,6 +321,16 @@ function renderProducts() {
         card.appendChild(category);
         card.appendChild(subcategory);
 
+        if (
+            product.subcategory === "Jesus Fish" &&
+            product.style
+        ) {
+            const style = document.createElement("p");
+            style.className = "product-style";
+            style.textContent = product.style;
+            card.appendChild(style);
+        }
+
         productGrid.appendChild(card);
     });
 
