@@ -1027,13 +1027,6 @@ const products = [
     category: "Chainlinks",
     subcategory: "Medium Chainlinks",
     style: "",
-    color: "Sparkle Blue, Pink",
-    image: "Sparkle Blue, Pink.jpg"
-  },
-  {
-    category: "Chainlinks",
-    subcategory: "Medium Chainlinks",
-    style: "",
     color: "Sparkle Blue, Red",
     image: "Sparkle Blue, Red.jpg"
   },
