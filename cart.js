@@ -5,7 +5,7 @@
   let cart = readCart();
   const priceOf = p => Number(p.price || 5);
   const money = n => "$" + n.toFixed(2);
-  const save = () => { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); renderCart(); };
+  const save = () => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch (error) { console.warn("Kingdom Keychains cart could not be saved in this browser.", error); } renderCart(); };
   const ensureUI = () => {
     if (document.getElementById("kkCartDock")) return;
     const dock = document.createElement("div");
@@ -63,7 +63,16 @@
       card.appendChild(button);
     });
   };
-  const init = () => { ensureUI(); addButtons(); renderCart(); };
+  const init = () => {
+    ensureUI();
+    addButtons();
+    renderCart();
+    if (!document.documentElement.dataset.kkCartObserver) {
+      const observer = new MutationObserver(() => addButtons());
+      observer.observe(document.body, { childList: true, subtree: true });
+      document.documentElement.dataset.kkCartObserver = "true";
+    }
+  };
   document.addEventListener("DOMContentLoaded",init);
   if(document.readyState!=="loading") init();
 })();
