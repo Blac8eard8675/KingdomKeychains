@@ -19,3 +19,6 @@
 .kk-add-cart{display:block;width:100%;margin-top:12px;padding:11px 12px;border:1px solid #ffe6a0;border-radius:4px;background:linear-gradient(180deg,#fff0b3,#c99a43);color:#28122e;font-weight:bold;letter-spacing:1px;cursor:pointer}
 .kk-add-cart:hover,.kk-cart-toggle:hover{filter:brightness(1.08)}
 @media(max-width:620px){#kkCartDock{right:10px;bottom:10px}.kk-cart-panel{max-height:70vh}.kk-cart-item img{width:64px;height:64px;flex-basis:64px}}
+
+/* Product card price label */
+.product-price{margin:8px 0 0;color:#f7dc91;font-weight:bold;font-size:1.05rem;letter-spacing:.4px;text-shadow:0 1px 5px #0008}
