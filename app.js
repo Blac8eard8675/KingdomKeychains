@@ -316,10 +316,15 @@ function renderProducts() {
 
         subcategory.textContent = product.subcategory || "";
 
+        const price = document.createElement("p");
+        price.className = "product-price";
+        price.textContent = "$" + Number(getProductPrice(product)).toFixed(2);
+
         card.appendChild(image);
         card.appendChild(color);
         card.appendChild(category);
         card.appendChild(subcategory);
+        card.appendChild(price);
 
         if (
             (
