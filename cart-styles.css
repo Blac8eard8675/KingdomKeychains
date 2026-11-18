@@ -1,0 +1,21 @@
+/* KINGDOM KEYCHAINS CART — royal purple & gold */
+#kkCartDock{position:fixed;right:18px;bottom:18px;z-index:9999;font-family:Georgia,"Times New Roman",serif}
+.kk-cart-toggle{border:1px solid #ffe6a0;border-radius:999px;padding:12px 18px;color:#2a1420;background:linear-gradient(180deg,#fff0b3,#d6ad55 55%,#98652d);font-weight:bold;letter-spacing:.6px;box-shadow:0 5px 20px #0008;cursor:pointer}
+#kkCartCount{display:inline-grid;place-items:center;min-width:22px;height:22px;margin-left:6px;border-radius:50%;background:#2b1038;color:#ffe6a0;font-size:.82rem}
+.kk-cart-panel{position:absolute;right:0;bottom:calc(100% + 12px);width:min(390px,calc(100vw - 30px));max-height:min(72vh,650px);overflow:auto;padding:16px;border:1px solid #d6ad55;background:linear-gradient(145deg,#321141,#15021f);color:#fff3d2;box-shadow:0 12px 35px #000b;border-radius:10px}
+.kk-cart-heading{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #8f6424;padding-bottom:8px}
+.kk-cart-heading h2{margin:0;color:#ffe6a0;font-size:1.35rem}
+.kk-cart-heading button{border:0;background:transparent;color:#ffe6a0;font-size:1.8rem;cursor:pointer}
+.kk-cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #684578}
+.kk-cart-item img{width:76px;height:76px;flex:0 0 76px;object-fit:contain;background:#0002}
+.kk-cart-details{min-width:0;display:flex;flex-direction:column;gap:4px}
+.kk-cart-details strong{color:#ffe6a0}
+.kk-cart-details span{font-size:.85rem;line-height:1.35;overflow-wrap:anywhere}
+.kk-cart-quantity{display:flex;align-items:center;gap:8px;margin-top:4px;flex-wrap:wrap}
+.kk-cart-quantity button{min-width:28px;height:28px;border:1px solid #d6ad55;background:#2b1038;color:#ffe6a0;border-radius:4px;cursor:pointer}
+.kk-cart-quantity .kk-cart-remove{width:auto;padding:0 8px;font-size:.75rem}
+.kk-cart-total{display:flex;justify-content:space-between;align-items:center;padding:14px 0;color:#ffe6a0;font-size:1.1rem}
+.kk-cart-note,.kk-cart-empty{font-size:.9rem;line-height:1.5;color:#e7d3a9}
+.kk-add-cart{display:block;width:100%;margin-top:12px;padding:11px 12px;border:1px solid #ffe6a0;border-radius:4px;background:linear-gradient(180deg,#fff0b3,#c99a43);color:#28122e;font-weight:bold;letter-spacing:1px;cursor:pointer}
+.kk-add-cart:hover,.kk-cart-toggle:hover{filter:brightness(1.08)}
+@media(max-width:620px){#kkCartDock{right:10px;bottom:10px}.kk-cart-panel{max-height:70vh}.kk-cart-item img{width:64px;height:64px;flex-basis:64px}}
