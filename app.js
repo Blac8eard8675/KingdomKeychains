@@ -662,6 +662,10 @@ function openProducts(category, subcategory = "", style = "") {
         "crosses-sunset-background",
         category === "Crosses"
     );
+    document.body.classList.toggle(
+        "ropes-sunset-background",
+        category === "Ropes"
+    );
 
     productsTitle.textContent =
         style || subcategory || category;
