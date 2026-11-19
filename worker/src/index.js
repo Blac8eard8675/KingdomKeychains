@@ -79,13 +79,13 @@ async function ensureCatalogSeeded(db) {
       )
     : [];
 
-  statements.push(
-    db.prepare(
-      "INSERT OR IGNORE INTO store_meta (key, value) VALUES (?, ?)"
-    ).bind("catalog_seeded_v1", String(CATALOG.size))
-  );
+  for (let index = 0; index < statements.length; index += 100) {
+    await db.batch(statements.slice(index, index + 100));
+  }
 
-  await db.batch(statements);
+  await db.prepare(
+    "INSERT OR IGNORE INTO store_meta (key, value) VALUES (?, ?)"
+  ).bind("catalog_seeded_v1", String(CATALOG.size)).run();
 }
 
 function squareBaseUrl(env) {
@@ -130,7 +130,7 @@ async function handlePayment(request, env) {
   if (!sourceId || !/^[A-Za-z0-9-]{8,45}$/.test(idempotencyKey)) {
     return json({ error: "The secure card token or payment request ID is missing." }, 400);
   }
-  if (!keys.length || keys.length > 40 || new Set(keys).size !== keys.length) {
+  if (!keys.length || keys.length > 100 || new Set(keys).size !== keys.length) {
     return json({ error: "Your cart is empty or contains duplicate items." }, 400);
   }
   if (keys.some(key => !CATALOG.has(key))) {
