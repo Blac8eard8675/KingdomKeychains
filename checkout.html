@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure checkout for Kingdom Keychains.">
+  <meta name="theme-color" content="#21052f">
+  <title>Checkout | Kingdom Keychains</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cart-styles.css">
+  <style>
+    .kk-checkout-wrap{width:min(1100px,calc(100% - 32px));margin:42px auto 70px;color:#fff3d2}
+    .kk-checkout-intro{text-align:center;margin-bottom:30px}
+    .kk-checkout-intro .eyebrow{color:#e8c875;letter-spacing:2px}
+    .kk-checkout-intro h1{color:#f7dc91;font-family:Georgia,"Times New Roman",serif;text-shadow:0 2px 12px #0008}
+    .kk-checkout-intro p{color:#eadbbd}
+    .kk-checkout-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:24px;align-items:start}
+    .kk-checkout-card{padding:24px;border:1px solid #c69b4d;border-radius:12px;background:linear-gradient(145deg,#321141ed,#15021fed);box-shadow:0 12px 35px #0007}
+    .kk-checkout-card h2{margin:0 0 18px;color:#ffe6a0;font-family:Georgia,"Times New Roman",serif}
+    .kk-checkout-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .kk-field{display:flex;flex-direction:column;gap:6px}
+    .kk-field.full{grid-column:1/-1}
+    .kk-field label{color:#f7dc91;font-size:.92rem}
+    .kk-field input,.kk-field select{width:100%;min-height:44px;padding:10px 12px;border:1px solid #9a7748;border-radius:5px;background:#fffaf0;color:#25132c;font:inherit}
+    .kk-field input:focus,.kk-field select:focus{outline:2px solid #f7dc91;outline-offset:2px}
+    .kk-checkout-items{display:flex;flex-direction:column;gap:14px}
+    .kk-checkout-item{display:grid;grid-template-columns:66px 1fr auto;gap:12px;align-items:center;padding-bottom:12px;border-bottom:1px solid #684578}
+    .kk-checkout-item img{width:66px;height:66px;object-fit:contain;background:#0002}
+    .kk-checkout-item strong{display:block;color:#ffe6a0}
+    .kk-checkout-item small{display:block;color:#eadbbd;line-height:1.4}
+    .kk-checkout-item .kk-item-price{white-space:nowrap;color:#fff3d2}
+    .kk-checkout-totals{margin-top:18px}
+    .kk-checkout-total-line{display:flex;justify-content:space-between;gap:12px;padding:7px 0;color:#f8e9c9}
+    .kk-checkout-total-line.grand{margin-top:8px;padding-top:14px;border-top:1px solid #c69b4d;color:#ffe6a0;font-size:1.15rem;font-weight:bold}
+    .kk-shipping-notice{margin:16px 0 0;padding:13px;border-left:3px solid #d6ad55;background:#ffffff0b;color:#eadbbd;font-size:.9rem;line-height:1.5}
+    .kk-checkout-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .kk-checkout-actions a,.kk-checkout-actions button{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:11px 18px;border:1px solid #ffe6a0;border-radius:5px;text-decoration:none;font-weight:bold}
+    .kk-checkout-back{color:#ffe6a0;background:transparent}
+    .kk-checkout-pay{color:#28122e;background:linear-gradient(180deg,#fff0b3,#c99a43);opacity:.65;cursor:not-allowed}
+    .kk-checkout-empty{padding:20px;text-align:center;color:#eadbbd}
+    .kk-checkout-footer{text-align:center;margin-top:28px;color:#eadbbd;font-family:Georgia,"Times New Roman",serif}
+    @media(max-width:760px){.kk-checkout-grid{grid-template-columns:1fr}.kk-checkout-card{padding:18px}}
+    @media(max-width:480px){.kk-checkout-fields{grid-template-columns:1fr}.kk-field.full{grid-column:auto}.kk-checkout-wrap{width:min(100% - 22px,1100px);margin-top:26px}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand-lockup" href="index.html" aria-label="Kingdom Keychains home">
+      <span class="brand-crown" aria-hidden="true">♛</span>
+      <span class="brand-copy">
+        <span class="brand-name">KINGDOM KEYCHAINS</span>
+        <span class="brand-tagline">The Only Chains Jesus Loves</span>
+      </span>
+    </a>
+    <nav class="main-navigation" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+    </nav>
+  </header>
+
+  <main class="kk-checkout-wrap">
+    <div class="kk-checkout-intro">
+      <p class="eyebrow">A LITTLE PIECE OF FAITH, MADE WITH LOVE</p>
+      <h1>Secure Checkout</h1>
+      <p>Please review your one-of-a-kind pieces and enter the delivery address.</p>
+    </div>
+
+    <div class="kk-checkout-grid">
+      <section class="kk-checkout-card" aria-labelledby="deliveryHeading">
+        <h2 id="deliveryHeading">Delivery Information</h2>
+        <form id="kkDeliveryForm" novalidate>
+          <div class="kk-checkout-fields">
+            <div class="kk-field full">
+              <label for="kkFullName">Full name *</label>
+              <input id="kkFullName" name="fullName" autocomplete="name" required>
+            </div>
+            <div class="kk-field">
+              <label for="kkEmail">Email address *</label>
+              <input id="kkEmail" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="kk-field">
+              <label for="kkPhone">Phone (optional)</label>
+              <input id="kkPhone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="kk-field full">
+              <label for="kkAddress">Street address *</label>
+              <input id="kkAddress" name="address" autocomplete="address-line1" required>
+            </div>
+            <div class="kk-field full">
+              <label for="kkAddress2">Apartment, suite, or unit (optional)</label>
+              <input id="kkAddress2" name="address2" autocomplete="address-line2">
+            </div>
+            <div class="kk-field">
+              <label for="kkCity">City *</label>
+              <input id="kkCity" name="city" autocomplete="address-level2" required>
+            </div>
+            <div class="kk-field">
+              <label for="kkState">State *</label>
+              <input id="kkState" name="state" autocomplete="address-level1" maxlength="2" placeholder="MO" required>
+            </div>
+            <div class="kk-field">
+              <label for="kkZip">ZIP code *</label>
+              <input id="kkZip" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="10" required>
+            </div>
+          </div>
+          <p class="kk-shipping-notice">Your USPS Ground Advantage shipping price will be calculated from the delivery address after the secure shipping connection is added. No estimated or made-up shipping charge will be shown.</p>
+        </form>
+      </section>
+
+      <aside class="kk-checkout-card" aria-labelledby="reviewHeading">
+        <h2 id="reviewHeading">Your Order</h2>
+        <div id="kkCheckoutItems" class="kk-checkout-items" aria-live="polite"></div>
+        <div class="kk-checkout-totals">
+          <div class="kk-checkout-total-line"><span>Product subtotal</span><strong id="kkCheckoutSubtotal">$0.00</strong></div>
+          <div class="kk-checkout-total-line"><span>USPS Ground Advantage</span><strong id="kkCheckoutShipping">Calculated next</strong></div>
+          <div class="kk-checkout-total-line grand"><span>Order total</span><strong id="kkCheckoutTotal">Pending shipping</strong></div>
+        </div>
+        <p class="kk-shipping-notice">Your items are unique, one-of-a-kind pieces. Inventory will only be marked sold after Square confirms successful payment.</p>
+        <div class="kk-checkout-actions">
+          <a class="kk-checkout-back" href="products.html">Continue Shopping</a>
+          <button class="kk-checkout-pay" type="button" disabled aria-disabled="true">Secure Payment Coming Next</button>
+        </div>
+      </aside>
+    </div>
+    <p class="kk-checkout-footer">Thank you for supporting Kingdom Keychains! May each piece remind you of God's love wherever you go.</p>
+  </main>
+
+  <script>
+    (() => {
+      const key = "kingdomKeychainsCartV1";
+      const money = value => "$" + Number(value || 0).toFixed(2);
+      let cart = [];
+      try {
+        const saved = JSON.parse(localStorage.getItem(key) || "[]");
+        if (Array.isArray(saved)) cart = saved.filter(item => item && item.key);
+      } catch (error) {
+        cart = [];
+      }
+
+      const list = document.getElementById("kkCheckoutItems");
+      const subtotal = cart.reduce((sum, item) => sum + Number(item.price ?? 5), 0);
+      document.getElementById("kkCheckoutSubtotal").textContent = money(subtotal);
+
+      if (!cart.length) {
+        list.innerHTML = '<p class="kk-checkout-empty">Your cart is empty. Visit the shop to choose your one-of-a-kind keychains.</p>';
+        document.getElementById("kkCheckoutShipping").textContent = "—";
+        document.getElementById("kkCheckoutTotal").textContent = "—";
+        document.querySelector(".kk-checkout-pay").disabled = true;
+      } else {
+        cart.forEach(item => {
+          const row = document.createElement("div");
+          row.className = "kk-checkout-item";
+          const img = document.createElement("img");
+          img.src = "images/" + String(item.image || "").replace(/^\/+/, "");
+          img.alt = item.color || "Kingdom Keychain";
+          const detail = document.createElement("div");
+          const name = document.createElement("strong");
+          name.textContent = item.color || "One-of-a-kind keychain";
+          const meta = document.createElement("small");
+          meta.textContent = [item.category, item.subcategory, item.style].filter(Boolean).join(" • ");
+          const price = document.createElement("span");
+          price.className = "kk-item-price";
+          price.textContent = money(item.price ?? 5);
+          detail.append(name, meta);
+          row.append(img, detail, price);
+          list.appendChild(row);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
