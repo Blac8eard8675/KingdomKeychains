@@ -171,17 +171,34 @@ async function handlePayment(request, env) {
   };
 
   let order = await env.DB.prepare(
-    "SELECT id, status, subtotal_cents, shipping_cents, total_cents FROM orders WHERE idempotency_key = ?"
+    "SELECT id, status, subtotal_cents, shipping_cents, total_cents, shipping_quote_id FROM orders WHERE idempotency_key = ?"
   ).bind(idempotencyKey).first();
 
   if (order && (order.subtotal_cents !== subtotalCents ||
       order.shipping_cents !== shippingCents ||
-      order.total_cents !== totalCents)) {
+      order.total_cents !== totalCents ||
+      order.shipping_quote_id !== shippingQuoteId)) {
     return json({ error: "This payment request does not match the original order." }, 409);
+  }
+
+  if (order) {
+    const savedItems = await env.DB.prepare(
+      "SELECT product_key FROM order_items WHERE order_id = ? ORDER BY product_key"
+    ).bind(order.id).all();
+    const savedKeys = (savedItems.results || []).map(item => item.product_key);
+    const requestedKeys = [...keys].sort();
+    if (savedKeys.length !== requestedKeys.length ||
+        savedKeys.some((key, index) => key !== requestedKeys[index])) {
+      return json({ error: "This payment request does not match the original items." }, 409);
+    }
   }
 
   if (order?.status === "paid") {
     return json({ success: true, alreadyPaid: true, orderId: order.id }, 200);
+  }
+
+  if (order?.status === "needs_review") {
+    return json({ error: "This payment is awaiting confirmation. Your items are being held; please contact Kingdom Keychains before trying again." }, 202);
   }
 
   if (!order) {
