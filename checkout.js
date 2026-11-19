@@ -32,7 +32,6 @@
   }
 
   const form = document.getElementById("kkDeliveryForm");
-  const shippingButton = document.getElementById("kkGetShipping");
   const shippingStatus = document.getElementById("kkShippingStatus");
   const paymentStatus = document.getElementById("kkPaymentStatus");
   const payButton = document.getElementById("kkPayButton");
