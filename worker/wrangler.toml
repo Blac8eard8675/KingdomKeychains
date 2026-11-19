@@ -1,0 +1,13 @@
+name = "kingdom-keychains-store-api"
+main = "src/index.js"
+compatibility_date = "2026-11-19"
+
+[vars]
+ALLOWED_ORIGINS = "https://kingdomkeychains.com,https://www.kingdomkeychains.com"
+SQUARE_ENVIRONMENT = "sandbox"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kingdom-keychains-store"
+database_id = "REPLACE_WITH_YOUR_CLOUDFLARE_D1_DATABASE_ID"
+migrations_dir = "migrations"
