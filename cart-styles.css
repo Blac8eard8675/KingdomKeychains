@@ -52,3 +52,10 @@
 .kk-cart-page-content .kk-cart-total{border-top:1px solid #8f6424;margin-top:12px}
 .kk-continue-shopping{display:block;width:max-content;margin:14px auto 0;color:#f7dc91;text-align:center;text-underline-offset:4px}
 @media(max-width:620px){#kkCartDock{right:14px;bottom:14px}.kk-cart-icon-link{width:44px;height:44px}.kk-cart-icon-link svg{width:25px;height:25px}}
+
+
+/* Cart icon sits beside the existing quick-search icon in the navigation */
+#kkCartDock{display:none}
+.kk-cart-icon-link{display:inline-grid;place-items:center;flex:0 0 36px;width:36px;height:36px;padding:6px;border:1px solid rgba(246,217,143,.65);border-radius:50%;background:rgba(214,173,85,.08);color:#f6d98f;text-decoration:none;transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.kk-cart-icon-link svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kk-cart-icon-link:hover,.kk-cart-icon-link:focus-visible{background:rgba(214,173,85,.2);box-shadow:0 0 12px #f5d17b66;transform:scale(1.06);outline:none}
