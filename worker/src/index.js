@@ -278,6 +278,17 @@ async function handlePayment(request, env) {
   }
 
   if (!squareResponse.ok) {
+    const errorCodes = (squareResult?.errors || []).map(error => error.code);
+    if (errorCodes.includes("IDEMPOTENCY_KEY_REUSED") ||
+        errorCodes.includes("INTERNAL_SERVER_ERROR") ||
+        errorCodes.includes("SERVICE_UNAVAILABLE")) {
+      await env.DB.prepare(
+        "UPDATE orders SET status='needs_review' WHERE id=?"
+      ).bind(order.id).run();
+      return json({
+        error: "Square could not safely confirm this attempt. Your items are being held; please contact Kingdom Keychains before trying again."
+      }, 202);
+    }
     await env.DB.batch([
       env.DB.prepare(
         "UPDATE orders SET status='payment_failed' WHERE id=?"
