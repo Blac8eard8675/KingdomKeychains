@@ -22,3 +22,8 @@
 
 /* Product card price label */
 .product-price{margin:8px 0 0;color:#f7dc91;font-weight:bold;font-size:1.05rem;letter-spacing:.4px;text-shadow:0 1px 5px #0008}
+
+/* Checkout link in the cart panel */
+.kk-checkout-link{display:block;width:100%;margin:4px 0 10px;padding:12px;border:1px solid #ffe6a0;border-radius:5px;background:linear-gradient(180deg,#fff0b3,#c99a43);color:#28122e;font-weight:bold;letter-spacing:.5px;cursor:pointer}
+.kk-checkout-link:hover:not(:disabled){filter:brightness(1.08)}
+.kk-checkout-link:disabled{opacity:.45;cursor:not-allowed}
