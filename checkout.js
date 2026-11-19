@@ -5,6 +5,13 @@
   const apiBase = String(config.apiBaseUrl || "").replace(/\/+$/, "");
   const environment = config.environment === "production" ? "production" : "sandbox";
   const money = value => "$" + Number(value || 0).toFixed(2);
+  const priceOf = item => {
+    if (["Bracelets", "Chainlinks", "Ropes"].includes(item.category)) return 5;
+    if (item.category === "Crosses") {
+      return ["eternity cross", "shalom"].includes(String(item.subcategory || "").trim().toLowerCase()) ? 15 : 10;
+    }
+    return 0;
+  };
 
   let cart = [];
   let card = null;
@@ -26,7 +33,7 @@
   const paymentStatus = document.getElementById("kkPaymentStatus");
   const payButton = document.getElementById("kkPayButton");
   const subtotalCents = cart.reduce(
-    (sum, item) => sum + Math.round(Number(item.price ?? 5) * 100), 0
+    (sum, item) => sum + Math.round(priceOf(item) * 100), 0
   );
 
   function status(element, message, kind = "") {
