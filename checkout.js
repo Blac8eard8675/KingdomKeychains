@@ -19,6 +19,7 @@
   let shippingCents = 0;
   let shippingRequest = null;
   let shippingRevision = 0;
+  let lastQuoteKey = "";
   let idempotencyKey = "";
   let busy = false;
   let paymentComplete = false;
@@ -83,7 +84,7 @@
 
     const quoteKey = buyer.postalCode + "|" + cart.map(item => item.key).join("|");
     if (shippingRequest?.key === quoteKey) return shippingRequest.promise;
-    if (shippingQuoteId && shippingRequest?.key === quoteKey) return;
+    if (shippingQuoteId && lastQuoteKey === quoteKey) return;
 
     shippingQuoteId = "";
     shippingCents = 0;
@@ -109,6 +110,7 @@
         }
         shippingQuoteId = result.quoteId;
         shippingCents = result.amountCents;
+        lastQuoteKey = quoteKey;
         status(shippingStatus,
           "USPS Ground Advantage shipping and handling: " + money(shippingCents / 100),
           "success"
@@ -179,6 +181,7 @@
       shippingQuoteId = "";
       shippingCents = 0;
       shippingRequest = null;
+      lastQuoteKey = "";
       shippingRevision++;
       updateTotal();
       updatePayButton();
