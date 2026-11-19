@@ -15,11 +15,8 @@
 
   let cart = [];
   let card = null;
-  let shippingQuoteId = "";
-  let shippingCents = 0;
-  let shippingRequest = null;
-  let shippingRevision = 0;
-  let lastQuoteKey = "";
+  const shippingQuoteId = "flat-rate-10";
+  const shippingCents = 1000;
   let idempotencyKey = "";
   let busy = false;
   let paymentComplete = false;
@@ -62,73 +59,18 @@
 
   function updateTotal() {
     document.getElementById("kkCheckoutShipping").textContent =
-      shippingQuoteId ? money(shippingCents / 100) : "Calculated automatically";
+      cart.length ? money(shippingCents / 100) : "—";
     document.getElementById("kkCheckoutTotal").textContent =
-      shippingQuoteId ? money((subtotalCents + shippingCents) / 100) : "Calculating shipping";
+      cart.length ? money((subtotalCents + shippingCents) / 100) : "—";
   }
 
   function updatePayButton() {
     if (!payButton) return;
-    const ready = Boolean(cart.length && card && shippingQuoteId && apiBase && !busy && !paymentComplete);
+    const ready = Boolean(cart.length && card && apiBase && !busy && !paymentComplete);
     payButton.disabled = !ready;
     payButton.setAttribute("aria-disabled", String(!ready));
     payButton.style.opacity = ready ? "1" : ".65";
     payButton.style.cursor = ready ? "pointer" : "not-allowed";
-  }
-
-  async function calculateShipping() {
-    if (!apiBase || !form || !form.checkValidity()) return;
-    const buyer = buyerDetails();
-    if (!/^\d{5}(?:-\d{4})?$/.test(buyer.postalCode)) return;
-
-    const quoteKey = buyer.postalCode + "|" + cart.map(item => item.key).join("|");
-    if (shippingRequest?.key === quoteKey) return shippingRequest.promise;
-    if (shippingQuoteId && lastQuoteKey === quoteKey) return;
-
-    shippingQuoteId = "";
-    shippingCents = 0;
-    const requestRevision = ++shippingRevision;
-    updateTotal();
-    updatePayButton();
-    status(shippingStatus, "Calculating USPS Ground Advantage shipping automatically…");
-
-    const promise = (async () => {
-      try {
-        const response = await fetch(apiBase + "/shipping/quote", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            cartKeys: cart.map(item => item.key),
-            postalCode: buyer.postalCode
-          })
-        });
-        const result = await response.json();
-        if (requestRevision !== shippingRevision) return;
-        if (!response.ok || !result.quoteId || !Number.isInteger(result.amountCents)) {
-          throw new Error(result.error || "A USPS shipping rate could not be returned.");
-        }
-        shippingQuoteId = result.quoteId;
-        shippingCents = result.amountCents;
-        lastQuoteKey = quoteKey;
-        status(shippingStatus,
-          "USPS Ground Advantage shipping and handling: " + money(shippingCents / 100),
-          "success"
-        );
-        updateTotal();
-      } catch (error) {
-        if (requestRevision !== shippingRevision) return;
-        shippingQuoteId = "";
-        shippingCents = 0;
-        status(shippingStatus, error.message || "Shipping could not be calculated. Please check the delivery ZIP code.", "error");
-        updateTotal();
-      } finally {
-        if (shippingRequest?.key === quoteKey) shippingRequest = null;
-        updatePayButton();
-      }
-    })();
-
-    shippingRequest = { key: quoteKey, promise };
-    return promise;
   }
 
   function loadSquareSdk() {
@@ -169,34 +111,11 @@
     return;
   }
 
-  if (!apiBase) {
-    status(shippingStatus, "Automatic shipping will appear when the secure store connection is active.");
-  } else {
-    status(shippingStatus, "Enter your delivery information. USPS Ground Advantage shipping and handling will be calculated automatically.");
-  }
-
-  form.addEventListener("input", event => {
-    if (event.target?.name === "zip") {
-      shippingQuoteId = "";
-      shippingCents = 0;
-      shippingRequest = null;
-      lastQuoteKey = "";
-      shippingRevision++;
-      updateTotal();
-      updatePayButton();
-      status(shippingStatus, "Shipping will recalculate automatically for the new ZIP code.");
-    }
-  });
-
-  form.addEventListener("change", () => {
-    calculateShipping();
-  });
-  form.addEventListener("focusout", event => {
-    if (event.target?.name === "zip") calculateShipping();
-  });
+  status(shippingStatus, "Flat-rate shipping and handling: $10.00 per order.");
+  updateTotal();
 
   payButton.addEventListener("click", async () => {
-    if (busy || !card || !shippingQuoteId || !form.reportValidity()) return;
+    if (busy || !card || !form.reportValidity()) return;
     busy = true;
     updatePayButton();
     status(paymentStatus, "Securely preparing your payment…");
