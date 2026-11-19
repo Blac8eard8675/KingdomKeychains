@@ -70,7 +70,7 @@
     <div class="kk-checkout-intro">
       <p class="eyebrow">A LITTLE PIECE OF FAITH, MADE WITH LOVE</p>
       <h1>Secure Checkout</h1>
-      <p>Please review your one-of-a-kind pieces and enter the delivery address.</p>
+      <p>Review your one-of-a-kind pieces and enter your delivery information. Shipping and handling are calculated automatically.</p>
     </div>
 
     <div class="kk-checkout-grid">
@@ -112,10 +112,9 @@
             </div>
           </div>
           <div class="kk-field full">
-            <button id="kkGetShipping" class="kk-shipping-button" type="button" disabled>Calculate USPS Ground Advantage</button>
-            <p id="kkShippingStatus" class="kk-checkout-status" aria-live="polite">Live USPS shipping rates are being connected. No flat or guessed shipping fee will be used.</p>
+            <p id="kkShippingStatus" class="kk-checkout-status" aria-live="polite">USPS Ground Advantage shipping and handling will be calculated automatically from your delivery ZIP code.</p>
           </div>
-          <p class="kk-shipping-notice">Shipping is calculated from your delivery ZIP code, package size, and order weight. The amount will be shown before you pay.</p>
+          <p class="kk-shipping-notice">Shipping and handling are calculated automatically using USPS Ground Advantage. The shipping amount is included in your Square payment total before you pay.</p>
         </form>
         <section class="kk-payment-panel" aria-labelledby="paymentHeading">
           <h2 id="paymentHeading">Payment Information</h2>
@@ -130,8 +129,8 @@
         <div class="kk-checkout-totals">
           <div class="kk-checkout-total-line"><span>Product subtotal</span><strong id="kkCheckoutSubtotal">$0.00</strong></div>
           <div class="kk-checkout-total-line"><span>Estimated product weight</span><strong id="kkCheckoutWeight">0 oz</strong></div>
-          <div class="kk-checkout-total-line"><span>USPS Ground Advantage</span><strong id="kkCheckoutShipping">Calculated next</strong></div>
-          <div class="kk-checkout-total-line grand"><span>Order total</span><strong id="kkCheckoutTotal">Pending shipping</strong></div>
+          <div class="kk-checkout-total-line"><span>Shipping &amp; handling</span><strong id="kkCheckoutShipping">Calculated automatically</strong></div>
+          <div class="kk-checkout-total-line grand"><span>Order total</span><strong id="kkCheckoutTotal">Calculating shipping</strong></div>
         </div>
         <p class="kk-shipping-notice">Your items are unique, one-of-a-kind pieces. Inventory will only be marked sold after Square confirms successful payment.</p>
         <div class="kk-checkout-actions">
@@ -198,13 +197,12 @@
     })();
   </script>
   <script>
-    // Public Square identifiers and the deployed Worker URL are filled in during connection setup.
+    // Public Square identifiers and the secure store API address are added during connection setup.
     window.KK_CHECKOUT_CONFIG = {
       environment: "sandbox",
       applicationId: "",
       locationId: "",
       apiBaseUrl: "",
-      shippingEnabled: false
     };
   </script>
   <script src="checkout.js" defer></script>
