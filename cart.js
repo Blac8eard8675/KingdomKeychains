@@ -103,6 +103,8 @@
     if (subtotal) {
       subtotal.textContent = money(cart.reduce((sum, item) => sum + priceOf(item), 0));
     }
+    const checkoutButton = document.getElementById("kkCheckoutButton");
+    if (checkoutButton) checkoutButton.disabled = cart.length === 0;
     syncProductButtons();
   };
 
@@ -119,7 +121,7 @@
     if (document.getElementById("kkCartDock")) return;
     const dock = document.createElement("div");
     dock.id = "kkCartDock";
-    dock.innerHTML = '<button type="button" id="kkCartToggle" class="kk-cart-toggle" aria-expanded="false">🛒 Cart <span id="kkCartCount">0</span></button><aside id="kkCartPanel" class="kk-cart-panel hidden" aria-label="Shopping cart"><div class="kk-cart-heading"><h2>Your Cart</h2><button type="button" id="kkCartClose" aria-label="Close cart">×</button></div><div id="kkCartItems"></div><div class="kk-cart-total"><span>Subtotal</span><strong id="kkCartSubtotal">$0.00</strong></div><p class="kk-cart-note">Shipping and checkout will be added in the next store-building step.</p></aside>';
+    dock.innerHTML = '<button type="button" id="kkCartToggle" class="kk-cart-toggle" aria-expanded="false">🛒 Cart <span id="kkCartCount">0</span></button><aside id="kkCartPanel" class="kk-cart-panel hidden" aria-label="Shopping cart"><div class="kk-cart-heading"><h2>Your Cart</h2><button type="button" id="kkCartClose" aria-label="Close cart">×</button></div><div id="kkCartItems"></div><div class="kk-cart-total"><span>Subtotal</span><strong id="kkCartSubtotal">$0.00</strong></div><button type="button" id="kkCheckoutButton" class="kk-checkout-link" disabled>Proceed to Checkout</button><p class="kk-cart-note">Shipping is calculated during checkout.</p></aside>';
     document.body.appendChild(dock);
 
     dock.querySelector("#kkCartToggle").addEventListener("click", () => {
@@ -131,6 +133,10 @@
     dock.querySelector("#kkCartClose").addEventListener("click", () => {
       dock.querySelector("#kkCartPanel").classList.add("hidden");
       dock.querySelector("#kkCartToggle").setAttribute("aria-expanded", "false");
+    });
+
+    dock.querySelector("#kkCheckoutButton").addEventListener("click", () => {
+      if (cart.length) window.location.assign("checkout.html");
     });
   };
 
