@@ -125,11 +125,17 @@
   };
 
   const ensureUI = () => {
-    if (document.getElementById("kkCartDock")) return;
-    const dock = document.createElement("div");
-    dock.id = "kkCartDock";
-    dock.innerHTML = '<a id="kkCartLink" class="kk-cart-icon-link" href="cart.html" aria-label="Go to shopping cart" title="Shopping cart"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M2.5 4h4l3.2 16.1a2.5 2.5 0 0 0 2.45 2h13.1a2.5 2.5 0 0 0 2.4-1.8L30 10H8" /><path d="M12 26.5a1.8 1.8 0 1 0 0 .1M24 26.5a1.8 1.8 0 1 0 0 .1" /></svg></a>';
-    document.body.appendChild(dock);
+    const navigation = document.querySelector(".main-navigation");
+    if (!navigation || document.getElementById("kkCartLink")) return;
+
+    const link = document.createElement("a");
+    link.id = "kkCartLink";
+    link.className = "kk-cart-icon-link";
+    link.href = "cart.html";
+    link.setAttribute("aria-label", "Go to shopping cart");
+    link.title = "Shopping cart";
+    link.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 3h2l2.4 12.2a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 1.9-1.5L22 7H5" /><circle cx="9" cy="20" r="1.3" /><circle cx="18" cy="20" r="1.3" /></svg>';
+    navigation.appendChild(link);
   };
 
   const addButtons = () => {
