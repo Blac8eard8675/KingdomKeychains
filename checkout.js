@@ -19,6 +19,7 @@
   let shippingCents = 0;
   let idempotencyKey = "";
   let busy = false;
+  let paymentComplete = false;
 
   try {
     const saved = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
@@ -66,7 +67,7 @@
 
   function updatePayButton() {
     if (!payButton) return;
-    const ready = Boolean(cart.length && card && shippingQuoteId && apiBase && !busy);
+    const ready = Boolean(cart.length && card && shippingQuoteId && apiBase && !busy && !paymentComplete);
     payButton.disabled = !ready;
     payButton.setAttribute("aria-disabled", String(!ready));
     payButton.style.opacity = ready ? "1" : ".65";
@@ -117,6 +118,15 @@
   } else {
     status(shippingStatus, "Enter your delivery address, then calculate your live USPS Ground Advantage rate.");
   }
+
+  const zipInput = form.querySelector('[name="zip"]');
+  zipInput?.addEventListener("input", () => {
+    shippingQuoteId = "";
+    shippingCents = 0;
+    updateTotal();
+    updatePayButton();
+    status(shippingStatus, "ZIP code changed. Recalculate USPS Ground Advantage shipping before paying.");
+  });
 
   shippingButton.addEventListener("click", async () => {
     if (!form.reportValidity()) return;
@@ -209,6 +219,7 @@
         throw new Error(result.error || "Square could not confirm your payment.");
       }
 
+      paymentComplete = true;
       localStorage.removeItem(CART_KEY);
       status(paymentStatus, "Payment successful! Thank you for supporting Kingdom Keychains.", "success");
       if (result.receiptUrl) {
