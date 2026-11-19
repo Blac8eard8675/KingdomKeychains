@@ -112,6 +112,7 @@
         <div id="kkCheckoutItems" class="kk-checkout-items" aria-live="polite"></div>
         <div class="kk-checkout-totals">
           <div class="kk-checkout-total-line"><span>Product subtotal</span><strong id="kkCheckoutSubtotal">$0.00</strong></div>
+          <div class="kk-checkout-total-line"><span>Estimated product weight</span><strong id="kkCheckoutWeight">0 oz</strong></div>
           <div class="kk-checkout-total-line"><span>USPS Ground Advantage</span><strong id="kkCheckoutShipping">Calculated next</strong></div>
           <div class="kk-checkout-total-line grand"><span>Order total</span><strong id="kkCheckoutTotal">Pending shipping</strong></div>
         </div>
@@ -139,6 +140,10 @@
 
       const list = document.getElementById("kkCheckoutItems");
       const subtotal = cart.reduce((sum, item) => sum + Number(item.price ?? 5), 0);
+      // Starting estimate confirmed by the owner: 2 oz per keychain, before packaging.
+      const estimatedProductWeightOz = cart.length * 2;
+      document.getElementById("kkCheckoutWeight").textContent =
+        estimatedProductWeightOz + (estimatedProductWeightOz === 1 ? " oz" : " oz");
       document.getElementById("kkCheckoutSubtotal").textContent = money(subtotal);
 
       if (!cart.length) {
