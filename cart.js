@@ -107,9 +107,9 @@
     const checkoutButton = document.getElementById("kkCheckoutButton");
     if (checkoutButton) {
       checkoutButton.disabled = cart.length === 0;
-      checkoutButton.addEventListener("click", () => {
+      checkoutButton.onclick = () => {
         if (cart.length) window.location.assign("checkout.html");
-      }, { once: true });
+      };
     }
 
     syncProductButtons();
