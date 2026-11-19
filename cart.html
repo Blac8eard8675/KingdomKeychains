@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review your one-of-a-kind Kingdom Keychains selections.">
+  <meta name="theme-color" content="#21052f">
+  <title>Your Shopping Cart | Kingdom Keychains</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cart-styles.css">
+</head>
+<body class="kk-cart-page">
+  <header class="kk-cart-page-header">
+    <a class="kk-cart-home-link" href="index.html" aria-label="Kingdom Keychains home">♛ KINGDOM KEYCHAINS</a>
+    <p>The Only Chains Jesus Loves</p>
+  </header>
+
+  <main class="kk-cart-page-main">
+    <p class="eyebrow">YOUR SELECTIONS</p>
+    <h1>Your Shopping Cart</h1>
+    <p class="kk-cart-intro">Every piece is one of a kind. Review your selections below.</p>
+
+    <section class="kk-cart-page-content" aria-label="Shopping cart items">
+      <div id="kkCartItems"></div>
+      <div class="kk-cart-total">
+        <span>Subtotal</span>
+        <strong id="kkCartSubtotal">$0.00</strong>
+      </div>
+      <p class="kk-cart-note">Shipping is calculated during checkout.</p>
+      <button type="button" id="kkCheckoutButton" class="kk-checkout-link" disabled>Proceed to Checkout</button>
+      <a class="kk-continue-shopping" href="products.html">Continue Shopping</a>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-crown" aria-hidden="true">♛</div>
+    <p class="footer-brand">KINGDOM KEYCHAINS</p>
+    <p>The Only Chains Jesus Loves</p>
+    <p class="footer-copyright">© <span id="currentYear"></span> Kingdom Keychains. All Rights Reserved.</p>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script>
+    const year = document.getElementById("currentYear");
+    if (year) year.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
