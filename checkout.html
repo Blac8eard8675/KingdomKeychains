@@ -147,6 +147,13 @@
     (() => {
       const key = "kingdomKeychainsCartV1";
       const money = value => "$" + Number(value || 0).toFixed(2);
+      const priceOf = item => {
+        if (["Bracelets", "Chainlinks", "Ropes"].includes(item.category)) return 5;
+        if (item.category === "Crosses") {
+          return ["eternity cross", "shalom"].includes(String(item.subcategory || "").trim().toLowerCase()) ? 15 : 10;
+        }
+        return 0;
+      };
       let cart = [];
       try {
         const saved = JSON.parse(localStorage.getItem(key) || "[]");
@@ -156,7 +163,7 @@
       }
 
       const list = document.getElementById("kkCheckoutItems");
-      const subtotal = cart.reduce((sum, item) => sum + Number(item.price ?? 5), 0);
+      const subtotal = cart.reduce((sum, item) => sum + priceOf(item), 0);
       // Starting estimate confirmed by the owner: 2 oz per keychain, before packaging.
       const estimatedProductWeightOz = cart.length * 2;
       document.getElementById("kkCheckoutWeight").textContent =
@@ -182,7 +189,7 @@
           meta.textContent = [item.category, item.subcategory, item.style].filter(Boolean).join(" • ");
           const price = document.createElement("span");
           price.className = "kk-item-price";
-          price.textContent = money(item.price ?? 5);
+          price.textContent = money(priceOf(item));
           detail.append(name, meta);
           row.append(img, detail, price);
           list.appendChild(row);
