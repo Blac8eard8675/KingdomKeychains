@@ -56,6 +56,19 @@ function validEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function squarePhoneNumber(value) {
+  const trimmed = cleanText(value, 30);
+  const digits = trimmed.replace(/\D/g, "");
+
+  if (/^\d{10}$/.test(digits)) return "+1" + digits;
+  if (/^1\d{10}$/.test(digits)) return "+" + digits;
+  if (/^\+[1-9]\d{8,15}$/.test(trimmed)) return trimmed;
+
+  // Phone is optional. Do not let an incorrectly formatted optional number
+  // cause Square to reject an otherwise valid card payment.
+  return null;
+}
+
 async function signatureFor(keys) {
   const bytes = new TextEncoder().encode([...keys].sort().join("\n"));
   const digest = await crypto.subtle.digest("SHA-256", bytes);
@@ -254,7 +267,8 @@ async function handlePayment(request, env) {
     reference_id: order.id.slice(0, 40),
     note: "Kingdom Keychains website order"
   };
-  if (phone) squarePayload.buyer_phone_number = phone;
+  const squarePhone = squarePhoneNumber(phone);
+  if (squarePhone) squarePayload.buyer_phone_number = squarePhone;
   if (verificationToken) squarePayload.verification_token = verificationToken;
 
   let squareResponse;
