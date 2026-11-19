@@ -10,6 +10,8 @@ import catalog from "./catalog.json";
 
 const CATALOG = new Map(catalog.map(item => [item.key, item]));
 const SQUARE_API_VERSION = "2026-11-18";
+const FLAT_SHIPPING_CENTS = 1000;
+const FLAT_SHIPPING_KEY = "flat-rate-10";
 
 const json = (data, status = 200, headers = {}) =>
   new Response(JSON.stringify(data), {
@@ -220,122 +222,6 @@ async function handleSquareWebhook(request, env) {
 }
 
 
-let uspsTokenCache = { token: "", expiresAt: 0 };
-
-async function getUspsAccessToken(env) {
-  const now = Date.now();
-  if (uspsTokenCache.token && uspsTokenCache.expiresAt > now + 60000) return uspsTokenCache.token;
-  if (!env.USPS_CONSUMER_KEY || !env.USPS_CONSUMER_SECRET) throw new Error("USPS API credentials are not configured.");
-  const base = String(env.USPS_ENVIRONMENT || "testing").toLowerCase() === "production"
-    ? "https://apis.usps.com" : "https://apis-tem.usps.com";
-  const response = await fetch(base + "/oauth2/v3/token", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      grant_type: "client_credentials",
-      client_id: env.USPS_CONSUMER_KEY,
-      client_secret: env.USPS_CONSUMER_SECRET
-    })
-  });
-  const result = await response.json().catch(() => ({}));
-  if (!response.ok || !result.access_token) throw new Error("USPS could not authorize the shipping-rate request.");
-  uspsTokenCache = {
-    token: result.access_token,
-    expiresAt: now + Math.max(60, Number(result.expires_in) || 28800) * 1000
-  };
-  return uspsTokenCache.token;
-}
-
-function packageForCart(itemCount) {
-  if (itemCount <= 10) {
-    return { code: "BUBBLE_MAILER", length: 12, width: 8.5, height: 2, packagingOz: 0.8 };
-  }
-
-  // The 4 x 4 x 4 inch box holds only about 4–5 keychains, so it is
-  // not suitable for orders above the 10-keychain mailer threshold.
-  // Use the larger 6 x 4 x 6 inch box for those orders. USPS expects
-  // length to be the longest dimension.
-  return { code: "SMALL_BOX", length: 6, width: 6, height: 4, packagingOz: 4 };
-}
-
-async function handleShippingQuote(request, env) {
-  if (!env.DB) return json({ error: "Shipping quote storage is not configured yet." }, 503);
-  let body;
-  try { body = await request.json(); }
-  catch { return json({ error: "Please submit a valid shipping request." }, 400); }
-
-  const postalCode = cleanText(body.postalCode, 10);
-  const zipMatch = postalCode.match(/^(\d{5})(?:-\d{4})?$/);
-  const destinationZip = zipMatch?.[1] || "";
-  const keys = Array.isArray(body.cartKeys) ? body.cartKeys.map(key => cleanText(key, 1200)) : [];
-
-  if (!/^\d{5}$/.test(destinationZip)) return json({ error: "Please enter a valid five-digit U.S. ZIP code." }, 400);
-  if (!keys.length || keys.length > 100 || new Set(keys).size !== keys.length || keys.some(key => !CATALOG.has(key))) {
-    return json({ error: "Your cart could not be verified. Please refresh your cart and try again." }, 400);
-  }
-  if (!env.USPS_CONSUMER_KEY || !env.USPS_CONSUMER_SECRET) {
-    return json({ error: "USPS live shipping is not connected yet." }, 503);
-  }
-
-  const packageInfo = packageForCart(keys.length);
-  const totalWeightOz = keys.length * 2 + packageInfo.packagingOz;
-  // USPS Ground Advantage single-piece weights are expressed in pounds
-  // rounded to two decimal places.
-  const weightPounds = Math.round((totalWeightOz / 16) * 100) / 100;
-  const mailingDate = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit"
-  }).format(new Date());
-
-  try {
-    const token = await getUspsAccessToken(env);
-    const base = String(env.USPS_ENVIRONMENT || "testing").toLowerCase() === "production"
-      ? "https://apis.usps.com" : "https://apis-tem.usps.com";
-    const rateResponse = await fetch(base + "/prices/v3/base-rates/search", {
-      method: "POST",
-      headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        originZIPCode: "63401",
-        destinationZIPCode: destinationZip,
-        weight: weightPounds,
-        length: packageInfo.length,
-        width: packageInfo.width,
-        height: packageInfo.height,
-        mailClass: "USPS_GROUND_ADVANTAGE",
-        processingCategory: "MACHINABLE",
-        rateIndicator: "SP",
-        destinationEntryFacilityType: "NONE",
-        priceType: "RETAIL",
-        mailingDate,
-        hasNonstandardCharacteristics: false
-      })
-    });
-    const rateResult = await rateResponse.json().catch(() => ({}));
-    if (!rateResponse.ok) {
-      const detail = rateResult?.error?.message || rateResult?.errors?.[0]?.message || rateResult?.message;
-      throw new Error(detail || "USPS did not return a shipping rate.");
-    }
-
-    const rates = Array.isArray(rateResult.rates) ? rateResult.rates : [];
-    const groundRate = rates
-      .filter(rate => rate.mailClass === "USPS_GROUND_ADVANTAGE" && rate.priceType === "RETAIL" &&
-        Number.isFinite(Number(rate.price)) && Number(rate.price) >= 0)
-      .sort((a, b) => Number(a.price) - Number(b.price))[0];
-    if (!groundRate) throw new Error("USPS did not return an eligible Ground Advantage rate for this package.");
-
-    const amountCents = Math.round(Number(groundRate.price) * 100);
-    const quoteId = crypto.randomUUID();
-    const signature = await signatureFor(keys);
-    const expiresAt = new Date(Date.now() + 30 * 60 * 1000).toISOString();
-    await env.DB.prepare(
-      "INSERT INTO shipping_quotes (id, postal_code, cart_signature, amount_cents, service, package_code, expires_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    ).bind(quoteId, destinationZip, signature, amountCents, "USPS_GROUND_ADVANTAGE", packageInfo.code, expiresAt).run();
-
-    return json({ quoteId, amountCents, service: "USPS Ground Advantage", expiresAt, packageCode: packageInfo.code }, 200);
-  } catch (error) {
-    return json({ error: error instanceof Error ? error.message : "USPS shipping could not be calculated. Please try again." }, 502);
-  }
-}
-
 async function handlePayment(request, env) {
   if (!env.DB) {
     return json({ error: "Checkout storage is not configured yet." }, 503);
@@ -382,26 +268,14 @@ async function handlePayment(request, env) {
       !/^[A-Z]{2}$/.test(state) || !/^\d{5}(-\d{4})?$/.test(postalCode)) {
     return json({ error: "Please complete the required delivery information." }, 400);
   }
-  if (!shippingQuoteId) {
-    return json({ error: "Please calculate USPS Ground Advantage shipping before paying." }, 400);
+  if (shippingQuoteId !== FLAT_SHIPPING_KEY) {
+    return json({ error: "The flat-rate shipping amount could not be verified. Please refresh checkout." }, 400);
   }
 
   await ensureCatalogSeeded(env.DB);
 
-  const signature = await signatureFor(keys);
-  const quote = await env.DB.prepare(
-    "SELECT id, postal_code, cart_signature, amount_cents, expires_at FROM shipping_quotes WHERE id = ?"
-  ).bind(shippingQuoteId).first();
-
-  if (!quote || quote.postal_code !== postalCode ||
-      quote.cart_signature !== signature ||
-      !Number.isInteger(quote.amount_cents) ||
-      Date.parse(quote.expires_at) <= Date.now()) {
-    return json({ error: "Your shipping quote has expired or no longer matches your cart. Please recalculate shipping." }, 409);
-  }
-
   const subtotalCents = keys.reduce((sum, key) => sum + CATALOG.get(key).priceCents, 0);
-  const shippingCents = quote.amount_cents;
+  const shippingCents = FLAT_SHIPPING_CENTS;
   const totalCents = subtotalCents + shippingCents;
   const shippingAddress = {
     address_line_1: address,
@@ -603,13 +477,6 @@ export default {
 
     if (request.method === "POST" && url.pathname === "/webhooks/square") {
       return handleSquareWebhook(request, env);
-    }
-
-    if (request.method === "POST" && url.pathname === "/shipping/quote") {
-      const response = await handleShippingQuote(request, env);
-      const responseHeaders = new Headers(response.headers);
-      Object.entries(headers).forEach(([key, value]) => responseHeaders.set(key, value));
-      return new Response(response.body, { status: response.status, headers: responseHeaders });
     }
 
     if (request.method === "POST" && url.pathname === "/payments") {
