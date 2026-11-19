@@ -80,7 +80,7 @@
   async function calculateShipping() {
     if (!apiBase || !form || !form.checkValidity()) return;
     const buyer = buyerDetails();
-    if (!/^\\d{5}(?:-\\d{4})?$/.test(buyer.postalCode)) return;
+    if (!/^\d{5}(?:-\d{4})?$/.test(buyer.postalCode)) return;
 
     const quoteKey = buyer.postalCode + "|" + cart.map(item => item.key).join("|");
     if (shippingRequest?.key === quoteKey) return shippingRequest.promise;
