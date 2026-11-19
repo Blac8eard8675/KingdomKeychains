@@ -260,7 +260,8 @@ async function handleShippingQuote(request, env) {
   catch { return json({ error: "Please submit a valid shipping request." }, 400); }
 
   const postalCode = cleanText(body.postalCode, 10);
-  const destinationZip = postalCode.match(/^\d{5}/)?.[0] || "";
+  const zipMatch = postalCode.match(/^(\d{5})(?:-\d{4})?$/);
+  const destinationZip = zipMatch?.[1] || "";
   const keys = Array.isArray(body.cartKeys) ? body.cartKeys.map(key => cleanText(key, 1200)) : [];
 
   if (!/^\d{5}$/.test(destinationZip)) return json({ error: "Please enter a valid five-digit U.S. ZIP code." }, 400);
@@ -274,7 +275,9 @@ async function handleShippingQuote(request, env) {
   const packageInfo = packageForCart(keys.length);
   const totalWeightOz = keys.length * 2 + packageInfo.packagingOz;
   const weightPounds = totalWeightOz / 16;
-  const mailingDate = new Date().toISOString().slice(0, 10);
+  const mailingDate = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit"
+  }).format(new Date());
 
   try {
     const token = await getUspsAccessToken(env);
