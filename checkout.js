@@ -17,6 +17,7 @@
   let card = null;
   let shippingQuoteId = "";
   let shippingCents = 0;
+  let shippingRequest = null;
   let idempotencyKey = "";
   let busy = false;
   let paymentComplete = false;
@@ -60,9 +61,9 @@
 
   function updateTotal() {
     document.getElementById("kkCheckoutShipping").textContent =
-      shippingQuoteId ? money(shippingCents / 100) : "Not calculated";
+      shippingQuoteId ? money(shippingCents / 100) : "Calculated automatically";
     document.getElementById("kkCheckoutTotal").textContent =
-      shippingQuoteId ? money((subtotalCents + shippingCents) / 100) : "Pending shipping";
+      shippingQuoteId ? money((subtotalCents + shippingCents) / 100) : "Calculating shipping";
   }
 
   function updatePayButton() {
@@ -72,6 +73,57 @@
     payButton.setAttribute("aria-disabled", String(!ready));
     payButton.style.opacity = ready ? "1" : ".65";
     payButton.style.cursor = ready ? "pointer" : "not-allowed";
+  }
+
+  async function calculateShipping() {
+    if (!apiBase || !form || !form.checkValidity()) return;
+    const buyer = buyerDetails();
+    if (!/^\\d{5}(?:-\\d{4})?$/.test(buyer.postalCode)) return;
+
+    const quoteKey = buyer.postalCode + "|" + cart.map(item => item.key).join("|");
+    if (shippingRequest?.key === quoteKey) return shippingRequest.promise;
+    if (shippingQuoteId && shippingRequest?.key === quoteKey) return;
+
+    shippingQuoteId = "";
+    shippingCents = 0;
+    updateTotal();
+    updatePayButton();
+    status(shippingStatus, "Calculating USPS Ground Advantage shipping automatically…");
+
+    const promise = (async () => {
+      try {
+        const response = await fetch(apiBase + "/shipping/quote", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            cartKeys: cart.map(item => item.key),
+            postalCode: buyer.postalCode
+          })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.quoteId || !Number.isInteger(result.amountCents)) {
+          throw new Error(result.error || "A USPS shipping rate could not be returned.");
+        }
+        shippingQuoteId = result.quoteId;
+        shippingCents = result.amountCents;
+        status(shippingStatus,
+          "USPS Ground Advantage shipping and handling: " + money(shippingCents / 100),
+          "success"
+        );
+        updateTotal();
+      } catch (error) {
+        shippingQuoteId = "";
+        shippingCents = 0;
+        status(shippingStatus, error.message || "Shipping could not be calculated. Please check the delivery ZIP code.", "error");
+        updateTotal();
+      } finally {
+        if (shippingRequest?.key === quoteKey) shippingRequest = null;
+        updatePayButton();
+      }
+    })();
+
+    shippingRequest = { key: quoteKey, promise };
+    return promise;
   }
 
   function loadSquareSdk() {
@@ -106,64 +158,34 @@
   }
 
   if (!cart.length) {
-    shippingButton.disabled = true;
     status(shippingStatus, "Your cart is empty. Add a keychain before checkout.");
+    updateTotal();
     updatePayButton();
     return;
   }
 
-  shippingButton.disabled = !(apiBase && config.shippingEnabled);
-  if (shippingButton.disabled) {
-    status(shippingStatus, "Live USPS Ground Advantage pricing is being connected. No flat or guessed shipping fee will be used.");
+  if (!apiBase || !config.shippingEnabled) {
+    status(shippingStatus, "Automatic shipping will appear when the secure store connection is active.");
   } else {
-    status(shippingStatus, "Enter your delivery address, then calculate your live USPS Ground Advantage rate.");
+    status(shippingStatus, "Enter your delivery information. USPS Ground Advantage shipping and handling will be calculated automatically.");
   }
 
-  const zipInput = form.querySelector('[name="zip"]');
-  zipInput?.addEventListener("input", () => {
-    shippingQuoteId = "";
-    shippingCents = 0;
-    updateTotal();
-    updatePayButton();
-    status(shippingStatus, "ZIP code changed. Recalculate USPS Ground Advantage shipping before paying.");
+  form.addEventListener("input", event => {
+    if (event.target?.name === "zip") {
+      shippingQuoteId = "";
+      shippingCents = 0;
+      shippingRequest = null;
+      updateTotal();
+      updatePayButton();
+      status(shippingStatus, "Shipping will recalculate automatically for the new ZIP code.");
+    }
   });
 
-  shippingButton.addEventListener("click", async () => {
-    if (!form.reportValidity()) return;
-    const buyer = buyerDetails();
-    shippingButton.disabled = true;
-    status(shippingStatus, "Checking the USPS Ground Advantage rate…");
-    shippingQuoteId = "";
-    updateTotal();
-    updatePayButton();
-
-    try {
-      const response = await fetch(apiBase + "/shipping/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          cartKeys: cart.map(item => item.key),
-          postalCode: buyer.postalCode
-        })
-      });
-      const result = await response.json();
-      if (!response.ok || !result.quoteId || !Number.isInteger(result.amountCents)) {
-        throw new Error(result.error || "A USPS shipping quote could not be returned.");
-      }
-      shippingQuoteId = result.quoteId;
-      shippingCents = result.amountCents;
-      status(shippingStatus,
-        "USPS Ground Advantage: " + money(shippingCents / 100) +
-        (result.packageDescription ? " · " + result.packageDescription : ""),
-        "success"
-      );
-      updateTotal();
-    } catch (error) {
-      status(shippingStatus, error.message || "Shipping could not be calculated. Please try again.", "error");
-    } finally {
-      shippingButton.disabled = false;
-      updatePayButton();
-    }
+  form.addEventListener("change", () => {
+    calculateShipping();
+  });
+  form.addEventListener("focusout", event => {
+    if (event.target?.name === "zip") calculateShipping();
   });
 
   payButton.addEventListener("click", async () => {
