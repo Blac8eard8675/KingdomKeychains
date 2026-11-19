@@ -18,6 +18,7 @@
   let shippingQuoteId = "";
   let shippingCents = 0;
   let shippingRequest = null;
+  let shippingRevision = 0;
   let idempotencyKey = "";
   let busy = false;
   let paymentComplete = false;
@@ -86,6 +87,7 @@
 
     shippingQuoteId = "";
     shippingCents = 0;
+    const requestRevision = ++shippingRevision;
     updateTotal();
     updatePayButton();
     status(shippingStatus, "Calculating USPS Ground Advantage shipping automatically…");
@@ -101,6 +103,7 @@
           })
         });
         const result = await response.json();
+        if (requestRevision !== shippingRevision) return;
         if (!response.ok || !result.quoteId || !Number.isInteger(result.amountCents)) {
           throw new Error(result.error || "A USPS shipping rate could not be returned.");
         }
@@ -112,6 +115,7 @@
         );
         updateTotal();
       } catch (error) {
+        if (requestRevision !== shippingRevision) return;
         shippingQuoteId = "";
         shippingCents = 0;
         status(shippingStatus, error.message || "Shipping could not be calculated. Please check the delivery ZIP code.", "error");
@@ -164,7 +168,7 @@
     return;
   }
 
-  if (!apiBase || !config.shippingEnabled) {
+  if (!apiBase) {
     status(shippingStatus, "Automatic shipping will appear when the secure store connection is active.");
   } else {
     status(shippingStatus, "Enter your delivery information. USPS Ground Advantage shipping and handling will be calculated automatically.");
@@ -175,6 +179,7 @@
       shippingQuoteId = "";
       shippingCents = 0;
       shippingRequest = null;
+      shippingRevision++;
       updateTotal();
       updatePayButton();
       status(shippingStatus, "Shipping will recalculate automatically for the new ZIP code.");
