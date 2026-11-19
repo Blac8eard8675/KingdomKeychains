@@ -107,6 +107,118 @@ function squareBaseUrl(env) {
     : "https://connect.squareupsandbox.com";
 }
 
+async function validSquareWebhookSignature(request, rawBody, env) {
+  const signature = request.headers.get("x-square-hmacsha256-signature") || "";
+  const key = env.SQUARE_WEBHOOK_SIGNATURE_KEY || "";
+  const notificationUrl = env.SQUARE_WEBHOOK_NOTIFICATION_URL || "";
+
+  if (!signature || !key || !notificationUrl) return false;
+
+  const cryptoKey = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(key),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+  const digest = await crypto.subtle.sign(
+    "HMAC",
+    cryptoKey,
+    new TextEncoder().encode(notificationUrl + rawBody)
+  );
+  const expected = btoa(String.fromCharCode(...new Uint8Array(digest)));
+  const left = new TextEncoder().encode(signature);
+  const right = new TextEncoder().encode(expected);
+  if (left.length !== right.length) return false;
+
+  let difference = 0;
+  for (let index = 0; index < left.length; index++) {
+    difference |= left[index] ^ right[index];
+  }
+  return difference === 0;
+}
+
+async function handleSquareWebhook(request, env) {
+  if (!env.DB || !env.SQUARE_WEBHOOK_SIGNATURE_KEY ||
+      !env.SQUARE_WEBHOOK_NOTIFICATION_URL) {
+    return json({ error: "Webhook verification is not configured." }, 503);
+  }
+
+  const rawBody = await request.text();
+  if (!(await validSquareWebhookSignature(request, rawBody, env))) {
+    return json({ error: "Invalid webhook signature." }, 403);
+  }
+
+  let event;
+  try {
+    event = JSON.parse(rawBody);
+  } catch {
+    return json({ error: "Invalid webhook body." }, 400);
+  }
+
+  if (!["payment.created", "payment.updated"].includes(event.type) ||
+      !event.event_id) {
+    return json({ received: true }, 200);
+  }
+
+  const alreadyReceived = await env.DB.prepare(
+    "SELECT event_id FROM square_webhook_events WHERE event_id = ?"
+  ).bind(event.event_id).first();
+  if (alreadyReceived) return json({ received: true, duplicate: true }, 200);
+
+  const payment = event.data?.object?.payment;
+  if (!payment?.id || !payment.reference_id) {
+    return json({ received: true }, 200);
+  }
+
+  const order = await env.DB.prepare(
+    "SELECT id, status, total_cents FROM orders WHERE id = ? OR square_payment_id = ? LIMIT 1"
+  ).bind(payment.reference_id, payment.id).first();
+
+  if (!order) return json({ received: true }, 200);
+
+  if (payment.location_id !== env.SQUARE_LOCATION_ID ||
+      payment.amount_money?.currency !== "USD" ||
+      payment.amount_money?.amount !== order.total_cents) {
+    return json({ error: "Payment does not match the recorded order." }, 409);
+  }
+
+  const statements = [
+    env.DB.prepare(
+      "INSERT INTO square_webhook_events (event_id, event_type) VALUES (?, ?)"
+    ).bind(event.event_id, event.type)
+  ];
+
+  if (payment.status === "COMPLETED") {
+    statements.push(
+      env.DB.prepare(
+        "UPDATE orders SET status='paid', square_payment_id=?, paid_at=COALESCE(paid_at, strftime('%Y-%m-%dT%H:%M:%fZ','now')) WHERE id=? AND status IN ('pending','needs_review','paid')"
+      ).bind(payment.id, order.id),
+      env.DB.prepare(
+        "UPDATE inventory SET status='sold', square_payment_id=?, sold_at=COALESCE(sold_at, strftime('%Y-%m-%dT%H:%M:%fZ','now')), reserved_until=NULL WHERE reservation_id=?"
+      ).bind(payment.id, order.id)
+    );
+  } else if (payment.status === "CANCELED" || payment.status === "FAILED") {
+    statements.push(
+      env.DB.prepare(
+        "UPDATE orders SET status='payment_failed', square_payment_id=? WHERE id=? AND status IN ('pending','needs_review')"
+      ).bind(payment.id, order.id),
+      env.DB.prepare(
+        "UPDATE inventory SET status='available', reservation_id=NULL, reserved_until=NULL WHERE reservation_id=? AND status='reserved'"
+      ).bind(order.id)
+    );
+  } else {
+    statements.push(
+      env.DB.prepare(
+        "UPDATE orders SET status='needs_review', square_payment_id=? WHERE id=? AND status='pending'"
+      ).bind(payment.id, order.id)
+    );
+  }
+
+  await env.DB.batch(statements);
+  return json({ received: true }, 200);
+}
+
 async function handlePayment(request, env) {
   if (!env.DB) {
     return json({ error: "Checkout storage is not configured yet." }, 503);
@@ -370,6 +482,10 @@ export default {
           catalogProducts: CATALOG.size
         }
       }, 200, headers);
+    }
+
+    if (request.method === "POST" && url.pathname === "/webhooks/square") {
+      return handleSquareWebhook(request, env);
     }
 
     if (request.method === "POST" && url.pathname === "/payments") {
