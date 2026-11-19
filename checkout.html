@@ -190,5 +190,16 @@
       }
     })();
   </script>
+  <script>
+    // Public Square identifiers and the deployed Worker URL are filled in during connection setup.
+    window.KK_CHECKOUT_CONFIG = {
+      environment: "sandbox",
+      applicationId: "",
+      locationId: "",
+      apiBaseUrl: "",
+      shippingEnabled: false
+    };
+  </script>
+  <script src="checkout.js" defer></script>
 </body>
 </html>
