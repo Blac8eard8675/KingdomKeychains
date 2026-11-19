@@ -1,4 +1,9 @@
 -- Kingdom Keychains secure checkout storage.
+
+CREATE TABLE IF NOT EXISTS store_meta (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS inventory (
   product_key TEXT PRIMARY KEY,
   status TEXT NOT NULL DEFAULT 'available'
