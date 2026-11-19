@@ -250,7 +250,12 @@ function packageForCart(itemCount) {
   if (itemCount <= 10) {
     return { code: "BUBBLE_MAILER", length: 12, width: 8.5, height: 2, packagingOz: 0.8 };
   }
-  return { code: "XSMALL_BOX", length: 4, width: 4, height: 4, packagingOz: 2 };
+
+  // The 4 x 4 x 4 inch box holds only about 4–5 keychains, so it is
+  // not suitable for orders above the 10-keychain mailer threshold.
+  // Use the larger 6 x 4 x 6 inch box for those orders. USPS expects
+  // length to be the longest dimension.
+  return { code: "SMALL_BOX", length: 6, width: 6, height: 4, packagingOz: 4 };
 }
 
 async function handleShippingQuote(request, env) {
@@ -274,7 +279,9 @@ async function handleShippingQuote(request, env) {
 
   const packageInfo = packageForCart(keys.length);
   const totalWeightOz = keys.length * 2 + packageInfo.packagingOz;
-  const weightPounds = totalWeightOz / 16;
+  // USPS Ground Advantage single-piece weights are expressed in pounds
+  // rounded to two decimal places.
+  const weightPounds = Math.round((totalWeightOz / 16) * 100) / 100;
   const mailingDate = new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit"
   }).format(new Date());
