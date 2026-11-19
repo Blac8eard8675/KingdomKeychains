@@ -38,6 +38,14 @@
     .kk-checkout-back{color:#ffe6a0;background:transparent}
     .kk-checkout-pay{color:#28122e;background:linear-gradient(180deg,#fff0b3,#c99a43);opacity:.65;cursor:not-allowed}
     .kk-checkout-empty{padding:20px;text-align:center;color:#eadbbd}
+    .kk-payment-panel{margin-top:22px;padding-top:18px;border-top:1px solid #684578}
+    .kk-payment-panel h2{margin-bottom:12px}
+    #kk-card-container{min-height:54px;padding:12px;border:1px solid #9a7748;border-radius:6px;background:#fffaf0}
+    .kk-checkout-status{min-height:1.4em;margin:10px 0 0;color:#ffe6a0;font-size:.92rem;line-height:1.45}
+    .kk-checkout-status.error{color:#ffb5a9}
+    .kk-checkout-status.success{color:#b9edc5}
+    .kk-shipping-button{min-height:42px;padding:9px 14px;border:1px solid #ffe6a0;border-radius:5px;background:#ffffff0d;color:#ffe6a0;font:inherit;font-weight:bold;cursor:pointer}
+    .kk-shipping-button:disabled{opacity:.5;cursor:not-allowed}
     .kk-checkout-footer{text-align:center;margin-top:28px;color:#eadbbd;font-family:Georgia,"Times New Roman",serif}
     @media(max-width:760px){.kk-checkout-grid{grid-template-columns:1fr}.kk-checkout-card{padding:18px}}
     @media(max-width:480px){.kk-checkout-fields{grid-template-columns:1fr}.kk-field.full{grid-column:auto}.kk-checkout-wrap{width:min(100% - 22px,1100px);margin-top:26px}}
@@ -103,8 +111,17 @@
               <input id="kkZip" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="10" required>
             </div>
           </div>
-          <p class="kk-shipping-notice">Your USPS Ground Advantage shipping price will be calculated from the delivery address after the secure shipping connection is added. No estimated or made-up shipping charge will be shown.</p>
+          <div class="kk-field full">
+            <button id="kkGetShipping" class="kk-shipping-button" type="button" disabled>Calculate USPS Ground Advantage</button>
+            <p id="kkShippingStatus" class="kk-checkout-status" aria-live="polite">Live USPS shipping rates are being connected. No flat or guessed shipping fee will be used.</p>
+          </div>
+          <p class="kk-shipping-notice">Shipping is calculated from your delivery ZIP code, package size, and order weight. The amount will be shown before you pay.</p>
         </form>
+        <section class="kk-payment-panel" aria-labelledby="paymentHeading">
+          <h2 id="paymentHeading">Payment Information</h2>
+          <div id="kk-card-container" aria-label="Secure Square card entry"></div>
+          <p id="kkPaymentStatus" class="kk-checkout-status" role="status" aria-live="polite">Secure Square card entry will appear here when the store connection is configured.</p>
+        </section>
       </section>
 
       <aside class="kk-checkout-card" aria-labelledby="reviewHeading">
@@ -119,7 +136,7 @@
         <p class="kk-shipping-notice">Your items are unique, one-of-a-kind pieces. Inventory will only be marked sold after Square confirms successful payment.</p>
         <div class="kk-checkout-actions">
           <a class="kk-checkout-back" href="products.html">Continue Shopping</a>
-          <button class="kk-checkout-pay" type="button" disabled aria-disabled="true">Secure Payment Coming Next</button>
+          <button id="kkPayButton" class="kk-checkout-pay" type="button" disabled aria-disabled="true">Pay Securely with Square</button>
         </div>
       </aside>
     </div>
