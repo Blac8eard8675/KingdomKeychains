@@ -284,7 +284,7 @@ function renderProducts() {
 
     productGrid.innerHTML = "";
 
-    products.forEach(product => {
+    products.forEach((product, productIndex) => {
         const card = document.createElement("article");
 
         card.className = "product-card";
@@ -333,6 +333,43 @@ function renderProducts() {
             style.textContent = product.style;
             card.appendChild(style);
         }
+    const checkout = window.kingdomCheckoutLinks?.[productIndex];
+    if (checkout) {
+      const price = document.createElement("p");
+      price.className = "purchase-price";
+      price.textContent = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(checkout.amount / 100);
+      const purchase = document.createElement("div");
+      purchase.className = "purchase-options";
+      const label = document.createElement("label");
+      label.htmlFor = `delivery-${productIndex}`;
+      label.textContent = "Delivery option";
+      const select = document.createElement("select");
+      select.id = label.htmlFor;
+      for (const [value, text] of [["shipping", "Ship to me (+$10)"], ["pickup", "Free local pickup"]]) {
+        const option = document.createElement("option"); option.value = value; option.textContent = text; select.appendChild(option);
+      }
+      const details = document.createElement("p");
+      details.className = "purchase-details";
+      details.id = `delivery-details-${productIndex}`;
+      details.setAttribute("aria-live", "polite");
+      select.setAttribute("aria-describedby", details.id);
+      const buy = document.createElement("a");
+      buy.className = "purchase-button";
+      buy.textContent = "Buy now";
+      buy.setAttribute("aria-label", `Buy ${[product.subcategory, product.style, product.color].filter(Boolean).join(" — ")}`);
+      const updateDelivery = () => {
+        const pickup = select.value === "pickup";
+        buy.href = pickup ? checkout.pickup : checkout.shipping;
+        details.textContent = pickup
+          ? "Pickup by appointment: 600 North Street, Hannibal, MO 63401. Arrange pickup with Kingdom Keychains before arriving."
+          : "$10 flat worldwide shipping per product checkout. No sales tax added.";
+      };
+      select.addEventListener("change", updateDelivery);
+      updateDelivery();
+      purchase.append(label, select, details, buy);
+      card.append(price, purchase);
+    }
+
 
         productGrid.appendChild(card);
     });
