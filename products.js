@@ -200,7 +200,7 @@ const products = [
     subcategory: "God's Knot Dead",
     style: "Elohim Stitch",
     color: "Black, Hot Pink, Fuchsia",
-    image: "Black, Hot Pink, Fuschia.jpg"
+    image: "Black, Hot Pink, Fuchsia.jpg"
   },
   {
     category: "Bracelets",
