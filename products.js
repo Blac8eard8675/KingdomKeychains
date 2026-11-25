@@ -23,8 +23,8 @@ const products = [
   },
   {
     category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "God's DNA",
+    subcategory: "God's DNA",
+    style: "",
     color: "Shiny Neon Orange, Neon Orange, Dark Green",
     image: "Shiny Neon Orange, Neon Orange, Dark Green.jpg"
   },
