@@ -3,7 +3,7 @@ const products = [
   {
     category: "Bracelets",
     subcategory: "God's Knot Dead",
-    style: "DNA Twist",
+    style: "DNA Knot",
     color: "Pink, Green, Yellow",
     image: "Pink, Green, Yellow.jpg"
   },
