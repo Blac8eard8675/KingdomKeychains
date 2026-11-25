@@ -2044,13 +2044,6 @@ const products = [
     category: "Crosses",
     subcategory: "Spiral Cross",
     style: "",
-    color: "Pink, Pale Yellow, Grape",
-    image: "Pink, Pale Yellow, Grape.jpg"
-  },
-  {
-    category: "Crosses",
-    subcategory: "Spiral Cross",
-    style: "",
     color: "Plum, Pale Yellow",
     image: "Plum, Pale Yellow.jpg"
   },
@@ -2060,13 +2053,6 @@ const products = [
     style: "",
     color: "Seafoam Green, Salmon, Shiny Yellow",
     image: "Seafoam Green, Salmon, Shiny Yellow.jpg"
-  },
-  {
-    category: "Crosses",
-    subcategory: "Spiral Cross",
-    style: "",
-    color: "Seafoam Green, Shiny Purple",
-    image: "Seafoam Green, Shiny Purple.jpg"
   },
   {
     category: "Crosses",
