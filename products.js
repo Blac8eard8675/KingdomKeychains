@@ -99,22 +99,8 @@ const products = [
     category: "Bracelets",
     subcategory: "God's Knot Dead",
     style: "Spiral",
-    color: "Maroon, Shiny Sapphire Blue",
-    image: "Maroon, Shiny Sapphire Blue.jpg"
-  },
-  {
-    category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "Spiral",
     color: "Navy Blue, Lime Green",
     image: "Navy Blue, Lime Green.jpg"
-  },
-  {
-    category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "Spiral",
-    color: "Navy Blue, Shiny Orange",
-    image: "Navy Blue, Shiny Orange.jpg"
   },
   {
     category: "Bracelets",
@@ -129,20 +115,6 @@ const products = [
     style: "Spiral",
     color: "Sea Blue, White",
     image: "Sea Blue, White.jpg"
-  },
-  {
-    category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "Spiral",
-    color: "Shiny Pink, Sparkle Emerald Green",
-    image: "Shiny Pink, Sparkle Emerald Green.jpg"
-  },
-  {
-    category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "Spiral",
-    color: "Shiny Red, Cornflower Blue",
-    image: "Shiny Red, Cornflower Blue.jpg"
   },
   {
     category: "Bracelets",
