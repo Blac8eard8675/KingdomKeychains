@@ -48,13 +48,6 @@ const products = [
     category: "Bracelets",
     subcategory: "God's Knot Dead",
     style: "God's Knot",
-    color: "Orange, Neon Orange, Dark Salmon",
-    image: "Orange, Neon Orange, Dark Salmon.jpg"
-  },
-  {
-    category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "God's Knot",
     color: "Orange, Shiny Orange, Red",
     image: "Orange, Shiny Orange, Red.jpg"
   },
@@ -64,13 +57,6 @@ const products = [
     style: "God's Knot",
     color: "Salmon, Yellow, White",
     image: "Salmon, Yellow, White.jpg"
-  },
-  {
-    category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "God's Knot",
-    color: "Shiny Orange, Green",
-    image: "Shiny Orange, Green.jpg"
   },
   {
     category: "Bracelets",
@@ -99,20 +85,6 @@ const products = [
     style: "God's Knot",
     color: "Yellow, Grape",
     image: "Yellow, Grape.jpg"
-  },
-  {
-    category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "God's Knot",
-    color: "Yellow, Glow Purple, Grape",
-    image: "Yellow, Glow Purple, Grape.jpg"
-  },
-  {
-    category: "Bracelets",
-    subcategory: "God's Knot Dead",
-    style: "God's Knot",
-    color: "Yellow, Glow Purple, Purple",
-    image: "Yellow, Glow Purple, Purple.jpg"
   },
 
   // BRACELETS - GOD'S KNOT DEAD - SPIRAL
