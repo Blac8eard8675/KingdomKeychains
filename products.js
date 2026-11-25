@@ -1845,13 +1845,6 @@ const products = [
     category: "Crosses",
     subcategory: "Holy Spirit Cross",
     style: "",
-    color: "Blue Green, Sparkle Blue, Shiny Pink",
-    image: "Blue Green, Sparkle Blue, Shiny Pink.jpg"
-  },
-  {
-    category: "Crosses",
-    subcategory: "Holy Spirit Cross",
-    style: "",
     color: "Dark Tan, Dark Green, Light Gray",
     image: "Dark Tan, Dark Green, Light Gray.jpg"
   },
