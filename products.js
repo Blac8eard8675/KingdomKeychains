@@ -314,13 +314,6 @@ const products = [
     category: "Chainlinks",
     subcategory: "Holy Spirit Chainlinks",
     style: "",
-    color: "Dark Teal, Gray, Shiny Light Orange",
-    image: "Dark Teal, Gray, Shiny Light Orange.jpg"
-  },
-  {
-    category: "Chainlinks",
-    subcategory: "Holy Spirit Chainlinks",
-    style: "",
     color: "Dark Teal, Light Green, Shiny Red",
     image: "Dark Teal, Light Green, Shiny Red.jpg"
   },
@@ -450,13 +443,6 @@ const products = [
     style: "",
     color: "Shiny Red, Shiny Light Orange, Hunter Green",
     image: "Shiny Red, Shiny Light Orange, Hunter Green.jpg"
-  },
-  {
-    category: "Chainlinks",
-    subcategory: "Holy Spirit Chainlinks",
-    style: "",
-    color: "Sparkle Red, Sparkle Dark Blue, Pale Yellow",
-    image: "Sparkle Red, Sparkle Dark Blue, Pale Yellow.jpg"
   },
 
     
