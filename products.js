@@ -2125,13 +2125,6 @@ const products = [
     category: "Ropes",
     subcategory: "Brave Rope",
     style: "",
-    color: "Gold, Copper Red",
-    image: "Gold, Copper Red.jpg"
-  },
-  {
-    category: "Ropes",
-    subcategory: "Brave Rope",
-    style: "",
     color: "Grape, Gray, Salmon",
     image: "Grape, Gray, Salmon.jpg"
   },
