@@ -1480,13 +1480,6 @@ const products = [
     category: "Crosses",
     subcategory: "Eternity Cross",
     style: "",
-    color: "Sparkle Purple, Sparkle Dark Blue, Shiny Pink",
-    image: "Sparkle Purple,Sparkle Dark Blue, Shiny Pink.jpg"
-  },
-  {
-    category: "Crosses",
-    subcategory: "Eternity Cross",
-    style: "",
     color: "Sparkle Yellow, Sparkle Orange, Shiny Lime Green",
     image: "Sparkle Yellow, Sparkle Orange, Shiny Lime Green.jpg"
   },
