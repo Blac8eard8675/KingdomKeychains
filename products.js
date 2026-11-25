@@ -1136,13 +1136,6 @@ const products = [
     category: "Chainlinks",
     subcategory: "Mini Chainlinks",
     style: "",
-    color: "Black, White",
-    image: "Black, White.jpg"
-  },
-  {
-    category: "Chainlinks",
-    subcategory: "Mini Chainlinks",
-    style: "",
     color: "Brown, Shiny Green",
     image: "Brown, Shiny Green.jpg"
   },
