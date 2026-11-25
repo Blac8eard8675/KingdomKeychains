@@ -41,6 +41,13 @@ const products = [
     category: "Bracelets",
     subcategory: "God's Knot Dead",
     style: "God's Knot",
+    color: "Dark Green, Teal, Black",
+    image: "Dark Green, Teal, Black.jpg"
+  },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "God's Knot",
     color: "Blue, Yellow",
     image: "Blue, Yellow.jpg"
   },
