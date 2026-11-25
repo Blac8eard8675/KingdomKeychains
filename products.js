@@ -7,8 +7,36 @@ const products = [
     color: "Pink, Green, Yellow",
     image: "Pink, Green, Yellow.jpg"
   },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "DNA Knot",
+    color: "Black, Orange, Green",
+    image: "Black, Orange, Green.jpg"
+  },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "DNA Knot",
+    color: "Neon Pink, White, Light Blue",
+    image: "Neon Pink, White, Light Blue.jpg"
+  },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "DNA Knot",
+    color: "Shiny Neon Orange, Neon Orange, Dark Green",
+    image: "Shiny Neon Orange, Neon Orange, Dark Green.jpg"
+  },
 
   // BRACELETS - GOD'S KNOT DEAD - GOD'S KNOT
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "God's Knot",
+    color: "Blue, Black",
+    image: "Blue, Black.jpg"
+  },
   {
     category: "Bracelets",
     subcategory: "God's Knot Dead",
@@ -27,6 +55,20 @@ const products = [
     category: "Bracelets",
     subcategory: "God's Knot Dead",
     style: "God's Knot",
+    color: "Orange, Shiny Orange, Red",
+    image: "Orange, Shiny Orange, Red.jpg"
+  },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "God's Knot",
+    color: "Salmon, Yellow, White",
+    image: "Salmon, Yellow, White.jpg"
+  },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "God's Knot",
     color: "Shiny Orange, Green",
     image: "Shiny Orange, Green.jpg"
   },
@@ -34,8 +76,29 @@ const products = [
     category: "Bracelets",
     subcategory: "God's Knot Dead",
     style: "God's Knot",
+    color: "Shiny Orange, Neon Yellow, Yellow",
+    image: "Shiny Orange, Neon Yellow, Yellow.jpg"
+  },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "God's Knot",
     color: "Sky Blue, Purple",
     image: "Sky Blue, Purple.jpg"
+  },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "God's Knot",
+    color: "White, Blue, Light Blue",
+    image: "White, Blue, Light Blue.jpg"
+  },
+  {
+    category: "Bracelets",
+    subcategory: "God's Knot Dead",
+    style: "God's Knot",
+    color: "Yellow, Grape",
+    image: "Yellow, Grape.jpg"
   },
   {
     category: "Bracelets",
@@ -1528,6 +1591,13 @@ const products = [
     style: "",
     color: "Apple Green, Orange, Gray",
     image: "Apple Green, Orange, Gray.jpg"
+  },
+  {
+    category: "Crosses",
+    subcategory: "Healer",
+    style: "",
+    color: "Black, White, Blue, Light Blue",
+    image: "Black, White, Blue, Light Blue.jpg"
   },
   {
     category: "Crosses",
