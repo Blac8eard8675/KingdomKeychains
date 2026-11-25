@@ -1778,13 +1778,6 @@ const products = [
     category: "Crosses",
     subcategory: "Healer",
     style: "",
-    color: "Sparkle Rose Pink, Sparkle Sapphire Blue, Glow White, White",
-    image: "Sparkle Rose Pink, Sparkle Sapphire Blue, Glow White, White.jpg"
-  },
-  {
-    category: "Crosses",
-    subcategory: "Healer",
-    style: "",
     color: "White, Glow Orange, Lime Green, Sparkle Dark Blue",
     image: "White, Glow Orange, Lime Green, Sparkle Dark Blue.jpg"
   },
