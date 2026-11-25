@@ -2297,13 +2297,6 @@ const products = [
     category: "Ropes",
     subcategory: "DNA Rope",
     style: "",
-    color: "Salmon, Neon Yellow, Light Blue, Dark Purple",
-    image: "Salmon, Neon Yellow, Light Blue, Dark Purple.jpg"
-  },
-  {
-    category: "Ropes",
-    subcategory: "DNA Rope",
-    style: "",
     color: "Seafoam Green, Shiny Copper Red",
     image: "Seafoam Green, Shiny Copper Red.jpg"
   },
