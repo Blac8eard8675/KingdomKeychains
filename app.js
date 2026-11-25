@@ -49,8 +49,9 @@ const categories = {
 const nestedAlbums = {
     Bracelets: {
         "God's Knot Dead": [
-            "DNA Twist",
+            "DNA Knot",
             "Elohim Stitch",
+            "God's DNA",
             "God's Knot",
             "Spiral"
         ]
